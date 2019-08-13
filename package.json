@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.0"
+    "react-dom": "^16.9.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
@@ -30,6 +29,11 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^3.4.1"
+    "cypress": "^3.4.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "react-scripts": "^3.1.0",
+    "react-test-renderer": "^16.9.0",
+    "sinon": "^7.4.1"
   }
 }
