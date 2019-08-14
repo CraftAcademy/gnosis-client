@@ -10,14 +10,20 @@ describe('', () => {
   })
 
   it('sees at least two articles', async () => {
-    cy.contains('article 1 author')
-    cy.contains('article 1 date')
-    cy.contains('article 1 title')
-    cy.contains('article 1 body')
+    cy.get('.articles').within(() => {
+      cy.get('#article_1').within(() => {
+        cy.get('#title').contains('Article 1 title')
+        cy.get('#body').contain('Article 1 body')
+        cy.get('#date').contain('2019-10-24')
+        cy.get('#author').contain('Max')
+      })
+      cy.get('#article_2').within(() => {
+        cy.get('#title').contains('Article 2 title')
+        cy.get('#body').contain('Article 2 body')
+        cy.get('#date').contain('2019-11-24')
+        cy.get('#author').contain('Dash')
+      })
+    })
 
-    cy.contains('article 2 author')
-    cy.contains('article 2 date')
-    cy.contains('article 2 title')
-    cy.contains('article 2 body')
   })
 })
