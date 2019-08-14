@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 class CreateArticleForm extends Component {
   render() {
-    return <div />;
+    return <div>
+      Form here.
+    </div> ;
   }
 }
 
