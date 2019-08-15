@@ -8,26 +8,49 @@ class CreateArticleForm extends Component {
       title: "",
       body: "",
       articleSaved: false
-    }
+    };
   }
+
+  onSave(e) {
+    e.preventDefault();
+    console.log(this.state.author);
+    console.log(this.state.title);
+    console.log(this.state.body);
+  }
+
   render() {
     return (
-    <form id="post-article-form">
-    <div>
-      <label>Author</label>
-      <input id="author-id"></input>
-    </div>
-    <div>
-      <label>Title</label>
-      <input id="title"></input>
-    </div>
-    <div>
-      <label>Text</label>
-      <input id="body"></input>
-    </div>
-    <button id="submit-button">Submit</button>
-  </form>
-  )}
+      <form id="post-article-form">
+        <div>
+          <label>Author</label>
+          <input
+            id="author-id"
+            value={this.state.author}
+            onChange={e => this.setState({ author: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>Title</label>
+          <input
+            id="title"
+            value={this.state.title}
+            onChange={e => this.setState({ title: e.target.value })}
+          />
+        </div>
+        <div>
+          <label>Text</label>
+          <input
+            id="body"
+            value={this.state.body}
+            onChange={e => this.setState({ body: e.target.value })}
+          />
+        </div>
+        <button id="submit-button" onClick={e => this.onSave(e)}>
+          Submit
+        </button>
+      </form>
+    );
+  }
 }
 
 export default CreateArticleForm;
