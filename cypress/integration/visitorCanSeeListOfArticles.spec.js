@@ -1,15 +1,15 @@
-describe('', () => {
+describe('Visitor can visit client site connected to api with articles', () => {
   before(function () {
     cy.visit('http://localhost:3001')
     cy.server()
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v0/articles',
-      response: 'fixture:articles.json',
+      response: 'fixture:articles.json'
     })
   })
 
-  it('sees at least two articles', async () => {
+  it('and sees at least two articles', async () => {
     cy.get('.articles').within(() => {
       cy.get('#article_1').within(() => {
         cy.get('#title').contains('A study on the maladapted social behaviors of pidgeons')
