@@ -1,20 +1,16 @@
-{
-  "status": 200,
-  "headers": {},
-  "articles": [
-    {
-      "id": 1,
-      "author": "Dash L.",
-      "date": "14-08-2019",
-      "title": "A study on the maladapted social behaviors of pidgeons",
-      "body": "They are seriously mean."
-    },
-    {
-      "id": 2,
-      "author": "Max A.",
-      "date": "14-08-2019",
-      "title": "The beneficial nature of caffeine",
-      "body": "It's good for your body."
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "author": "Dash L.",
+    "date": "14-08-2019",
+    "title": "A study on the maladapted social behaviors of pidgeons",
+    "body": "They are seriously mean."
+  },
+  {
+    "id": 2,
+    "author": "Max A.",
+    "date": "14-08-2019",
+    "title": "The beneficial nature of caffeine",
+    "body": "It's good for your body."
+  }
+]
