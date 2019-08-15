@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-//import { async } from 'q';
 
 class DisplayAllArticles extends Component {
   constructor() {
@@ -22,7 +21,7 @@ class DisplayAllArticles extends Component {
   render() {
     const articles = this.state.allArticles
     let articlesList
-    
+
     if (articles.length > 0) {
       articlesList = articles.map(article => {
         return (
