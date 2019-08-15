@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { saveData } from '../Modules/SaveArticleData';
 
 class CreateArticleForm extends Component {
   constructor(props) {
@@ -13,9 +14,7 @@ class CreateArticleForm extends Component {
 
   onSave(e) {
     e.preventDefault();
-    console.log(this.state.author);
-    console.log(this.state.title);
-    console.log(this.state.body);
+    saveData(this.state.author, this.state.title, this.state.body)
   }
 
   render() {
