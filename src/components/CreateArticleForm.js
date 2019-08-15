@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 
 class CreateArticleForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      author: "",
+      title: "",
+      body: "",
+      articleSaved: false
+    }
+  }
   render() {
     return (
     <form id="post-article-form">
