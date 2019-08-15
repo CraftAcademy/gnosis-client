@@ -12,16 +12,16 @@ describe('', () => {
   it('sees at least two articles', async () => {
     cy.get('.articles').within(() => {
       cy.get('#article_1').within(() => {
-        cy.get('#title').contains('Article 1 title')
-        cy.get('#body').contain('Article 1 body')
-        cy.get('#date').contain('2019-10-24')
-        cy.get('#author').contain('Max')
+        cy.get('#title').contains('A study on the maladapted social behaviors of pidgeons')
+        cy.get('#body').contain('They are seriously mean.')
+        cy.get('#date').contain('14-08-2019')
+        cy.get('#author').contain('Dash L.')
       })
       cy.get('#article_2').within(() => {
-        cy.get('#title').contains('Article 2 title')
-        cy.get('#body').contain('Article 2 body')
-        cy.get('#date').contain('2019-11-24')
-        cy.get('#author').contain('Dash')
+        cy.get('#title').contains('The beneficial nature of caffeine')
+        cy.get('#body').contain("It's good for your body.")
+        cy.get('#date').contain('14-08-2019')
+        cy.get('#author').contain('Max A.')
       })
     })
 
