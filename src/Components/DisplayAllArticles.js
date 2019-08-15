@@ -9,8 +9,7 @@ class DisplayAllArticles extends Component {
     }
   }
   componentDidMount() {
-    const apiUrl = "http://localhost:3000/api/v0/articles"
-    axios.get(apiUrl)
+    axios.get("http://localhost:3000/api/v0/articles")
       .then(response => {
         this.setState({
           allArticles: response.data
@@ -25,15 +24,20 @@ class DisplayAllArticles extends Component {
     if (articles.length > 0) {
       articlesList = articles.map(article => {
         return (
-          <div>
-            <p>{article.author}</p>
-          </div>
+          <>
+            <div id={ `article_${article.id}` }>
+              <div id="title">{article.title}</div>
+              <div id="body">{article.body}</div>
+              <div id="date">{article.date}</div>
+              <div id="author">{article.author}</div>
+            </div>
+          </>
         )
       })
     }
 
     return (
-      <div>
+      <div class="articles">
         { articlesList }
       </div>
     );
