@@ -7,14 +7,15 @@ class DisplayAllArticles extends Component {
     this.state = {
       allArticles: []
     }
-  }
+  };
+
   componentDidMount() {
-    axios.get("http://localhost:3000/api/v0/articles")
+    axios.get('http://localhost:3000/api/v0/articles')
       .then(response => {
         this.setState({
           allArticles: response.data
-        })
-      })
+        });
+      });
   }
 
   render() {
@@ -28,7 +29,7 @@ class DisplayAllArticles extends Component {
             <div id={ `article_${article.id}` }>
               <div id="title">{article.title}</div>
               <div id="body">{article.body}</div>
-              <div id="date">{article.date}</div>
+              {/* <div id="date">{article.created_at}</div> */}
               <div id="author">{article.author}</div>
             </div>
           </>
@@ -37,7 +38,7 @@ class DisplayAllArticles extends Component {
     }
 
     return (
-      <div class="articles">
+      <div className="articles">
         { articlesList }
       </div>
     );
