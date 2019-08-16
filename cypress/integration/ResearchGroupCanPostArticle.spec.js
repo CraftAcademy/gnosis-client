@@ -1,4 +1,15 @@
+
 describe('RG can post article', () => {
+  beforeEach(function() {
+    cy.visit('http://localhost:3001');
+    cy.server();
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/saved_articles',
+      response: 'fixture:saving_article_response.json'
+    })
+  })
+
   it("RG can post article", () => {
     cy.visit("http://localhost:3001");
     cy.get("#create-article").click();
