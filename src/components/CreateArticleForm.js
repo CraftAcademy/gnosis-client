@@ -2,20 +2,20 @@ import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
 
 class CreateArticleForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       author: "",
       title: "",
       body: "",
       articleSaved: false
     };
-  }
 
   onSave(e) {
     e.preventDefault();
     saveArticle(this.state.author, this.state.title, this.state.body);
     this.setState({ articleSaved: true });
+    console.log(this.state.author);
+    console.log(this.state.title);
+    console.log(this.state.body);
   }
 
   render() {
@@ -29,7 +29,7 @@ class CreateArticleForm extends Component {
         <div>
           <label>Author</label>
           <input
-            id="author-id"
+            id="author"
             value={this.state.author}
             onChange={e => this.setState({ author: e.target.value })}
           />
@@ -50,9 +50,12 @@ class CreateArticleForm extends Component {
             onChange={e => this.setState({ body: e.target.value })}
           />
         </div>
-        <button id="submit-button" onClick={e => this.onSave(e)}>
-          Submit
-        </button>
+        <input
+          id="submit-button"
+          type="submit"
+          value="Create"
+          onClick={e => this.onSave(e)}
+        />
         <div>{articleSavedConfirmation}</div>
       </form>
     );
