@@ -9,7 +9,7 @@ describe("RG can post article", () => {
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:successful_saving_article_response.json"
     });
-    cy.visit("http://localhost:3001");
+    cy.login("harvard@mail.com", "password");
     
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
