@@ -27,7 +27,7 @@
 Cypress.Commands.add("login", (email, password) => {
   cy.route({
     method: "POST",
-    url: "http://localhost:3000/v0/auth/sign_in",
+    url: "http://localhost:3000/api/v0/auth/sign_in",
     response: "fixture:login.json"
   });
   cy.visit("http://localhost:3001");
