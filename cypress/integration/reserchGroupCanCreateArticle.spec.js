@@ -9,7 +9,7 @@ describe("RG can post article", () => {
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:successful_saving_article_response.json"
     });
-    cy.login("harvard@mail.com", "password");
+    cy.login("climate_harvard@mail.com", "password");
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -29,7 +29,7 @@ describe("RG can post article", () => {
       response: "fixture:unsuccessful_saving_article_response.json",
       status: 404
     });
-    cy.login("harvard@mail.com", "password");
+    cy.login("climate_harvard@mail.com", "password");
 
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
