@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Container, Divider,Header, Placeholder} from 'semantic-ui-react'
 
 class ArticleTemplate extends Component {
   constructor(props) {
@@ -9,12 +10,15 @@ class ArticleTemplate extends Component {
 
     return (
       <>
-        <div id={`article_${article.id}`}>
-          <div id="title">{article.title}</div>
-          <div id="body">{article.body}</div>
-          <div id="date">{article.date}</div>
-          <div id="author">{article.author}</div>
-        </div>
+        <Container>
+            <div id={`article_${article.id}`}>
+            <Header size='medium'textAlign='left' id="title">{article.title}</Header>
+            <Placeholder.Paragraph id="body">{article.body}</Placeholder.Paragraph>
+            <Header as='h5' textAlign='right' id="author">{article.author}</Header>
+            <Header as='h5' textAlign='right' id="date">{article.date}</Header>
+            <Divider/>
+            </div>
+        </Container>
       </>
     );
   }
