@@ -5,7 +5,6 @@ function App() {
   return (
     <div>
       <h1>GNOSIS</h1>
-      <button id="create-article">Create Article</button>
       <CreateArticleForm />
     </div>
   );
