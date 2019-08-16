@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 class ArticleTemplate extends Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      article: props
-    }
+    super(props);
   }
   render() {
-  const article = this.state.first
+    const article = this.props.article;
 
     return (
       <>
@@ -20,8 +16,8 @@ class ArticleTemplate extends Component {
           <div id="author">{article.author}</div> */}
         </div>
       </>
-    )
+    );
   }
 }
 
-export default ArticleTemplate
+export default ArticleTemplate;
