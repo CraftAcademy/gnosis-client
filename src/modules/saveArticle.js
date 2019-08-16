@@ -10,10 +10,10 @@ const saveArticle = async (author, title, body) => {
       author: author,
       title: title,
       body: body,
-      message: 'Post successfully created.'
+      
     }
   })
-  return response.data.message;
+  return response;
 };
 
 export { saveArticle }

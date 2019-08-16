@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { saveArticle } from '../modules/saveArticle';
+import { saveArticle } from "../modules/saveArticle";
 
 class CreateArticleForm extends Component {
   constructor(props) {
@@ -8,16 +8,23 @@ class CreateArticleForm extends Component {
       author: "",
       title: "",
       body: "",
+      message: "",
       articleSaved: false
     };
   }
 
   onSave(e) {
     e.preventDefault();
-    saveArticle(this.state.author, this.state.title, this.state.body)
+    saveArticle(this.state.author, this.state.title, this.state.body);
+    this.setState({ articleSaved: true });
   }
 
   render() {
+    let articleSavedConfirmation = "";
+    if (this.state.articleSaved === true) {
+      articleSavedConfirmation = "Post successfully created";
+    }
+
     return (
       <form id="post-article-form">
         <div>
@@ -47,6 +54,7 @@ class CreateArticleForm extends Component {
         <button id="submit-button" onClick={e => this.onSave(e)}>
           Submit
         </button>
+        <div>{articleSavedConfirmation}</div>
       </form>
     );
   }
