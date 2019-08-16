@@ -1,12 +1,14 @@
 describe("Visitor can visit client site connected to api with articles", () => {
   before(function() {
-    cy.visit("http://localhost:3001");
+    // Initiates API host server and initiates GET request from Client to API
     cy.server();
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:articles.json"
     });
+    // Visits client webpage.  ** This must happen after Client to API server calls.
+    cy.visit("http://localhost:3001");
   });
 
   it("and sees at least two articles", async () => {
