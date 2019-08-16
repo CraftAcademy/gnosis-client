@@ -4,7 +4,7 @@ describe("RG can post article", () => {
     cy.server();
     cy.route({
       method: "POST",
-      url: "http://localhost:3000/api/v1/saved_articles",
+      url: "http://localhost:3000/api/v0/articles",
       response: "fixture:saving_article_response.json"
     });
   });
