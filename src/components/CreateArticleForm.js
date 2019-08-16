@@ -8,7 +8,6 @@ class CreateArticleForm extends Component {
       author: "",
       title: "",
       body: "",
-      message: "",
       articleSaved: false
     };
   }
