@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
-import axios from 'axios'
-import ArticleTemplate from './ArticleTemplate';
+import React, { Component } from "react";
+import axios from "axios";
+import ArticleTemplate from "./ArticleTemplate";
 
 class DisplayAllArticles extends Component {
   constructor() {
-    super() 
+    super();
     this.state = {
       allArticles: []
-    }
-  };
+    };
+  }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/v0/articles')
-      .then(response => {
-        this.setState({
-          allArticles: response.data
-        });
+    this.getAllArticles();
+  }
+
+  async getAllArticles() {
+    axios.get("http://localhost:3000/api/v0/articles")
+    .then(response => {
+      this.setState({
+        allArticles: response.data
       });
+    });
   }
 
   render() {
-    const articles = this.state.allArticles
-    let articlesList
+    const articles = this.state.allArticles;
+    let articlesList;
 
     if (articles.length > 0) {
       articlesList = articles.map(article => {
         return (
           <>
-            <ArticleTemplate article={article}/>
+            <ArticleTemplate article={article} />
           </>
-        )
-      })
+        );
+      });
     }
 
-    return (
-      <div className="articles">
-        { articlesList }
-      </div>
-    );
+    return <div className="articles">{articlesList}</div>;
   }
 }
 
-export default DisplayAllArticles
+export default DisplayAllArticles;
