@@ -37,6 +37,7 @@ class CreateArticleForm extends Component {
   render() {
     let articleStatus;
     let form;
+
     if (this.state.articleSaved === true) {
       articleStatus = "Post successfully created";
     } else if (
