@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import DisplayAllArticles from "./Components/DisplayAllArticles";
+import {Container, Header,Divider} from 'semantic-ui-react';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <h1>GNOSIS</h1>
-        </div>
-
+      <Container>
+        <Header as='h1' textAlign='center'>
+          GNOSIS
+      </Header>
+      <Divider/>
         <>
           <DisplayAllArticles />
         </>
-      </div>
+      </Container>
     );
   }
 }
