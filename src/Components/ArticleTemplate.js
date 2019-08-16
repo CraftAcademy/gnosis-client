@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
 class ArticleTemplate extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const article = this.props.article;
 
