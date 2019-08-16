@@ -26,10 +26,10 @@ class DisplayAllArticles extends Component {
       articlesList = articles.map(article => {
         return (
           <>
-            <div id={ `article_${article.id}` }>
+            <div id={`article_${article.id}`}>
               <div id="title">{article.title}</div>
               <div id="body">{article.body}</div>
-              {/* <div id="date">{article.created_at}</div> */}
+              <div id="date">{article.date}</div>
               <div id="author">{article.author}</div>
             </div>
           </>
