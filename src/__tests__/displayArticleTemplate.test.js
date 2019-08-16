@@ -1,58 +1,38 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import ArticleTemplate from '../Components/ArticleTemplate';
 
 describe('<ArticleTemplate />', () => {
+  const article = {
+    "id": 1,
+    "author": "Dash L.",
+    "date": "15th of August, 2019",
+    "title": "A study on the maladapted social behaviours of pidgeons",
+    "body": "They are seriously mean."
+  }
+  
   it('renders the correct title', () => {
-    const article = {
-      "id": 1,
-      "author": "Dash L.",
-      "date": "15th of August, 2019",
-      "title": "A study on the maladapted social behaviours of pidgeons",
-      "body": "They are seriously mean."
-    }
     const describedComponent = shallow(<ArticleTemplate article={article} />)
-    const response = "A study on the maladapted social behaviours of pidgeons"
+    const response = article.title
     expect(describedComponent.contains(response)).toEqual(true)
     //Code for troubleshooting: expect(describedComponent.text()).toEqual(response)
   })
 
   it('renders the correct body content', () => {
-    const article = {
-      "id": 1,
-      "author": "Dash L.",
-      "date": "15th of August, 2019",
-      "title": "A study on the maladapted social behaviours of pidgeons",
-      "body": "They are seriously mean."
-    }
     const describedComponent = shallow(<ArticleTemplate article={article} />)
-    const response = "They are seriously mean."
+    const response = article.body
     expect(describedComponent.contains(response)).toEqual(true)
   })
 
   it('renders the correct date', () => {
-    const article = {
-      "id": 1,
-      "author": "Dash L.",
-      "date": "15th of August, 2019",
-      "title": "A study on the maladapted social behaviours of pidgeons",
-      "body": "They are seriously mean."
-    }
     const describedComponent = shallow(<ArticleTemplate article={article} />)
-    const response = "15th of August, 2019"
+    const response = article.date
     expect(describedComponent.contains(response)).toEqual(true)
   })
 
   it('renders the correct author', () => {
-    const article = {
-      "id": 1,
-      "author": "Dash L.",
-      "date": "15th of August, 2019",
-      "title": "A study on the maladapted social behaviours of pidgeons",
-      "body": "They are seriously mean."
-    }
     const describedComponent = shallow(<ArticleTemplate article={article} />)
-    const response = "Dash L."
+    const response = article.author
     expect(describedComponent.contains(response)).toEqual(true)
   })
 });
