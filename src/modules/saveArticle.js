@@ -1,4 +1,4 @@
-import axios from './node_modules/axios'
+import axios from 'axios'
 
 const apiUrl = 'http://localhost:3000/api/v1';
 
@@ -9,10 +9,11 @@ const saveArticle = async (author, title, body) => {
     {
       author: author,
       title: title,
-      body: body
+      body: body,
+      message: 'Post successfully created.'
     }
   })
-  return response;
+  return response.data.message;
 };
 
 export { saveArticle }

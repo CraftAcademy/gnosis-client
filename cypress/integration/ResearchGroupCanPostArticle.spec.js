@@ -1,4 +1,3 @@
-
 describe('RG can post article', () => {
   beforeEach(function() {
     cy.visit('http://localhost:3001');
@@ -11,7 +10,6 @@ describe('RG can post article', () => {
   })
 
   it("RG can post article", () => {
-    cy.visit("http://localhost:3001");
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
       cy.get("#author-id").type("John Doe");
