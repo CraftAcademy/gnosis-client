@@ -21,7 +21,7 @@ class CreateArticleForm extends Component {
       this.setState({ articleSaved: true });
     } else {
       this.setState({
-        errorMessage: response.message
+        errorMessage: response.data.body.message
       });
     }
   }
@@ -30,10 +30,7 @@ class CreateArticleForm extends Component {
     let articleStatus;
     if (this.state.articleSaved === true) {
       articleStatus = "Post successfully created";
-    } else if (
-      this.state.articleSaved === true &&
-      this.state.errorMessage !== ""
-    ) {
+      } else if (this.state.articleSaved === false && this.state.errorMessage !== '') {
       articleStatus = this.state.errorMessage;
     }
 
