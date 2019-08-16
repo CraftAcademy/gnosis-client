@@ -11,9 +11,9 @@ class ArticleTemplate extends Component {
       <>
         <div id={`article_${article.id}`}>
           <div id="title">{article.title}</div>
-          {/* <div id="body">{article.body}</div>
+          <div id="body">{article.body}</div>
           <div id="date">{article.date}</div>
-          <div id="author">{article.author}</div> */}
+          <div id="author">{article.author}</div>
         </div>
       </>
     );
