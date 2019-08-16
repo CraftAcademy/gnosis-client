@@ -15,7 +15,6 @@ describe('<ArticleTemplate />', () => {
     const describedComponent = shallow(<ArticleTemplate article={article} />)
     const response = article.title
     expect(describedComponent.contains(response)).toEqual(true)
-    //Code for troubleshooting: expect(describedComponent.text()).toEqual(response)
   })
 
   it('renders the correct body content', () => {
