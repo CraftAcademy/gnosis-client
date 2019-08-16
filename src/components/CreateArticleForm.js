@@ -8,24 +8,42 @@ class CreateArticleForm extends Component {
       author: "",
       title: "",
       body: "",
+      errorMessage: "",
       articleSaved: false
     };
   }
 
-  onSave(e) {
+  async onSave(e) {
     e.preventDefault();
     saveArticle(this.state.author, this.state.title, this.state.body);
     this.setState({ articleSaved: true });
+    let response = await saveArticle(
+      this.state.author,
+      this.state.title,
+      this.state.body
+    );
+    if (response.status === 200) {
+      this.setState({ articleSaved: true });
+    } else {
+      this.setState({
+        errorMessage: response.message
+      });
+    }
   }
 
   render() {
-    let articleSavedConfirmation = "";
+    let articleStatus;
     if (this.state.articleSaved === true) {
-      articleSavedConfirmation = "Post successfully created";
+      articleStatus = "Post successfully created";
+    } else if (
+      this.state.articleSaved === true &&
+      this.state.errorMessage !== ""
+    ) {
+      articleStatus = this.state.errorMessage;
     }
 
     return (
-      <form id="post-article-form">
+      <form id="post-article-form" onSubmit={e => this.onSave(e)}>
         <div>
           <label>Author</label>
           <input
@@ -50,10 +68,8 @@ class CreateArticleForm extends Component {
             onChange={e => this.setState({ body: e.target.value })}
           />
         </div>
-        <button id="submit-button" onClick={e => this.onSave(e)}>
-          Submit
-        </button>
-        <div>{articleSavedConfirmation}</div>
+        <input id="submit-button" type="submit" value="Create" />
+        <div>{articleStatus}</div>
       </form>
     );
   }
