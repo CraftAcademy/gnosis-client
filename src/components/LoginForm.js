@@ -9,7 +9,7 @@ export class LoginForm extends Component {
     password: ""
   };
 
-  handleLogin = e => {
+  loginHandler = e => {
     e.preventDefault();
     const { signInUser } = this.props;
     const { email, password } = this.state;
@@ -29,7 +29,7 @@ export class LoginForm extends Component {
 
     if (this.state.renderLoginForm === true) {
       loginFields = (
-        <form id="login-form" onSubmit={this.handleLogin}>
+        <form id="login-form" onSubmit={this.loginHandler}>
           <input
             id="email"
             onChange={e => this.setState({ email: e.target.value })}
@@ -39,7 +39,7 @@ export class LoginForm extends Component {
             type="password"
             onChange={e => this.setState({ password: e.target.value })}
           />
-          <input id="login-form-button" value="Login" type="submit" />
+          <input id="login-form-submit" value="Login" type="submit" />
         </form>
       );
     }
@@ -47,7 +47,7 @@ export class LoginForm extends Component {
     if (this.props.currentUser.isSignedIn === false) {
       loginButton = (
         <button
-          id="login"
+          id="login-button"
           onClick={() =>
             this.setState({
               renderLoginForm: !this.state.renderLoginForm

@@ -13,13 +13,11 @@ class CreateArticleForm extends Component {
 
   formHandler = () => {
     this.setState({
-      renderArticleForm: !this.state.renderArticleForm,
-      articleSaved: false,
-      errorMessage: ""
+      renderArticleForm: !this.state.renderArticleForm
     });
   };
 
-  async onSave(e) {
+  async saveArticleHandler(e) {
     e.preventDefault();
     let response = await saveArticle(
       this.state.author,
@@ -39,11 +37,11 @@ class CreateArticleForm extends Component {
 
   render() {
     let articleStatus;
-    let form;
-    let createArticle;
+    let createArticleForm;
+    let createArticleButton;
 
     if (this.state.articleSaved === true) {
-      articleStatus = "Post successfully created";
+      articleStatus = "Article successfully created";
     } else if (
       this.state.articleSaved === false &&
       this.state.errorMessage !== ""
@@ -52,8 +50,11 @@ class CreateArticleForm extends Component {
     }
 
     if (this.state.renderArticleForm === true) {
-      form = (
-        <form id="post-article-form" onSubmit={e => this.onSave(e)}>
+      createArticleForm = (
+        <form
+          id="create-article-form"
+          onSubmit={e => this.saveArticleHandler(e)}
+        >
           <div>
             <label>Author</label>
             <input
@@ -78,13 +79,17 @@ class CreateArticleForm extends Component {
               onChange={e => this.setState({ body: e.target.value })}
             />
           </div>
-          <input id="submit-button" type="submit" value="Create" />
+          <input
+            id="submit-article-button"
+            type="submit"
+            value="Create"
+          />
         </form>
       );
     }
     if (this.props.currentUser.attributes.role === "research_group_user") {
-      createArticle = (
-        <button id="create-article" onClick={this.formHandler}>
+      createArticleButton = (
+        <button id="create-article-button" onClick={this.formHandler}>
           Create Article
         </button>
       );
@@ -92,8 +97,8 @@ class CreateArticleForm extends Component {
 
     return (
       <div id="create-article-component">
-        {createArticle}
-        {form}
+        {createArticleButton}
+        {createArticleForm}
         {articleStatus}
       </div>
     );

@@ -1,4 +1,4 @@
-describe("RG can post article", () => {
+describe("Research Group can post article", () => {
   beforeEach(function() {
     cy.server();
   });
@@ -11,19 +11,19 @@ describe("RG can post article", () => {
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.contains("Hello climate_harvard@mail.com!");
-    cy.get("#login").should("not.exist");
+    cy.get("#login-button").should("not.exist");
     cy.get("#login-form").should("not.exist");
-    cy.get("#create-article").click();
-    cy.get("#post-article-form").within(() => {
+    cy.get("#create-article-button").click();
+    cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
       cy.get("#title").type("To be or not to be");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );
-      cy.get("#submit-button").click();
+      cy.get("#submit-article-button").click();
     });
-    cy.contains("Post successfully created");
-    cy.get("#post-article-form").should("not.exist");
+    cy.contains("Article successfully created");
+    cy.get("#create-article-form").should("not.exist");
   });
 
   it("unsuccessfully", () => {
@@ -35,15 +35,15 @@ describe("RG can post article", () => {
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.contains("Hello climate_harvard@mail.com!");
-    cy.get("#login").should("not.exist");
+    cy.get("#login-button").should("not.exist");
     cy.get("#login-form").should("not.exist");
-    cy.get("#create-article").click();
-    cy.get("#post-article-form").within(() => {
+    cy.get("#create-article-button").click();
+    cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );
-      cy.get("#submit-button").click();
+      cy.get("#submit-article-button").click();
     });
     cy.contains("Title cant be blank");
   })

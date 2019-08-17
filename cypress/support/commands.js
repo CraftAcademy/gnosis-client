@@ -31,12 +31,12 @@ Cypress.Commands.add("research_group_login", (email, password) => {
     response: "fixture:research-group-login.json"
   });
   cy.visit("http://localhost:3001");
-  cy.get("#login").click();
+  cy.get("#login-button").click();
   cy.get("#login-form").within(() => {
     cy.get("#email").type(email);
     cy.get("#password").type(password);
   });
-  cy.get("#login-form-button").click();
+  cy.get("#login-form-submit").click();
 });
 
 Cypress.Commands.add("university_login", (email, password) => {
@@ -46,10 +46,10 @@ Cypress.Commands.add("university_login", (email, password) => {
     response: "fixture:university-login.json"
   });
   cy.visit("http://localhost:3001");
-  cy.get("#login").click();
+  cy.get("#login-button").click();
   cy.get("#login-form").within(() => {
     cy.get("#email").type(email);
     cy.get("#password").type(password);
   });
-  cy.get("#login-form-button").click();
+  cy.get("#login-form-submit").click();
 });
