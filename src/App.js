@@ -6,8 +6,8 @@ function App() {
   return (
     <div>
       <h1>GNOSIS</h1>
-      <CreateArticleForm />
       <LoginForm />
+      <CreateArticleForm />
     </div>
   );
 }

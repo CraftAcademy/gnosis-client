@@ -23,10 +23,12 @@ export class LoginForm extends Component {
   };
 
   render() {
-    let login;
+    let loginFields;
+    let loginButton;
+    let userGreeting;
 
     if (this.state.renderLoginForm === true) {
-      login = (
+      loginFields = (
         <form id="login-form" onSubmit={this.handleLogin}>
           <input
             id="email"
@@ -42,15 +44,27 @@ export class LoginForm extends Component {
       );
     }
 
-    return (
-      <div>
+    if (this.props.currentUser.isSignedIn === false) {
+      loginButton = (
         <button
           id="login"
           onClick={() => this.setState({ renderLoginForm: true })}
         >
           Login
         </button>
-        {login}
+      );
+    }
+
+    if (this.props.currentUser.isSignedIn === true) {
+      loginFields = "";
+      userGreeting = `Hello ${this.props.currentUser.attributes.uid}!`;
+    }
+
+    return (
+      <div>
+        {userGreeting}
+        {loginButton}
+        {loginFields}
       </div>
     );
   }
