@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
 class CreateArticleForm extends Component {
   state = {
@@ -103,6 +103,4 @@ const mapStateToProps = state => {
     currentUser: state.reduxTokenAuth.currentUser
   };
 };
-export default connect(
-  mapStateToProps,
-)(CreateArticleForm);
+export default connect(mapStateToProps)(CreateArticleForm);
