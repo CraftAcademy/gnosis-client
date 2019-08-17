@@ -8,7 +8,7 @@ export class Signupform extends Component {
   render() {
     let SignupFields;
     let SignupButton;
-
+    
     if (this.state.renderSignupForm === true) {
       SignupFields = (
         <form id="signup-form">
@@ -28,7 +28,9 @@ export class Signupform extends Component {
           <label>Password Confirmation</label>
           <input id="password-confirmation" />
           <input id="login-form-button" value="Login" type="submit" />
+          <button onClick={() => this.setState({renderSignupForm: false, renderSignupButton: true  })}>Return</button>
         </form>
+
       );
     }
 
