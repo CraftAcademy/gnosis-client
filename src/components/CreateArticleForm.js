@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
+import { connect } from 'react-redux'
 
 class CreateArticleForm extends Component {
   state = {
@@ -37,7 +38,7 @@ class CreateArticleForm extends Component {
   render() {
     let articleStatus;
     let form;
-    let createArticle
+    let createArticle;
 
     if (this.state.articleSaved === true) {
       articleStatus = "Post successfully created";
@@ -78,12 +79,14 @@ class CreateArticleForm extends Component {
           <input id="submit-button" type="submit" value="Create" />
         </form>
       );
-    if (this.props.currentUser.role === "research_group_user")
-      createArticle = (
-        <button id="create-article" onClick={this.formHandler}>
-        Create Article
-      </button>
-      )
+      if (this.props.currentUser.attributes.role === "research_group_user") {
+        debugger;
+        createArticle = (
+          <button id="create-article" onClick={this.formHandler}>
+            Create Article
+          </button>
+        );
+      }
     }
 
     return (
@@ -96,4 +99,11 @@ class CreateArticleForm extends Component {
   }
 }
 
-export default CreateArticleForm
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  };
+};
+export default connect(
+  mapStateToProps,
+)(CreateArticleForm);

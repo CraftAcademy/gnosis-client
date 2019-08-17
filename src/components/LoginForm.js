@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signInUser } from "../reduxTokenAuthConfig";
+import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 export class LoginForm extends Component {
-  state = {
-    renderLoginForm: false,
-    email: "",
-    password: ""
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      renderLoginForm: false,
+      email: "",
+      password: ""
+    };
+  }
 
   handleLogin = e => {
     e.preventDefault();
-    const { history, signInUser } = this.props;
+    const { signInUser } = this.props;
     const { email, password } = this.state;
     signInUser({ email, password })
       .then(response => {
+        console.log('response', response);
+        this.props.history.push('/');
+        debugger;
       })
       .catch(error => {
+        console.log("error is", error);
       });
   };
 
@@ -54,12 +61,12 @@ export class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.reduxTokenAuth.currentUser
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     currentUser: state.reduxTokenAuth.currentUser
+//   };
+// };
 export default connect(
-  mapStateToProps,
+  null,
   { signInUser }
 )(LoginForm);

@@ -9,15 +9,16 @@
     "nickname": null,
     "image": null,
     "role": "research_group_user"
-  },{
-      "id": 1,
-      "email": "harvard@mail.com",
-      "provider": "email",
-      "uid": "harvard@mail.com",
-      "allow_password_change": false,
-      "name": null,
-      "nickname": null,
-      "image": null,
-      "role": "university_user"
+  },
+  {
+    "id": 2,
+    "email": "harvard@mail.com",
+    "provider": "email",
+    "uid": "harvard@mail.com",
+    "allow_password_change": false,
+    "name": null,
+    "nickname": null,
+    "image": null,
+    "role": "university_user"
   }]
 }
