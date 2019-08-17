@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Container, Divider,Header, Placeholder} from 'semantic-ui-react'
+import {Container, Divider, Header, Placeholder} from 'semantic-ui-react'
 
 class ArticleTemplate extends Component {
   render() {
