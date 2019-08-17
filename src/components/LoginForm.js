@@ -48,7 +48,11 @@ export class LoginForm extends Component {
       loginButton = (
         <button
           id="login"
-          onClick={() => this.setState({ renderLoginForm: true })}
+          onClick={() =>
+            this.setState({
+              renderLoginForm: !this.state.renderLoginForm
+            })
+          }
         >
           Login
         </button>

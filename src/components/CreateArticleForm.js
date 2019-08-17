@@ -27,7 +27,9 @@ class CreateArticleForm extends Component {
       this.state.body
     );
     if (response.status === 200) {
-      this.setState({ articleSaved: true });
+      this.setState({ 
+        articleSaved: true,
+        renderArticleForm: false });
     } else {
       this.setState({
         errorMessage: response.data.body.message

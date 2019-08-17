@@ -10,6 +10,9 @@ describe("RG can post article", () => {
       response: "fixture:successful_saving_article_response.json"
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
+    cy.contains("Hello climate_harvard@mail.com!");
+    cy.get("#login").should("not.exist");
+    cy.get("#login-form").should("not.exist");
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -20,6 +23,7 @@ describe("RG can post article", () => {
       cy.get("#submit-button").click();
     });
     cy.contains("Post successfully created");
+    cy.get("#post-article-form").should("not.exist");
   });
 
   it("unsuccessfully", () => {
@@ -30,7 +34,9 @@ describe("RG can post article", () => {
       status: 404
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
-
+    cy.contains("Hello climate_harvard@mail.com!");
+    cy.get("#login").should("not.exist");
+    cy.get("#login-form").should("not.exist");
     cy.get("#create-article").click();
     cy.get("#post-article-form").within(() => {
       cy.get("#author").type("John Doe");
