@@ -6,7 +6,7 @@ describe("Can't create article ", () => {
 
   it("as an University", () => {
     cy.server();
-    cy.login("harvard@mail.com", "password");
+    cy.university_login("harvard@mail.com", "password");
     cy.get("#create-article").should("not.exist");
   })
 });

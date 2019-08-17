@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": 1,
+    "email": "climate_harvard@mail.com",
+    "provider": "email",
+    "uid": "climate_harvard@mail.com",
+    "allow_password_change": false,
+    "name": null,
+    "nickname": null,
+    "image": null,
+    "role": "research_group_user"
+  }
+}
