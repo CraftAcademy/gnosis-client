@@ -14,14 +14,8 @@ export class Signupform extends Component {
         <form id="signup-form">
           <label />
           <select id="method">
-            <option className="options" value="User">
-              User
-            </option>
             <option className="options" value="University">
               University
-            </option>
-            <option className="options" value="Research-Group">
-              Research Group
             </option>
           </select>
           <label>Email</label>
