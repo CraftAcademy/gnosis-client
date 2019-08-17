@@ -79,16 +79,13 @@ class CreateArticleForm extends Component {
           <input id="submit-button" type="submit" value="Create" />
         </form>
       );
-      if (this.props.currentUser.attributes.role === "research_group_user") {
-        debugger;
-        createArticle = (
-          <button id="create-article" onClick={this.formHandler}>
-            Create Article
-          </button>
-        );
-      } else {
-        createArticle = 'show this'
-      }
+    }
+    if (this.props.currentUser.attributes.role === "research_group_user") {
+      createArticle = (
+        <button id="create-article" onClick={this.formHandler}>
+          Create Article
+        </button>
+      );
     }
 
     return (
