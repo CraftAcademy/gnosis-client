@@ -8,11 +8,11 @@ class App extends Component {
       <Container>
         <Header as='h1' textAlign='center'>
           GNOSIS
-      </Header>
-      <Divider/>
-        <>
-          <DisplayAllArticles />
-        </>
+        </Header>
+
+        <Divider/>
+        
+        <DisplayAllArticles />
       </Container>
     );
   }
