@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DisplayAllArticles from "./Components/DisplayAllArticles";
+import DisplayArticles from "./Components/DisplayArticles";
 import {Container, Header,Divider} from 'semantic-ui-react';
 
 class App extends Component {
@@ -11,8 +11,8 @@ class App extends Component {
         </Header>
 
         <Divider/>
-        
-        <DisplayAllArticles />
+
+        <DisplayArticles />
       </Container>
     );
   }
