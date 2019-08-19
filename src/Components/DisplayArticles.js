@@ -29,27 +29,21 @@ class DisplayArticles extends Component {
   }
 
   render() {
-    const articles = this.state.articles;
     const availability = this.state.articlesAvailability;
+    const articlesDisplay = this.state.articles.map(article => {
+      return <ArticleTemplate article={article} />
+    })
 
-    if (availability === true) {
-      let articlesList;
-      articlesList = articles.map(article => {
-        return (
-          <>
-            <ArticleTemplate article={article} />
-          </>
-        );
-      });
-
-      return <div className="articles">{articlesList}</div>;
-    } else if (availability === false) {
-      return (
-        <div className="articles">
-          <p>Articles are currently unavailable.</p>
-        </div>
-      );
-    }
+    return (
+      <>
+        {availability ?
+          articlesDisplay :
+          <div className="articles">
+            <p>Articles are currently unavailable.</p>
+          </div>
+        }
+      </>
+    )
   }
 }
 
