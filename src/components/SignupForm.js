@@ -45,7 +45,8 @@ export class Signupform extends Component {
             onClick={() =>
               this.setState({
                 renderSignupForm: false,
-                renderSignupButton: true
+                renderSignupButton: true,
+                accountType: false
               })
             }
           >
