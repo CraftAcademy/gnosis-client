@@ -25,9 +25,10 @@ class CreateArticleForm extends Component {
       this.state.body
     );
     if (response.status === 200) {
-      this.setState({ 
+      this.setState({
         articleSaved: true,
-        renderArticleForm: false });
+        renderArticleForm: false
+      });
     } else {
       this.setState({
         errorMessage: response.data.body.message
@@ -79,11 +80,7 @@ class CreateArticleForm extends Component {
               onChange={e => this.setState({ body: e.target.value })}
             />
           </div>
-          <input
-            id="submit-article-button"
-            type="submit"
-            value="Create"
-          />
+          <input id="submit-article-button" type="submit" value="Create" />
         </form>
       );
     }

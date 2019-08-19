@@ -15,7 +15,7 @@ export class LoginForm extends Component {
     const { email, password } = this.state;
     signInUser({ email, password })
       .then(() => {
-        this.setState({ renderLoginForm: false})
+        this.setState({ renderLoginForm: false });
       })
       .catch(error => {
         console.log("error is", error);

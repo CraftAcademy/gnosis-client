@@ -2,7 +2,13 @@ import axios from "axios";
 
 const apiUrl = "http://localhost:3000/api/v0";
 
-const saveNewUser = async (name, email, password, passwordConf, accountType) => {
+const saveNewUser = async (
+  name,
+  email,
+  password,
+  passwordConf,
+  accountType
+) => {
   const path = apiUrl + "/registration";
   try {
     let response = await axios.post(path, {
@@ -11,7 +17,7 @@ const saveNewUser = async (name, email, password, passwordConf, accountType) => 
         email: email,
         password: password,
         password_confirmation: passwordConf,
-        accountType: accountType
+        role: accountType
       }
     });
     return response;

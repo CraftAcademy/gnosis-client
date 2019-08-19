@@ -11,15 +11,14 @@ export class Signupform extends Component {
     email: "",
     password: "",
     password_confirmation: "",
-    userSaved: false
-
+    userSaved: false,
+    errors: {}
   };
 
   async saveNewUserHandler(e) {
-    debugger;
+    if (!this.formIsValid()) return;
     e.preventDefault();
     let response = await saveNewUser(
-    
       this.state.name,
       this.state.email,
       this.state.password,
@@ -38,6 +37,21 @@ export class Signupform extends Component {
     }
   }
 
+  formIsValid = () => {
+    const _errors = {};
+
+    if (!this.state.accountType) _errors.accountType = "Account type required!";
+    if (!this.state.name) _errors.name = "University name required!";
+    if (!this.state.email) _errors.email = "A valid email is required!";
+    if (!this.state.password) _errors.password = "Please choose a password!";
+    if (!this.state.password_confirmation)
+      _errors.password_confirmation = "Password Confirmation doesn't match.";
+
+    this.setState({ errors: _errors });
+    // Form is valid if the 'errors' object has no properties
+    return Object.keys(_errors).length === 0;
+  };
+
   render() {
     let SignupFields;
     let SignupButton;
@@ -45,7 +59,8 @@ export class Signupform extends Component {
     let saveUserStatus;
 
     if (this.state.userSaved === true) {
-      saveUserStatus = "Payment successful! University Account successfully created!";
+      saveUserStatus =
+        "Payment successful! University Account successfully created!";
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
@@ -75,6 +90,11 @@ export class Signupform extends Component {
             <option className="options" value="Reader">
               Reader
             </option>
+            {this.state.errors.accountType && (
+              <div style={{ fontColor: "red", fontStyle: "bold" }}>
+                {this.state.errors.accountType}
+              </div>
+            )}
           </select>
           <label>University Name</label>
           <input
@@ -82,18 +102,33 @@ export class Signupform extends Component {
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
           />
+          {this.state.errors.name && (
+            <div style={{ fontColor: "red", fontStyle: "bold" }}>
+              {this.state.errors.name}
+            </div>
+          )}
           <label>Email</label>
           <input
             id="email"
             value={this.state.email}
             onChange={e => this.setState({ email: e.target.value })}
           />
+          {this.state.errors.email && (
+            <div style={{ fontColor: "red", fontStyle: "bold" }}>
+              {this.state.errors.email}
+            </div>
+          )}
           <label>Password</label>
           <input
             id="password"
             value={this.state.password}
             onChange={e => this.setState({ password: e.target.value })}
           />
+          {this.state.errors.password && (
+            <div style={{ fontColor: "red", fontStyle: "bold" }}>
+              {this.state.errors.password}
+            </div>
+          )}
           <label>Password Confirmation</label>
           <input
             id="password-confirmation"
@@ -102,8 +137,13 @@ export class Signupform extends Component {
               this.setState({ password_confirmation: e.target.value })
             }
           />
+          {this.state.errors.password_confirmation && (
+            <div style={{ fontColor: "red", fontStyle: "bold" }}>
+              {this.state.errors.password_confirmation}
+            </div>
+          )}
           <input id="submit-account-button" value="signup" type="submit" />
-          {/* <button
+          <button
             onClick={() =>
               this.setState({
                 renderSignupForm: false,
@@ -113,7 +153,7 @@ export class Signupform extends Component {
             }
           >
             Return
-          </button> */}
+          </button>
         </form>
       );
     }

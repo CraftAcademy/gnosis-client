@@ -1,7 +1,7 @@
 describe("Can't create article ", () => {
   it("Visitors can't create articles", () => {
     cy.visit("http://localhost:3001");
-    cy.get("#login-button").should('exist');
+    cy.get("#login-button").should("exist");
     cy.get("#create-article-button").should("not.exist");
   });
 
@@ -12,5 +12,5 @@ describe("Can't create article ", () => {
     cy.get("#login-button").should("not.exist");
     cy.get("#login-form").should("not.exist");
     cy.get("#create-article-button").should("not.exist");
-  })
+  });
 });

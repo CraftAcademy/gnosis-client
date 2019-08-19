@@ -54,19 +54,22 @@ Cypress.Commands.add("university_login", (email, password) => {
   cy.get("#login-form-submit").click();
 });
 
-Cypress.Commands.add("university_signup", (accounType, name, email, password, password_confirmation) => {
-  cy.route({
-    method: "POST",
-    url: "http://localhost:3000/api/v0/auth/sign_in",
-    response: "successful_saving_universitiesAccount_response.json"
-  });
-  cy.visit("http://localhost:3001");
-  cy.get("#sign-up").click();
-  cy.get("#signup-form").within(() => {
-    cy.get('select[id="accountType"]').select(accounType);
-    cy.get('input[id="name"]').type(name);
-    cy.get('input[id="email"]').type(email);
-    cy.get('input[id="password"]').type(password);
-    cy.get('input[id="password-confirmation"]').type(password_confirmation);
-  });
-})
+Cypress.Commands.add(
+  "university_signup",
+  (accountType, name, email, password, password_confirmation) => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v0/auth/sign_in",
+      response: "successful_saving_universitiesAccount_response.json"
+    });
+    cy.visit("http://localhost:3001");
+    cy.get("#sign-up").click();
+    cy.get("#signup-form").within(() => {
+      cy.get('select[id="accountType"]').select(accountType);
+      cy.get('input[id="name"]').type(name);
+      cy.get('input[id="email"]').type(email);
+      cy.get('input[id="password"]').type(password);
+      cy.get('input[id="password-confirmation"]').type(password_confirmation);
+    });
+  }
+);
