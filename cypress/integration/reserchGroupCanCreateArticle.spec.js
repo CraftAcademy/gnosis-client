@@ -11,8 +11,6 @@ describe("Research Group can post article", () => {
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.contains("Hello climate_harvard@mail.com!");
-    cy.get("#login-button").should("not.exist");
-    cy.get("#login-form").should("not.exist");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -35,8 +33,6 @@ describe("Research Group can post article", () => {
     });
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.contains("Hello climate_harvard@mail.com!");
-    cy.get("#login-button").should("not.exist");
-    cy.get("#login-form").should("not.exist");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -45,6 +41,6 @@ describe("Research Group can post article", () => {
       );
       cy.get("#submit-article-button").click();
     });
-    cy.contains("Title cant be blank");
+    cy.contains("Title can't be blank");
   })
 });

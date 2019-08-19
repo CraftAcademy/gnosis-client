@@ -14,8 +14,8 @@ export class LoginForm extends Component {
     const { signInUser } = this.props;
     const { email, password } = this.state;
     signInUser({ email, password })
-      .then(response => {
-        console.log("response", response);
+      .then(() => {
+        this.setState({ renderLoginForm: false})
       })
       .catch(error => {
         console.log("error is", error);
@@ -60,7 +60,6 @@ export class LoginForm extends Component {
     }
 
     if (this.props.currentUser.isSignedIn === true) {
-      loginFields = "";
       userGreeting = `Hello ${this.props.currentUser.attributes.uid}!`;
     }
 
