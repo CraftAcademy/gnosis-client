@@ -8,5 +8,7 @@ describe("Can sign up ", () => {
       cy.get('input[id="password"]').type("password1");
       cy.get('input[id="password-confirmation"]').type("password1");
     });
+    cy.get("#submit-account-button").click();
+    cy.contains("Account successfully created");
   });
 });

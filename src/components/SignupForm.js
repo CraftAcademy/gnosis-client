@@ -24,7 +24,7 @@ export class Signupform extends Component {
           <input id="password" />
           <label>Password Confirmation</label>
           <input id="password-confirmation" />
-          <input id="submit-button" value="signup" type="submit" />
+          <input id="submit-account-button" value="signup" type="submit" />
           <button onClick={() => this.setState({renderSignupForm: false, renderSignupButton: true  })}>Return</button>
         </form>
 
