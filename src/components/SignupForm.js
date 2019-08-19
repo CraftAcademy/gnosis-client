@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+import PaymentForm from './PaymentForm'
 
 export class Signupform extends Component {
   state = {
     renderSignupForm: false,
     renderSignupButton: true,
-    accountType: ""
+    renderAccountType: ""
   };
   render() {
     let SignupFields;
     let SignupButton;
+    let PaymentFields;
 
     if (this.state.renderSignupForm === true) {
       SignupFields = (
@@ -34,8 +36,6 @@ export class Signupform extends Component {
           <input id="password" />
           <label>Password Confirmation</label>
           <input id="password-confirmation" />
-          {}
-
           <input id="submit-account-button" value="signup" type="submit" />
           <button
             onClick={() =>
@@ -63,9 +63,18 @@ export class Signupform extends Component {
         </button>
       );
     }
+    
+    if (this.state.renderAccountType === "University") {
+      PaymentFields = (
+        <>
+          <PaymentForm />
+        </>
+      )
+    }
 
     return (
       <div>
+        {PaymentFields}
         {SignupFields}
         {SignupButton}
       </div>
