@@ -32,8 +32,8 @@ export class Signupform extends Component {
               Reader
             </option>
           </select>
-          <label>Name</label>
-          <input id="email" />
+          <label>University Name</label>
+          <input id="university name" />
           <label>Email</label>
           <input id="email" />
           <label>Password</label>
@@ -78,9 +78,9 @@ export class Signupform extends Component {
 
     return (
       <div>
-        {PaymentFields}
         {SignupFields}
         {SignupButton}
+        {PaymentFields}
       </div>
     );
   }

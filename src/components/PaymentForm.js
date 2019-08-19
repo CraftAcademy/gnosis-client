@@ -5,9 +5,9 @@ export class PaymentFields extends Component {
     return (
       <form id="payment-form">
         <label />
-        <select id="Payment-Type">
+        <select id="payment-type">
           Please select your Payment method:
-          <option className="options" value="Card-Payment">
+          <option id="card-payment" value="card-payment">
             Pay with card
           </option>
         </select>
