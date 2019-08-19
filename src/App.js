@@ -1,6 +1,8 @@
 import React from "react";
 import DisplayArticles from "./Components/DisplayArticles";
 import { Container, Header, Divider } from "semantic-ui-react";
+import CreateArticleForm from "./components/CreateArticleForm";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <Header as="h1" textAlign="center">
         GNOSIS
       </Header>
+      <LoginForm />
+      <CreateArticleForm />
 
       <Divider />
 

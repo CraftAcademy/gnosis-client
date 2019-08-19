@@ -23,3 +23,33 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("research_group_login", (email, password) => {
+  cy.route({
+    method: "POST",
+    url: "http://localhost:3000/api/v0/auth/sign_in",
+    response: "fixture:research-group-login.json"
+  });
+  cy.visit("http://localhost:3001");
+  cy.get("#login-button").click();
+  cy.get("#login-form").within(() => {
+    cy.get("#email").type(email);
+    cy.get("#password").type(password);
+  });
+  cy.get("#login-form-submit").click();
+});
+
+Cypress.Commands.add("university_login", (email, password) => {
+  cy.route({
+    method: "POST",
+    url: "http://localhost:3000/api/v0/auth/sign_in",
+    response: "fixture:university-login.json"
+  });
+  cy.visit("http://localhost:3001");
+  cy.get("#login-button").click();
+  cy.get("#login-form").within(() => {
+    cy.get("#email").type(email);
+    cy.get("#password").type(password);
+  });
+  cy.get("#login-form-submit").click();
+});
