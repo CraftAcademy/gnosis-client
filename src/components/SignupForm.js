@@ -11,13 +11,15 @@ export class Signupform extends Component {
     email: "",
     password: "",
     password_confirmation: "",
-    accountType: "",
-    saveUserStatus: null
+    userSaved: false
+
   };
 
   async saveNewUserHandler(e) {
+    debugger;
     e.preventDefault();
     let response = await saveNewUser(
+    
       this.state.name,
       this.state.email,
       this.state.password,
@@ -55,7 +57,6 @@ export class Signupform extends Component {
       SignupFields = (
         <form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
           <label />
-          {saveUserStatus}
           <select
             id="accountType"
             value={this.state.accountType}
@@ -102,7 +103,7 @@ export class Signupform extends Component {
             }
           />
           <input id="submit-account-button" value="signup" type="submit" />
-          <button
+          {/* <button
             onClick={() =>
               this.setState({
                 renderSignupForm: false,
@@ -112,7 +113,7 @@ export class Signupform extends Component {
             }
           >
             Return
-          </button>
+          </button> */}
         </form>
       );
     }
@@ -140,6 +141,7 @@ export class Signupform extends Component {
 
     return (
       <div>
+        {saveUserStatus}
         {SignupFields}
         {SignupButton}
         {PaymentFields}

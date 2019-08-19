@@ -1,14 +1,14 @@
-describe("Can sign up ", () => {
-  it("As a visitor, I can sign up as a University", () => {
-    cy.visit("http://localhost:3001");
-    cy.get("#sign-up").click();
-    cy.get("#signup-form").within(() => {
-      cy.get('select[id="accountType"]').select("University");
-      cy.get('input[id="name"]').type("harvard@email.com");
-      cy.get('input[id="email"]').type("harvard@email.com");
-      cy.get('input[id="password"]').type("password1");
-      cy.get('input[id="password-confirmation"]').type("password1");
-    });
+describe("University can sign up", () => {
+  beforeEach(function() {
+    cy.server();
+  });
+  it("successfully", () => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v0/registration",
+      response: "fixture:successful_saving_universitiesAccount_response.json"
+    })
+    cy.university_signup("University","harvard","harvard@mail.com", "password", "password_confirmation");
     cy.get("#payment-form").within(() => {
       cy.get('select[id="payment-type"]').select("card-payment");
       cy.get('input[id="card-number"]').type("6666 6666 6666 6666");
@@ -16,7 +16,7 @@ describe("Can sign up ", () => {
       cy.get('input[id="expiration date"]').type("10-21");
       cy.get('input[id="CVC"]').type("666");
     })
-    cy.get("#submit-payment-button").click();
-    cy.contains("Payment successful! University Account successfully created!");
-  });
+    cy.get("#submit-account-button").click();
+  cy.contains("Payment successful! University Account successfully created!");
+  })
 });
