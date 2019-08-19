@@ -1,23 +1,66 @@
 import React, { Component } from "react";
-import PaymentForm from './PaymentForm'
+import PaymentForm from "./PaymentForm";
+import { saveNewUser } from "../modules/saveNewUser";
 
 export class Signupform extends Component {
   state = {
     renderSignupForm: false,
     renderSignupButton: true,
-    accountType: ""
+    accountType: "",
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    accountType: "",
+    saveUserStatus: null
   };
+
+  async saveNewUserHandler(e) {
+    e.preventDefault();
+    let response = await saveNewUser(
+      this.state.name,
+      this.state.email,
+      this.state.password,
+      this.state.password_confirmation,
+      this.state.accountType
+    );
+    if (response.status === 200) {
+      this.setState({
+        userSaved: true,
+        renderSignupForm: false
+      });
+    } else {
+      this.setState({
+        errorMessage: response.data.body.message
+      });
+    }
+  }
 
   render() {
     let SignupFields;
     let SignupButton;
     let PaymentFields;
+    let saveUserStatus;
+
+    if (this.state.userSaved === true) {
+      saveUserStatus = "Payment successful! University Account successfully created!";
+    } else if (
+      this.state.userSaved === false &&
+      this.state.errorMessage !== ""
+    ) {
+      saveUserStatus = this.state.errorMessage;
+    }
 
     if (this.state.renderSignupForm === true) {
       SignupFields = (
-        <form id="signup-form">
+        <form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
           <label />
-          <select id="accountType" value={this.state.accountType} onChange={e => this.setState({ accountType: e.target.value })}>
+          {saveUserStatus}
+          <select
+            id="accountType"
+            value={this.state.accountType}
+            onChange={e => this.setState({ accountType: e.target.value })}
+          >
             Please select your account type:
             <option className="options" value="" disabled>
               Choose Account. . .
@@ -33,20 +76,38 @@ export class Signupform extends Component {
             </option>
           </select>
           <label>University Name</label>
-          <input id="university name" />
+          <input
+            id="name"
+            value={this.state.name}
+            onChange={e => this.setState({ name: e.target.value })}
+          />
           <label>Email</label>
-          <input id="email" />
+          <input
+            id="email"
+            value={this.state.email}
+            onChange={e => this.setState({ email: e.target.value })}
+          />
           <label>Password</label>
-          <input id="password" />
+          <input
+            id="password"
+            value={this.state.password}
+            onChange={e => this.setState({ password: e.target.value })}
+          />
           <label>Password Confirmation</label>
-          <input id="password-confirmation" />
+          <input
+            id="password-confirmation"
+            value={this.state.password_confirmation}
+            onChange={e =>
+              this.setState({ password_confirmation: e.target.value })
+            }
+          />
           <input id="submit-account-button" value="signup" type="submit" />
           <button
             onClick={() =>
               this.setState({
                 renderSignupForm: false,
                 renderSignupButton: true,
-                accountType: false
+                accountType: ""
               })
             }
           >
@@ -68,13 +129,13 @@ export class Signupform extends Component {
         </button>
       );
     }
-    
+
     if (this.state.accountType === "University") {
       PaymentFields = (
         <>
           <PaymentForm />
         </>
-      )
+      );
     }
 
     return (

@@ -1,10 +1,10 @@
 describe("Can sign up ", () => {
-  it("as a visitor, I can sign up as a University", () => {
+  it("As a visitor, I can sign up as a University", () => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up").click();
     cy.get("#signup-form").within(() => {
       cy.get('select[id="accountType"]').select("University");
-      cy.get('input[id="university name"]').type("harvard@email.com");
+      cy.get('input[id="name"]').type("harvard@email.com");
       cy.get('input[id="email"]').type("harvard@email.com");
       cy.get('input[id="password"]').type("password1");
       cy.get('input[id="password-confirmation"]').type("password1");
@@ -17,6 +17,6 @@ describe("Can sign up ", () => {
       cy.get('input[id="CVC"]').type("666");
     })
     cy.get("#submit-payment-button").click();
-    cy.contains("Account successfully created");
+    cy.contains("Payment successful! University Account successfully created!");
   });
 });
