@@ -1,13 +1,24 @@
+
+describe('Visitor gets an error when visiting the site', () => {
+  before(function () {
+    cy.server({enable: false});
+    cy.visit("http://localhost:3001");
+  });
+
+  it('displays an error if articles are unavailable', async () => {
+    cy.get(".articles").contains("Articles are currently unavailable.")
+  });
+
+});
+
 describe("Visitor can visit client site connected to api with articles", () => {
-  before(function() {
-    // Initiates API host server and initiates GET request from Client to API
+  before(function () {
     cy.server();
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:articles.json"
     });
-    // Visits client webpage.  ** This must happen after Client to API server calls.
     cy.visit("http://localhost:3001");
   });
 
@@ -26,4 +37,6 @@ describe("Visitor can visit client site connected to api with articles", () => {
       cy.get("#author").contains("Dash L.");
     });
   });
+
 });
+

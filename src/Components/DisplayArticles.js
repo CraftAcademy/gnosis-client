@@ -45,7 +45,7 @@ class DisplayArticles extends Component {
       return <div className="articles">{articlesList}</div>;
     } else if (availability === false) {
       return (
-        <div>
+        <div className="articles">
           <p>Articles are currently unavailable.</p>
         </div>
       );
