@@ -5,8 +5,9 @@ export class Signupform extends Component {
   state = {
     renderSignupForm: false,
     renderSignupButton: true,
-    renderAccountType: ""
+    accountType: ""
   };
+
   render() {
     let SignupFields;
     let SignupButton;
@@ -16,8 +17,11 @@ export class Signupform extends Component {
       SignupFields = (
         <form id="signup-form">
           <label />
-          <select id="accountType">
+          <select id="accountType" value={this.state.accountType} onChange={e => this.setState({ accountType: e.target.value })}>
             Please select your account type:
+            <option className="options" value="" disabled>
+              Choose Account. . .
+            </option>
             <option className="options" value="University">
               University
             </option>
@@ -64,7 +68,7 @@ export class Signupform extends Component {
       );
     }
     
-    if (this.state.renderAccountType === "University") {
+    if (this.state.accountType === "University") {
       PaymentFields = (
         <>
           <PaymentForm />
