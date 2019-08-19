@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import {Container, Divider, Header, Placeholder} from 'semantic-ui-react'
 
-class ArticleTemplate extends Component {
-  render() {
-    const article = this.props.article;
+function ArticleTemplate (props) {
+  const article = props.article;
 
     return (
       <>
@@ -19,6 +18,6 @@ class ArticleTemplate extends Component {
       </>
     );
   }
-}
+
 
 export default ArticleTemplate;
