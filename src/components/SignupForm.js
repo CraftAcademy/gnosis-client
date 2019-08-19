@@ -12,11 +12,12 @@ export class Signupform extends Component {
     password: "",
     password_confirmation: "",
     userSaved: false,
+    errorMessage: "",
     errors: {}
   };
 
   async saveNewUserHandler(e) {
-    if (!this.formIsValid()) return;
+    // if (!this.formIsValid()) return;
     e.preventDefault();
     let response = await saveNewUser(
       this.state.name,
@@ -37,20 +38,20 @@ export class Signupform extends Component {
     }
   }
 
-  formIsValid = () => {
-    const _errors = {};
+  // formIsValid = () => {
+  //   const _errors = {};
 
-    if (!this.state.accountType) _errors.accountType = "Account type required!";
-    if (!this.state.name) _errors.name = "University name required!";
-    if (!this.state.email) _errors.email = "A valid email is required!";
-    if (!this.state.password) _errors.password = "Please choose a password!";
-    if (!this.state.password_confirmation)
-      _errors.password_confirmation = "Password Confirmation doesn't match.";
+  //   if (!this.state.accountType) _errors.accountType = "Account type required!";
+  //   if (!this.state.name) _errors.name = "University name required!";
+  //   if (!this.state.email) _errors.email = "A valid email is required!";
+  //   if (!this.state.password) _errors.password = "Please choose a password!";
+  //   if (!this.state.password_confirmation)
+  //     _errors.password_confirmation = "Password Confirmation doesn't match.";
 
-    this.setState({ errors: _errors });
-    // Form is valid if the 'errors' object has no properties
-    return Object.keys(_errors).length === 0;
-  };
+  //   this.setState({ errors: _errors });
+  //   // Form is valid if the 'errors' object has no properties
+  //   return Object.keys(_errors).length === 0;
+  // };
 
   render() {
     let SignupFields;
