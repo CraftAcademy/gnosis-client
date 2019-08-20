@@ -22,7 +22,7 @@ class NavBar extends Component {
     }
 
     if (this.props.currentUser.attributes.role === "research_group_user") {
-      createArticleButton =             <Menu.Item as={NavLink} to="/createarticle">Create Article</Menu.Item>
+      createArticleButton = <Menu.Item as={NavLink} to="/createarticle">Create Article</Menu.Item>
     }
 
     return (
