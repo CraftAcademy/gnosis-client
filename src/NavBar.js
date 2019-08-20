@@ -13,7 +13,7 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
     return (
       <div className='page'>
-        <Menu secondary>
+        <Menu secondary id="navbar">
           <Header id='header'>GNOSIS</Header>
           <Menu.Menu position='left'></Menu.Menu>
             <Menu.Item as={NavLink} to="/">Home</Menu.Item>
