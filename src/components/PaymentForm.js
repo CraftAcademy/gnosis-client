@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 export class PaymentFields extends Component {
   render() {
@@ -34,8 +34,6 @@ export class PaymentFields extends Component {
         <label>CVC</label>
         <input id="CVC" />
         </Form.Field>
-
-        <Button id="submit-payment-button" type="submit" >Pay Subscription</Button>
       </Form>
     );
   }

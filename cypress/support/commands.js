@@ -71,7 +71,7 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "university_unsucces_signup",
-  (accountType, name, email, password, password_confirmation) => {
+  (accountType, name, email, password) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up").click();
     cy.get("#signup-form").within(() => {

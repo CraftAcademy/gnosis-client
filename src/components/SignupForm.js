@@ -26,11 +26,13 @@ export class Signupform extends Component {
       this.state.accountType
     );
     if (response.status === 200) {
+      debugger;
       this.setState({
         userSaved: true,
         renderSignupForm: false
       });
     } else {
+      debugger;
       this.setState({
         errorMessage: response.data.body.message
       });
@@ -49,6 +51,7 @@ export class Signupform extends Component {
     ) {
       saveUserStatus = this.state.errorMessage;
     }
+  
 
     return (
       <Container>
@@ -151,6 +154,7 @@ export class Signupform extends Component {
         ) : (
           ""
         )}
+        {saveUserStatus}
       </Container>
     );
   }
