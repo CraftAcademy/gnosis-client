@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Input } from 'semantic-ui-react';
+import { Menu, Input, Container } from 'semantic-ui-react';
+import './styling/Navbar.css'
 
 export default class NavBar extends Component {
   state = { activeItem: 'latest news' }

@@ -13,7 +13,7 @@ import Homepage from "./components/Homepage";
 function App() {
   return (
     
-      <Container>
+      <div>
          <NavBar/>
 
         <Switch>
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/createarticle" component={CreateArticleForm}/>
         </Switch>
         <LoginForm />
-      </Container>
+      </div>
     
   );
 }
