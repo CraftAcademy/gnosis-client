@@ -4,21 +4,24 @@ import { Container, Header, Divider } from "semantic-ui-react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
 import NavBar from "./NavBar.js";
-import './styling/App.css'
+import "./styling/App.css"
+import "./styling/Navbar.css"
 
 function App() {
   return (
-    <Container>
-      <Header as="h1" textAlign="center">
-        GNOSIS
-      </Header>
-      <LoginForm />
-      <CreateArticleForm />
+    <NavBar>
+      <Container>
+        <Header as="h1" textAlign="center">
+          GNOSIS
+        </Header>
+        <LoginForm />
+        <CreateArticleForm />
 
-      <Divider />
+        <Divider />
 
-      <DisplayArticles />
-    </Container>
+        <DisplayArticles />
+      </Container>
+    </NavBar>
   );
 }
 
