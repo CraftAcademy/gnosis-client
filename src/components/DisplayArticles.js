@@ -46,7 +46,6 @@ class DisplayArticles extends Component {
             </div>
           }
         </Container>
-
       </>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
 import { connect } from "react-redux";
-import { Container } from "semantic-ui-react";
+import { Container, Form, Button } from "semantic-ui-react";
 
 
 class CreateArticleForm extends Component {
@@ -37,40 +37,39 @@ class CreateArticleForm extends Component {
         <Container>
           <div id="create-article-component">
             {!this.state.articleSaved &&
-              <form
+              <Form
                 id="create-article-form"
                 onSubmit={e => this.saveArticleHandler(e)}
               >
-                <div>
+                <Form.Field>
                   <label>Author</label>
                   <input
                     id="author"
                     value={this.state.author}
                     onChange={e => this.setState({ author: e.target.value })}
                   />
-                </div>
-                <div>
+                </Form.Field>
+                <Form.Field>
                   <label>Title</label>
                   <input
                     id="title"
                     value={this.state.title}
                     onChange={e => this.setState({ title: e.target.value })}
                   />
-                </div>
-                <div>
+                </Form.Field>
+                <Form.Field>
                   <label>Text</label>
                   <input
                     id="body"
                     value={this.state.body}
                     onChange={e => this.setState({ body: e.target.value })}
                   />
-                </div>
-                <input
+                </Form.Field>
+                <Button
                   id="submit-article-button"
                   type="submit"
-                  value="Create"
-                />
-              </form>
+                >Create</Button>
+              </Form>
             }
           </div>
 

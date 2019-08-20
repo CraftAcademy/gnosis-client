@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container } from "semantic-ui-react";
+import { Container, Form, Button } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 export class LoginForm extends Component {
@@ -29,18 +29,24 @@ export class LoginForm extends Component {
 
     if (this.state.renderLoginForm === true) {
       loginFields = (
-        <form id="login-form" onSubmit={this.loginHandler}>
-          <input
-            id="email"
-            onChange={e => this.setState({ email: e.target.value })}
-          />
-          <input
-            id="password"
-            type="password"
-            onChange={e => this.setState({ password: e.target.value })}
-          />
-          <input id="login-form-submit" value="Proceed" type="submit" />
-        </form>
+        <Form id="login-form" onSubmit={this.loginHandler}>
+          <Form.Field>
+            <input
+              id="email"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+          </Form.Field>
+          <Form.Field>
+            <input
+              id="password"
+              type="password"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
+          </Form.Field>
+          <Button id="login-form-submit" type="submit">
+            Proceed
+            </Button>
+        </Form>
       );
     }
 

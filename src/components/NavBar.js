@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import { Container, Menu, Input, Grid } from 'semantic-ui-react';
 import '../styling/Navbar.css';
@@ -36,37 +35,33 @@ class NavBar extends Component {
 
     }
     return (
-      <div className='page'>
-        <Header id='header'>GNOSIS</Header>
-        <Menu secondary id="navbar">
-          <Grid stackable columns={5}>
-            <Grid.Column>
-              <Menu.Menu position='left'></Menu.Menu>
-              <Menu.Item as={NavLink} to="/">Home</Menu.Item>
-            </Grid.Column>
-            <Grid.Column>
-              <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
-              <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
-              <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
-            </Grid.Column>
-
+      <>
+        <div id="navbar" className="ui stackable menu">
+          <Container>
+            <Menu.Item className="header" to="/">
+              GNOSIS
+            </Menu.Item>
+            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+            <div className="ui simple dropdown item">
+              Categories <i className="dropdown icon"></i>
+              <Menu secondary id="navbar">
+                <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
+                <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
+                <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
+              </Menu>
+            </div>
             <Menu.Menu position='right'>
-              <Grid.Column>
-                <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
-              </Grid.Column>
-              <Grid.Column>
-                {createArticleButton}
-              </Grid.Column>
-              <Grid.Column>
-                {loginActions}
-              </Grid.Column>
+              <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
+              {createArticleButton}
+
+              {loginActions}
             </Menu.Menu>
-          </Grid>
-        </Menu>
+          </Container>
+        </div>
         <Container>
           {flashMessage}
         </Container>
-      </div>
+      </>
     )
   }
 }

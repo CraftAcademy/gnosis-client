@@ -1,6 +1,6 @@
 describe("Research Group can post article", () => {
   beforeEach(() => {
-    // cy.viewport('iphone-6+') 
+    cy.viewport('iphone-6+') 
     cy.server();
   });
 
