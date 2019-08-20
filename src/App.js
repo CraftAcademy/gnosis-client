@@ -3,6 +3,8 @@ import DisplayArticles from "./components/DisplayArticles";
 import { Container, Header, Divider } from "semantic-ui-react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
+import NavBar from "./NavBar.js";
+import './styling/App.css'
 
 function App() {
   return (
