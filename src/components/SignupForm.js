@@ -49,7 +49,6 @@ export class Signupform extends Component {
     ) {
       saveUserStatus = this.state.errorMessage;
     }
-  
 
     return (
       <Container>
