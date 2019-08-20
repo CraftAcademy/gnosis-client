@@ -14,12 +14,12 @@ export default class NavBar extends Component {
     return (
       <div className='page'>
         <Menu secondary>
-        <Header id='header'>GNOSIS</Header>
+          <Header id='header'>GNOSIS</Header>
           <Menu.Menu position='left'></Menu.Menu>
-            <Menu.Item as={NavLink} exact to="/">Home</Menu.Item>
-            <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick}/>
-            <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick}/>
-            <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick}/>
+          <Menu.Item as={NavLink} exact to="/">Home</Menu.Item>
+          <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
             <Menu.Item as={NavLink} to="/login-form">Log In</Menu.Item>

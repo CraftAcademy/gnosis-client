@@ -1,5 +1,5 @@
 describe("Happy Path: Visitor can visit client site connected to api with articles", () => {
-  before(function() {
+  before(function () {
     cy.server();
     cy.route({
       method: "GET",
@@ -29,7 +29,7 @@ describe("Happy Path: Visitor can visit client site connected to api with articl
 });
 
 describe("Sad Path: Visitor does not see articles when visiting the site", () => {
-  before(function() {
+  before(function () {
     cy.visit("http://localhost:3001");
   });
 

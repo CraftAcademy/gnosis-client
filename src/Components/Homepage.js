@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import DisplayArticles from './DisplayArticles';
 
 class Homepage extends Component {
-  render () {
+  render() {
     return (
-      <DisplayArticles/>
-      )
+      <DisplayArticles />
+    )
   }
 }
 
