@@ -6,7 +6,7 @@ describe("University Sign-Up", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:successfully_signin_up_uniAccount_response.json"
+      response: "fixture:successful_signup_of_uniAccount_response.json"
     });
     cy.university_success_signup(
       "University",
