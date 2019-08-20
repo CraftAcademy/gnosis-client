@@ -145,7 +145,6 @@ export class Signupform extends Component {
             <Button id="submit-account-button" type="submit">
               Sign Me Up!
             </Button>
-            {/* After extracting this component to its own page, remove below. . .we don't need to hide the form */}
             <Button
               onClick={() =>
                 this.setState({
