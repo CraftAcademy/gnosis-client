@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ArticleTemplate from "./ArticleTemplate";
+import { Container } from "semantic-ui-react";
+
 
 class DisplayArticles extends Component {
   constructor() {
@@ -36,12 +38,15 @@ class DisplayArticles extends Component {
 
     return (
       <>
-        {availability ?
-          articlesDisplay :
-          <div className="articles">
-            <p>Articles are currently unavailable.</p>
-          </div>
-        }
+        <Container>
+          {availability ?
+            articlesDisplay :
+            <div className="articles">
+              <p>Articles are currently unavailable.</p>
+            </div>
+          }
+        </Container>
+
       </>
     )
   }

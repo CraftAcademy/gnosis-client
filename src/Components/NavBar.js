@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Input } from 'semantic-ui-react';
+import { Container, Menu, Input, Grid } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
@@ -37,20 +37,35 @@ class NavBar extends Component {
     }
     return (
       <div className='page'>
+        <Header id='header'>GNOSIS</Header>
         <Menu secondary id="navbar">
-          <Header id='header'>GNOSIS</Header>
-          <Menu.Menu position='left'></Menu.Menu>
-          <Menu.Item as={NavLink} to="/">Home</Menu.Item>
-          <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Menu position='right'>
-            <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
-            {createArticleButton}
-            {flashMessage}
-            {loginActions}
-          </Menu.Menu>
+          <Grid stackable columns={5}>
+            <Grid.Column>
+              <Menu.Menu position='left'></Menu.Menu>
+              <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+            </Grid.Column>
+            <Grid.Column>
+              <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
+              <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
+              <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
+            </Grid.Column>
+
+            <Menu.Menu position='right'>
+              <Grid.Column>
+                <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
+              </Grid.Column>
+              <Grid.Column>
+                {createArticleButton}
+              </Grid.Column>
+              <Grid.Column>
+                {loginActions}
+              </Grid.Column>
+            </Menu.Menu>
+          </Grid>
         </Menu>
+        <Container>
+          {flashMessage}
+        </Container>
       </div>
     )
   }

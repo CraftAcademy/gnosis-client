@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Container } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 export class LoginForm extends Component {
@@ -48,10 +49,13 @@ export class LoginForm extends Component {
     }
 
     return (
-      <div>
-        {userGreeting}
-        {loginFields}
-      </div>
+      <>
+        <Container>
+          {userGreeting}
+          {loginFields}
+        </Container>
+
+      </>
     );
   }
 }

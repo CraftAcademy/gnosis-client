@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
 import { connect } from "react-redux";
+import { Container } from "semantic-ui-react";
+
 
 class CreateArticleForm extends Component {
   state = {
@@ -24,7 +26,6 @@ class CreateArticleForm extends Component {
       this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
 
     } else {
-      
       this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
 
     }
@@ -32,44 +33,49 @@ class CreateArticleForm extends Component {
 
   render() {
     return (
-      <div id="create-article-component">
-        {!this.state.articleSaved &&
-          <form
-            id="create-article-form"
-            onSubmit={e => this.saveArticleHandler(e)}
-          >
-            <div>
-              <label>Author</label>
-              <input
-                id="author"
-                value={this.state.author}
-                onChange={e => this.setState({ author: e.target.value })}
-              />
-            </div>
-            <div>
-              <label>Title</label>
-              <input
-                id="title"
-                value={this.state.title}
-                onChange={e => this.setState({ title: e.target.value })}
-              />
-            </div>
-            <div>
-              <label>Text</label>
-              <input
-                id="body"
-                value={this.state.body}
-                onChange={e => this.setState({ body: e.target.value })}
-              />
-            </div>
-            <input
-              id="submit-article-button"
-              type="submit"
-              value="Create"
-            />
-          </form>
-        }
-      </div>
+      <>
+        <Container>
+          <div id="create-article-component">
+            {!this.state.articleSaved &&
+              <form
+                id="create-article-form"
+                onSubmit={e => this.saveArticleHandler(e)}
+              >
+                <div>
+                  <label>Author</label>
+                  <input
+                    id="author"
+                    value={this.state.author}
+                    onChange={e => this.setState({ author: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label>Title</label>
+                  <input
+                    id="title"
+                    value={this.state.title}
+                    onChange={e => this.setState({ title: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label>Text</label>
+                  <input
+                    id="body"
+                    value={this.state.body}
+                    onChange={e => this.setState({ body: e.target.value })}
+                  />
+                </div>
+                <input
+                  id="submit-article-button"
+                  type="submit"
+                  value="Create"
+                />
+              </form>
+            }
+          </div>
+
+        </Container>
+      </>
     )
   }
 }

@@ -11,12 +11,6 @@ const flashMessageReducer = (state = initialState, action) => {
         ...action.payload,
         showFlash: true
       }
-    case 'HIDE_FLASH_MESSAGE':
-      return {
-        ...state,
-        flashMessage: '',
-        showFlash: false
-      }
     default:
       return state
   }
