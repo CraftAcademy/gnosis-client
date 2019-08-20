@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {BrowserRouter as Router} from 'react-router-dom';
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import 'semantic-ui-css/semantic.min.css'
 import configureStore from "./redux/store/configureStore";
@@ -9,10 +9,14 @@ import configureStore from "./redux/store/configureStore";
 const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>,
+  </Router>,
   document.getElementById("root")
+  
+  
 );
 
-serviceWorker.unregister();
+

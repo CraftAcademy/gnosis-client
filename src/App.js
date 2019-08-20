@@ -1,27 +1,30 @@
 import React from "react";
-import DisplayArticles from "./components/DisplayArticles";
-import { Container, Header, Divider } from "semantic-ui-react";
+import { Container} from "semantic-ui-react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
 import NavBar from "./NavBar.js";
 import "./styling/App.css"
 import "./styling/Navbar.css"
+import {Switch, Route} from 'react-router-dom';
+import SignupForm from "./components/SignupForm";
+import Homepage from "./components/Homepage";
+
 
 function App() {
   return (
-    <NavBar>
+    
       <Container>
-        <Header as="h1" textAlign="center">
-          GNOSIS
-        </Header>
+         <NavBar/>
+
+        <Switch>
+          <Route exact path="/" component={Homepage}/>
+          <Route exact path="/login-form" component={LoginForm}/>
+          <Route exact path="/signup" component={SignupForm}/>
+          <Route exact path="/createarticle" component={CreateArticleForm}/>
+        </Switch>
         <LoginForm />
-        <CreateArticleForm />
-
-        <Divider />
-
-        <DisplayArticles />
       </Container>
-    </NavBar>
+    
   );
 }
 
