@@ -11,12 +11,6 @@ class CreateArticleForm extends Component {
     articleSaved: false
   };
 
-  formHandler = () => {
-    this.setState({
-      renderArticleForm: !this.state.renderArticleForm
-    });
-  };
-
   async saveArticleHandler(e) {
     e.preventDefault();
     let response = await saveArticle(
@@ -26,8 +20,7 @@ class CreateArticleForm extends Component {
     );
     if (response.status === 200) {
       this.setState({
-        articleSaved: true,
-        renderArticleForm: false
+        articleSaved: true
       });
     } else {
       this.setState({
@@ -39,10 +32,9 @@ class CreateArticleForm extends Component {
   render() {
     let articleStatus;
     let createArticleForm;
-    let createArticleButton;
 
     if (this.state.articleSaved === true) {
-      articleStatus = "Article successfully created";
+      //dispatch action in this if/else statement
     } else if (
       this.state.articleSaved === false &&
       this.state.errorMessage !== ""
@@ -50,8 +42,8 @@ class CreateArticleForm extends Component {
       articleStatus = this.state.errorMessage;
     }
 
-    if (this.state.renderArticleForm === true) {
-      createArticleForm = (
+    return (
+      <div id="create-article-component">
         <form
           id="create-article-form"
           onSubmit={e => this.saveArticleHandler(e)}
@@ -86,23 +78,9 @@ class CreateArticleForm extends Component {
             value="Create"
           />
         </form>
-      );
-    }
-    if (this.props.currentUser.attributes.role === "research_group_user") {
-      createArticleButton = (
-        <button id="create-article-button" onClick={this.formHandler}>
-          Create Article
-        </button>
-      );
-    }
-
-    return (
-      <div id="create-article-component">
-        {createArticleButton}
-        {createArticleForm}
         {articleStatus}
       </div>
-    );
+    )
   }
 }
 
