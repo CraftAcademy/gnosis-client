@@ -4,7 +4,7 @@ import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 export class LoginForm extends Component {
   state = {
-    renderLoginForm: false,
+    renderLoginForm: true,
     email: "",
     password: ""
   };
@@ -44,21 +44,21 @@ export class LoginForm extends Component {
       );
     }
 
-// Re-write statement to isSignedIn === false & is visiting login page
-    if (this.props.currentUser.isSignedIn === false) {
-      loginButton = (
-        <button
-          id="login-button"
-          onClick={() =>
-            this.setState({
-              renderLoginForm: !this.state.renderLoginForm
-            })
-          }
-        >
-          Login
-        </button>
-      );
-    }
+// // Re-write statement to isSignedIn === false & is visiting login page
+//     if (this.props.currentUser.isSignedIn === false) {
+//       loginButton = (
+//         <button
+//           id="login-button"
+//           onClick={() =>
+//             this.setState({
+//               renderLoginForm: !this.state.renderLoginForm
+//             })
+//           }
+//         >
+//           Login
+//         </button>
+//       );
+//     }
 
     if (this.props.currentUser.isSignedIn === true) {
       userGreeting = `Hello ${this.props.currentUser.attributes.uid}!`;

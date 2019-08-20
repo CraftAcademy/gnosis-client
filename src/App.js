@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/createarticle" component={CreateArticleForm} />
         </Switch>
-      <LoginForm />
+      
     </div>
   );
 }
