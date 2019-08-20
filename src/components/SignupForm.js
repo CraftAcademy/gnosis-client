@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
 import { saveNewUser } from "../modules/saveNewUser";
 import { Container, Form, Button } from "semantic-ui-react";
+import { connect } from "tls";
 
 export class Signupform extends Component {
   state = {
@@ -157,4 +158,13 @@ export class Signupform extends Component {
   }
 }
 
-export default Signupform;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(Signupform);
