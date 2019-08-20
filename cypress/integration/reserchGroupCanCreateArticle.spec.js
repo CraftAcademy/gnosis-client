@@ -21,6 +21,7 @@ describe("Research Group can post article", () => {
       cy.get("#submit-article-button").click();
     });
     cy.contains("Article successfully created");
+    cy.wait(6000)
     cy.get("#create-article-form").should("not.exist");
   });
 

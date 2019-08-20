@@ -14,6 +14,7 @@ class NavBar extends Component {
   render() {
     let createArticleButton;
     let flashMessage;
+    let loginButton;
 
     const { activeItem } = this.state
 
@@ -23,6 +24,10 @@ class NavBar extends Component {
 
     if (this.props.currentUser.attributes.role === "research_group_user") {
       createArticleButton = <Menu.Item as={NavLink} to="/createarticle">Create Article</Menu.Item>
+    }
+
+    if (this.props.currentUser.isSignedIn === true) {
+      loginButton = <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
     }
 
     return (
@@ -36,10 +41,10 @@ class NavBar extends Component {
             <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
-            <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
             <Menu.Item as={NavLink} to="/signup">Sign Up</Menu.Item>
             {createArticleButton}
             {flashMessage}
+            {loginButton}
           </Menu.Menu>
         </Menu>
       </div>
