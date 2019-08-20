@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { saveArticle } from "../modules/saveArticle";
 import { connect } from "react-redux";
+import { Container, Form, Button } from "semantic-ui-react";
 
 class CreateArticleForm extends Component {
   state = {
@@ -25,9 +26,10 @@ class CreateArticleForm extends Component {
       this.state.body
     );
     if (response.status === 200) {
-      this.setState({ 
+      this.setState({
         articleSaved: true,
-        renderArticleForm: false });
+        renderArticleForm: false
+      });
     } else {
       this.setState({
         errorMessage: response.data.body.message
@@ -37,8 +39,6 @@ class CreateArticleForm extends Component {
 
   render() {
     let articleStatus;
-    let createArticleForm;
-    let createArticleButton;
 
     if (this.state.articleSaved === true) {
       articleStatus = "Article successfully created";
@@ -49,58 +49,57 @@ class CreateArticleForm extends Component {
       articleStatus = this.state.errorMessage;
     }
 
-    if (this.state.renderArticleForm === true) {
-      createArticleForm = (
-        <form
-          id="create-article-form"
-          onSubmit={e => this.saveArticleHandler(e)}
-        >
-          <div>
-            <label>Author</label>
-            <input
-              id="author"
-              value={this.state.author}
-              onChange={e => this.setState({ author: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>Title</label>
-            <input
-              id="title"
-              value={this.state.title}
-              onChange={e => this.setState({ title: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>Text</label>
-            <input
-              id="body"
-              value={this.state.body}
-              onChange={e => this.setState({ body: e.target.value })}
-            />
-          </div>
-          <input
-            id="submit-article-button"
-            type="submit"
-            value="Create"
-          />
-        </form>
-      );
-    }
-    if (this.props.currentUser.attributes.role === "research_group_user") {
-      createArticleButton = (
-        <button id="create-article-button" onClick={this.formHandler}>
-          Create Article
-        </button>
-      );
-    }
-
     return (
-      <div id="create-article-component">
-        {createArticleButton}
-        {createArticleForm}
+      <Container>
+
+        {this.props.currentUser.attributes.role === "research_group_user" ? (
+          <Button id="create-article-button" onClick={this.formHandler}>
+            Create Article
+          </Button>
+        ) : (
+          ""
+        )}
+
+        {this.state.renderArticleForm ? (
+          <Form
+            id="create-article-form"
+            onSubmit={e => this.saveArticleHandler(e)}
+          >
+          <Form.Field>
+              <label>Author</label>
+              <input
+                id="author"
+                value={this.state.author}
+                onChange={e => this.setState({ author: e.target.value })}
+              />
+           </Form.Field>
+
+           <Form.Field>
+              <label>Title</label>
+              <input
+                id="title"
+                value={this.state.title}
+                onChange={e => this.setState({ title: e.target.value })}
+              />
+            </Form.Field>
+            
+            <Form.Field>
+              <label>Text</label>
+              <input
+                id="body"
+                value={this.state.body}
+                onChange={e => this.setState({ body: e.target.value })}
+              />
+            </Form.Field>
+
+            <Button id="submit-article-button" type="submit" value="Create" >Create New Article</Button>
+          </Form>
+        ) : (
+          ""
+        )}
+
         {articleStatus}
-      </div>
+      </Container>
     );
   }
 }

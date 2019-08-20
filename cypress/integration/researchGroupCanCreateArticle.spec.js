@@ -3,7 +3,7 @@ describe("Research Group can post article", () => {
     cy.server();
   });
 
-  it("successfully", () => {
+  it("Article posts successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
@@ -24,7 +24,7 @@ describe("Research Group can post article", () => {
     cy.get("#create-article-form").should("not.exist");
   });
 
-  it("unsuccessfully", () => {
+  it("Article posts unsuccessfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
@@ -42,5 +42,5 @@ describe("Research Group can post article", () => {
       cy.get("#submit-article-button").click();
     });
     cy.contains("Title can't be blank");
-  })
+  });
 });
