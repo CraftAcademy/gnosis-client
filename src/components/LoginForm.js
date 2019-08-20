@@ -39,11 +39,12 @@ export class LoginForm extends Component {
             type="password"
             onChange={e => this.setState({ password: e.target.value })}
           />
-          <input id="login-form-submit" value="Login" type="submit" />
+          <input id="login-form-submit" value="Proceed" type="submit" />
         </form>
       );
     }
 
+// Re-write statement to isSignedIn === false & is visiting login page
     if (this.props.currentUser.isSignedIn === false) {
       loginButton = (
         <button

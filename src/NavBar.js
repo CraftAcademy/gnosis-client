@@ -16,15 +16,15 @@ export default class NavBar extends Component {
         <Menu secondary>
           <Header id='header'>GNOSIS</Header>
           <Menu.Menu position='left'></Menu.Menu>
-            <Menu.Item as={NavLink} exact path to="/">Home</Menu.Item>
+            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
             <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
             <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
             <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
-            <Menu.Item as={NavLink} exact path to="/login-form">Log In</Menu.Item>
-            <Menu.Item as={NavLink} exact path to="/signup">Sign Up</Menu.Item>
-            <Menu.Item as={NavLink} exact path to="/createarticle">Create Article</Menu.Item>
+            <Menu.Item as={NavLink} to="/login-form">Log In</Menu.Item>
+            <Menu.Item as={NavLink} to="/signup">Sign Up</Menu.Item>
+            <Menu.Item as={NavLink} to="/createarticle">Create Article</Menu.Item>
           </Menu.Menu>
         </Menu>
       </div>
