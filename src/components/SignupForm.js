@@ -146,7 +146,8 @@ export class Signupform extends Component {
               {this.state.errors.password_confirmation}
             </div>
           )}
-          <input id="submit-account-button" value="signup" type="submit" />
+          <input id="submit-account-button" value="Sign me up!" type="submit" />
+            {/* After extracting this component to its own page, remove below. . .we don't need to hide the form */}
           <button
             onClick={() =>
               this.setState({
