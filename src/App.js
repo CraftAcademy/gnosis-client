@@ -1,7 +1,7 @@
 import React from "react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
-import NavBar from "./NavBar.js";
+import NavBar from "./components/NavBar.js";
 import "./styling/App.css";
 import "./styling/Navbar.css";
 import { Switch, Route } from 'react-router-dom';
@@ -19,7 +19,6 @@ function App() {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/createarticle" component={CreateArticleForm} />
         </Switch>
-      
     </div>
   );
 }
