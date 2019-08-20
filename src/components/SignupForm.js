@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
 import { saveNewUser } from "../modules/saveNewUser";
+import { Form, Button } from 'semantic-ui-react';
 
 export class Signupform extends Component {
   state = {
@@ -13,11 +14,9 @@ export class Signupform extends Component {
     password_confirmation: "",
     userSaved: false,
     errorMessage: "",
-    errors: {}
   };
 
   async saveNewUserHandler(e) {
-    // if (!this.formIsValid()) return;
     e.preventDefault();
     let response = await saveNewUser(
       this.state.name,
@@ -41,25 +40,9 @@ export class Signupform extends Component {
     }
   }
 
-  // formIsValid = () => {
-  //   const _errors = {};
-
-  //   if (!this.state.accountType) _errors.accountType = "Account type required!";
-  //   if (!this.state.name) _errors.name = "University name required!";
-  //   if (!this.state.email) _errors.email = "A valid email is required!";
-  //   if (!this.state.password) _errors.password = "Please choose a password!";
-  //   if (!this.state.password_confirmation)
-  //     _errors.password_confirmation = "Password Confirmation doesn't match.";
-
-  //   this.setState({ errors: _errors });
-  //   // Form is valid if the 'errors' object has no properties
-  //   return Object.keys(_errors).length === 0;
-  // };
-
   render() {
     let SignupFields;
     let SignupButton;
-    let PaymentFields;
     let saveUserStatus;
 
     if (this.state.userSaved === true) {
@@ -74,14 +57,14 @@ export class Signupform extends Component {
 
     if (this.state.renderSignupForm === true) {
       SignupFields = (
-        <form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
-          <label />
+        <Form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
+          <Form.Field>
+          <label>Account Type</label>
           <select
             id="accountType"
             value={this.state.accountType}
             onChange={e => this.setState({ accountType: e.target.value })}
           >
-            Please select your account type:
             <option className="options" value="" disabled>
               Choose Account. . .
             </option>
@@ -94,45 +77,37 @@ export class Signupform extends Component {
             <option className="options" value="Reader">
               Reader
             </option>
-            {this.state.errors.accountType && (
-              <div style={{ fontColor: "red", fontStyle: "bold" }}>
-                {this.state.errors.accountType}
-              </div>
-            )}
           </select>
+          </Form.Field>
+
+          <Form.Field>
           <label>University Name</label>
           <input
             id="name"
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
           />
-          {this.state.errors.name && (
-            <div style={{ fontColor: "red", fontStyle: "bold" }}>
-              {this.state.errors.name}
-            </div>
-          )}
+          </Form.Field>
+
+          <Form.Field>
           <label>Email</label>
           <input
             id="email"
             value={this.state.email}
             onChange={e => this.setState({ email: e.target.value })}
           />
-          {this.state.errors.email && (
-            <div style={{ fontColor: "red", fontStyle: "bold" }}>
-              {this.state.errors.email}
-            </div>
-          )}
+          </Form.Field>
+
+          <Form.Field>
           <label>Password</label>
           <input
             id="password"
             value={this.state.password}
             onChange={e => this.setState({ password: e.target.value })}
           />
-          {this.state.errors.password && (
-            <div style={{ fontColor: "red", fontStyle: "bold" }}>
-              {this.state.errors.password}
-            </div>
-          )}
+          </Form.Field>
+
+          <Form.Field>
           <label>Password Confirmation</label>
           <input
             id="password-confirmation"
@@ -141,14 +116,13 @@ export class Signupform extends Component {
               this.setState({ password_confirmation: e.target.value })
             }
           />
-          {this.state.errors.password_confirmation && (
-            <div style={{ fontColor: "red", fontStyle: "bold" }}>
-              {this.state.errors.password_confirmation}
-            </div>
-          )}
-          <input id="submit-account-button" value="Sign me up!" type="submit" />
+          </Form.Field>
+
+          {this.state.accountType === "University" ?  <PaymentForm /> : ''}
+
+          <Button id="submit-account-button" type="submit" >Sign Me Up!</ Button>
             {/* After extracting this component to its own page, remove below. . .we don't need to hide the form */}
-          <button
+          <Button
             onClick={() =>
               this.setState({
                 renderSignupForm: false,
@@ -158,8 +132,8 @@ export class Signupform extends Component {
             }
           >
             Return
-          </button>
-        </form>
+          </ Button>
+        </Form>
       );
     }
 
@@ -176,20 +150,11 @@ export class Signupform extends Component {
       );
     }
 
-    if (this.state.accountType === "University") {
-      PaymentFields = (
-        <>
-          <PaymentForm />
-        </>
-      );
-    }
-
     return (
       <div>
         {saveUserStatus}
         {SignupFields}
         {SignupButton}
-        {PaymentFields}
       </div>
     );
   }
