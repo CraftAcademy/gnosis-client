@@ -10,10 +10,8 @@ describe("Happy Path: Visitor can visit client site connected to api with articl
   });
 
   it("and sees two articles", async () => {
-    cy.get(".articles").within(() => {
-      cy.get("#article_1");
-      cy.get("#article_2");
-    });
+    cy.get("#article_1");
+    cy.get("#article_2");
   });
 
   it("and sees the content of article 1", async () => {
