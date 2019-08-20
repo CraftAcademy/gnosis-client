@@ -24,7 +24,6 @@ export class LoginForm extends Component {
 
   render() {
     let loginFields;
-    let loginButton;
     let userGreeting;
 
     if (this.state.renderLoginForm === true) {
@@ -44,22 +43,6 @@ export class LoginForm extends Component {
       );
     }
 
-// // Re-write statement to isSignedIn === false & is visiting login page
-//     if (this.props.currentUser.isSignedIn === false) {
-//       loginButton = (
-//         <button
-//           id="login-button"
-//           onClick={() =>
-//             this.setState({
-//               renderLoginForm: !this.state.renderLoginForm
-//             })
-//           }
-//         >
-//           Login
-//         </button>
-//       );
-//     }
-
     if (this.props.currentUser.isSignedIn === true) {
       userGreeting = `Hello ${this.props.currentUser.attributes.uid}!`;
     }
@@ -67,7 +50,6 @@ export class LoginForm extends Component {
     return (
       <div>
         {userGreeting}
-        {loginButton}
         {loginFields}
       </div>
     );
