@@ -14,37 +14,41 @@ class NavBar extends Component {
   render() {
     let createArticleButton;
     let flashMessage;
-    let loginButton;
+    let loginActions;
 
     const { activeItem } = this.state
 
-    if (this.props.flashMessage === true) {
+    if (this.props.showFlash === true) {
       flashMessage = <AlertMessage />
     }
 
     if (this.props.currentUser.attributes.role === "research_group_user") {
-      createArticleButton = <Menu.Item as={NavLink} to="/createarticle">Create Article</Menu.Item>
+      createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
     }
 
-    if (this.props.currentUser.isSignedIn === true) {
-      loginButton = <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
-    }
+    if (this.props.currentUser.isSignedIn === false) {
+      loginActions = (
+        <>
+          <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
+          <Menu.Item as={NavLink} to="/signup">Sign Up</Menu.Item>
+        </>
+      )
 
+    }
     return (
       <div className='page'>
         <Menu secondary id="navbar">
           <Header id='header'>GNOSIS</Header>
           <Menu.Menu position='left'></Menu.Menu>
-            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
-            <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
-            <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
-            <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+          <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
           <Menu.Menu position='right'>
             <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
-            <Menu.Item as={NavLink} to="/signup">Sign Up</Menu.Item>
             {createArticleButton}
             {flashMessage}
-            {loginButton}
+            {loginActions}
           </Menu.Menu>
         </Menu>
       </div>
@@ -55,7 +59,7 @@ class NavBar extends Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser,
-    flashMessage: state.flashMessage.flashMessage
+    showFlash: state.flashes.showFlash
   };
 };
 export default connect(mapStateToProps)(NavBar);

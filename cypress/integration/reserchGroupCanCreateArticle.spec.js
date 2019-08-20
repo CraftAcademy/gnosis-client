@@ -1,5 +1,5 @@
 describe("Research Group can post article", () => {
-  beforeEach(function() {
+  beforeEach(() => {
     cy.server();
   });
 
@@ -20,8 +20,10 @@ describe("Research Group can post article", () => {
       );
       cy.get("#submit-article-button").click();
     });
-    cy.contains("Article successfully created");
-    cy.wait(6000)
+
+    cy.get('#flash').should('contain', "Article successfully created")
+    cy.wait(7000)
+    cy.get('#flash').should('not.contain', "Article successfully created")
     cy.get("#create-article-form").should("not.exist");
   });
 
@@ -42,6 +44,7 @@ describe("Research Group can post article", () => {
       );
       cy.get("#submit-article-button").click();
     });
-    cy.contains("Title can't be blank");
+    cy.get('#flash').should('contain', "Title can't be blank")
+    // cy.contains("Title can't be blank");
   })
 });

@@ -7,7 +7,6 @@ class CreateArticleForm extends Component {
     author: "",
     title: "",
     body: "",
-    errorMessage: "",
     articleSaved: false
   };
 
@@ -22,63 +21,54 @@ class CreateArticleForm extends Component {
       this.setState({
         articleSaved: true
       });
+      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
+
     } else {
-      this.setState({
-        errorMessage: response.data.body.message
-      });
+      
+      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
+
     }
   }
 
   render() {
-    let articleStatus;
-    let createArticleForm;
-
-    if (this.state.articleSaved === true) {
-      //dispatch action in this if/else statement
-    } else if (
-      this.state.articleSaved === false &&
-      this.state.errorMessage !== ""
-    ) {
-      articleStatus = this.state.errorMessage;
-    }
-
     return (
       <div id="create-article-component">
-        <form
-          id="create-article-form"
-          onSubmit={e => this.saveArticleHandler(e)}
-        >
-          <div>
-            <label>Author</label>
+        {!this.state.articleSaved &&
+          <form
+            id="create-article-form"
+            onSubmit={e => this.saveArticleHandler(e)}
+          >
+            <div>
+              <label>Author</label>
+              <input
+                id="author"
+                value={this.state.author}
+                onChange={e => this.setState({ author: e.target.value })}
+              />
+            </div>
+            <div>
+              <label>Title</label>
+              <input
+                id="title"
+                value={this.state.title}
+                onChange={e => this.setState({ title: e.target.value })}
+              />
+            </div>
+            <div>
+              <label>Text</label>
+              <input
+                id="body"
+                value={this.state.body}
+                onChange={e => this.setState({ body: e.target.value })}
+              />
+            </div>
             <input
-              id="author"
-              value={this.state.author}
-              onChange={e => this.setState({ author: e.target.value })}
+              id="submit-article-button"
+              type="submit"
+              value="Create"
             />
-          </div>
-          <div>
-            <label>Title</label>
-            <input
-              id="title"
-              value={this.state.title}
-              onChange={e => this.setState({ title: e.target.value })}
-            />
-          </div>
-          <div>
-            <label>Text</label>
-            <input
-              id="body"
-              value={this.state.body}
-              onChange={e => this.setState({ body: e.target.value })}
-            />
-          </div>
-          <input
-            id="submit-article-button"
-            type="submit"
-            value="Create"
-          />
-        </form>
-        {articleStatus}
+          </form>
+        }
       </div>
     )
   }
