@@ -15,7 +15,6 @@
   padding-top: 1rem;
   font-family: "Lexend Giga", sans-serif;
   text-align: center;
-  /* text-shadow: -1px 0 rgb(38, 94, 126), 0 1px rgb(38, 94, 126), 1px 0  rgb(38, 94, 126), 0 -1px  rgb(38, 94, 126); */
   font-size: 55px;
   color: rgb(21, 55, 75);
   width: 100% !important;
@@ -29,12 +28,4 @@
   font-size: 15, 5px;
   color: white;
   width: 100% !important;
-}
-
-.menu {
-  right: 60px !important;
-}
-
-.link {
-  color: rgb(27, 68, 92) !important;
 }
