@@ -2,7 +2,6 @@
   "status": 401,
   "headers": {},
   "body": {
-    "message": "No field can be blank!",
-    "othermessage": "tjena"
+    "message": "No field can be blank!"
   }
 }
