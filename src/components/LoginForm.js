@@ -17,9 +17,9 @@ class LoginForm extends Component {
     signInUser({ email, password })
       .then(() => {
         this.setState({ renderLoginForm: false });
-        this.props.dispatchFlash(`Hello ${this.props.currentUser.attributes.uid}!`)
+        this.props.dispatchFlash(`Hello ${this.props.currentUser.attributes.uid}!`, 'success')
       }).catch((error) => {
-        this.props.dispatchFlash(error.response.data.errors[0])
+        this.props.dispatchFlash(error.response.data.errors[0], 'error')
       })
   };
 
@@ -63,8 +63,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  dispatchFlash: (message) => (
-    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: message, status: 'success' } }
+  dispatchFlash: (message, status) => (
+    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: message, status: status } }
   ),
   signInUser
 }
