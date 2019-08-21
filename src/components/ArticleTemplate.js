@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Divider, Header, Placeholder } from "semantic-ui-react";
 
-function ArticleTemplate(props) {
+const ArticleTemplate = (props) => {
   const article = props.article;
 
   return (
