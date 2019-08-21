@@ -24,11 +24,7 @@ describe("University Sign-Up", () => {
       cy.get('input[id="CVC"]').type("666");
     });
     cy.get("#submit-account-button").click();
-<<<<<<< HEAD
-    cy.contains("Payment successful! Your university account has been registered!");
-=======
     cy.contains("Payment successful! Your university account successfully created!");
->>>>>>> 07499d8a2beb0a40285f4681be7c352adbbaf14c
   });
 
 

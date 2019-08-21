@@ -8,10 +8,6 @@ import { isDebuggerStatement } from "@babel/types";
 class Signupform extends Component {
   state = {
     renderSignupForm: true,
-<<<<<<< HEAD
-    renderSignupButton: true,
-=======
->>>>>>> 07499d8a2beb0a40285f4681be7c352adbbaf14c
     role: "",
     name: "",
     email: "",
@@ -52,11 +48,7 @@ class Signupform extends Component {
     let saveUserStatus;
     if (this.state.userSaved === true) {
       saveUserStatus =
-<<<<<<< HEAD
-        `Payment successful! Your ${this.state.role} account has been registered!`;
-=======
         `Payment successful! Your ${this.state.role} account successfully created!`;
->>>>>>> 07499d8a2beb0a40285f4681be7c352adbbaf14c
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
@@ -72,11 +64,7 @@ class Signupform extends Component {
             <Form.Field>
               <label>Account Type</label>
               <select
-<<<<<<< HEAD
-                id="accountType"
-=======
                 id="role"
->>>>>>> 07499d8a2beb0a40285f4681be7c352adbbaf14c
                 value={this.state.role}
                 onChange={e => this.setState({ role: e.target.value })}
               >
