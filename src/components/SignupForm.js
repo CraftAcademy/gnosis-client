@@ -105,6 +105,7 @@ class Signupform extends Component {
               <label>Password</label>
               <input
                 id="password"
+                type="password"
                 value={this.state.password}
                 onChange={e => this.setState({ password: e.target.value })}
               />
@@ -114,6 +115,7 @@ class Signupform extends Component {
               <label>Password Confirmation</label>
               <input
                 id="password-confirmation"
+                type="password"
                 value={this.state.password_confirmation}
                 onChange={e =>
                   this.setState({ password_confirmation: e.target.value })
