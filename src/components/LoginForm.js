@@ -31,21 +31,6 @@ export class LoginForm extends Component {
           ? `Hello ${this.props.currentUser.attributes.uid}!`
           : ""}
 
-        {!this.props.currentUser.isSignedIn ? (
-          <Button
-            id="login-button"
-            onClick={() =>
-              this.setState({
-                renderLoginForm: !this.state.renderLoginForm
-              })
-            }
-          >
-            Login
-          </Button>
-        ) : (
-          ""
-        )}
-
         {this.state.renderLoginForm ? (
           <Form id="login-form" onSubmit={this.loginHandler}>
             <Form.Field>
