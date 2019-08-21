@@ -9,11 +9,12 @@ describe("University Sign-Up", () => {
       response: "fixture:successful_signup_of_uniAccount_response.json"
     });
     cy.university_success_signup(
-      "University",
+      "university",
       "harvard",
       "harvard@mail.com",
       "password",
       "password_confirmation"
+    
     );
     cy.get("#payment-form").within(() => {
       cy.get('select[id="payment-type"]').select("card-payment");
@@ -23,7 +24,7 @@ describe("University Sign-Up", () => {
       cy.get('input[id="CVC"]').type("666");
     });
     cy.get("#submit-account-button").click();
-    cy.contains("Payment successful! University Account successfully created!");
+    cy.contains("Payment successful! Your university account successfully created!");
   });
 
 
@@ -36,7 +37,7 @@ describe("University Sign-Up", () => {
       status: 404
     });
     cy.university_unsucces_signup(
-      "University",
+      "university",
       "harvard",
       "harvard@mail.com",
       "password",

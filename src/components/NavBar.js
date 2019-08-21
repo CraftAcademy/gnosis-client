@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input, Grid } from 'semantic-ui-react';
+import { Container, Menu, Input } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
@@ -21,7 +21,7 @@ class NavBar extends Component {
       flashMessage = <AlertMessage />
     }
 
-    if (this.props.currentUser.attributes.role === "research_group_user") {
+    if (this.props.currentUser.attributes.role === "research_group") {
       createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
     }
 
