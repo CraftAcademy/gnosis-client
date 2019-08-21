@@ -64,7 +64,7 @@ class Signupform extends Component {
             <Form.Field>
               <label>Account Type</label>
               <select
-                id="accountType"
+                id="role"
                 value={this.state.role}
                 onChange={e => this.setState({ role: e.target.value })}
               >
