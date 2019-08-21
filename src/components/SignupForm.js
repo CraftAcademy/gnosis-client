@@ -7,7 +7,7 @@ import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
 class Signupform extends Component {
   state = {
     renderSignupForm: true,
-    accountType: "",
+    role: "",
     name: "",
     email: "",
     password: "",
@@ -23,14 +23,14 @@ class Signupform extends Component {
       email,
       password,
       password_confirmation,
-      accountType
+      role
     } = this.state;
     registerUser({
       name,
       email,
       password,
       password_confirmation,
-      accountType
+      role
     })
       .then(() => {
         this.setState({
@@ -48,7 +48,7 @@ class Signupform extends Component {
 
     if (this.state.userSaved === true) {
       saveUserStatus =
-        "Payment successful! University Account successfully created!";
+        `Payment successful! Your ${this.state.role} account successfully created!`;
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
@@ -65,19 +65,19 @@ class Signupform extends Component {
               <label>Account Type</label>
               <select
                 id="accountType"
-                value={this.state.accountType}
-                onChange={e => this.setState({ accountType: e.target.value })}
+                value={this.state.role}
+                onChange={e => this.setState({ role: e.target.value })}
               >
                 <option className="options" value="" disabled>
                   Choose Account. . .
                 </option>
-                <option className="options" value="University">
+                <option className="options" value="university">
                   University
                 </option>
-                <option className="options" value="Research Group">
+                <option className="options" value="research_group">
                   Research Group
                 </option>
-                <option className="options" value="Reader">
+                <option className="options" value="reader">
                   Reader
                 </option>
               </select>
@@ -121,21 +121,10 @@ class Signupform extends Component {
               />
             </Form.Field>
 
-            {this.state.accountType === "University" ? <PaymentForm /> : ""}
+            {this.state.role === "university" ? <PaymentForm /> : ""}
 
             <Button id="submit-account-button" type="submit">
               Sign Me Up!
-            </Button>
-            <Button
-              onClick={() =>
-                this.setState({
-                  renderSignupForm: false,
-                  renderSignupButton: true,
-                  accountType: ""
-                })
-              }
-            >
-              Return
             </Button>
           </Form>
         ) : (

@@ -4,11 +4,15 @@ import { Container, Form, Button } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 
-export class LoginForm extends Component {
-  state = {
+class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
     renderLoginForm: true,
     email: "",
-    password: ""
+    password: "",
+    authenticated: false,
+    message: ''
   };
 
   loginHandler = e => {
@@ -24,7 +28,17 @@ export class LoginForm extends Component {
       });
   };
 
-  render() {
+  // async onLogin(e) {
+  //   e.preventDefault();
+  //   let resp = await authenticate(this.state.email, this.state.password)
+  //   if (resp.authenticated === true) {
+  //     this.setState({ authenticated: true });
+  //   } else {
+  //     this.setState({ message: resp.message, renderLoginForm: false })
+  //   }
+  // }
+
+  render() =>  
     return (
       <Container>
         {this.props.currentUser.isSignedIn
@@ -50,7 +64,10 @@ export class LoginForm extends Component {
               />
             </Form.Field>
 
-            <Button id="login-form-submit" type="submit">
+            <Button 
+              id="login-form-submit" 
+              type="submit"
+              onClick={(e) => props.loginHandler(e)}>
               Login
             </Button>
           </Form>
@@ -59,14 +76,14 @@ export class LoginForm extends Component {
         )}
       </Container>
     );
-  }
-}
+  };
+};
 
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
   };
-};
+}
 export default connect(
   mapStateToProps,
   { signInUser }

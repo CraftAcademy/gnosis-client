@@ -56,11 +56,11 @@ Cypress.Commands.add("university_login", (email, password) => {
 
 Cypress.Commands.add(
   "university_success_signup",
-  (accountType, name, email, password, password_confirmation) => {
+  (role, name, email, password, password_confirmation) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
-      cy.get('select[id="accountType"]').select(accountType);
+      cy.get('select[id="role"]').select(role);
       cy.get('input[id="name"]').type(name);
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
@@ -71,11 +71,11 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "university_unsucces_signup",
-  (accountType, name, email, password) => {
+  (role, name, email, password) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
-      cy.get('select[id="accountType"]').select(accountType);
+      cy.get('select[id="role"]').select(role);
       cy.get('input[id="name"]').type(name);
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
