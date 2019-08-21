@@ -127,17 +127,6 @@ class Signupform extends Component {
             <Button id="submit-account-button" type="submit">
               Sign Me Up!
             </Button>
-            <Button
-              onClick={() =>
-                this.setState({
-                  renderSignupForm: false,
-                  renderSignupButton: true,
-                  accountType: ""
-                })
-              }
-            >
-              Return
-            </Button>
           </Form>
         ) : (
             ""
