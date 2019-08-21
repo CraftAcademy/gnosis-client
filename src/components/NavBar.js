@@ -29,7 +29,7 @@ class NavBar extends Component {
       loginActions = (
         <>
           <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
-          <Menu.Item as={NavLink} to="/signup">Sign Up</Menu.Item>
+          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
         </>
       )
 

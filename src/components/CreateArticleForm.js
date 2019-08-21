@@ -3,7 +3,6 @@ import { saveArticle } from "../modules/saveArticle";
 import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 
-
 class CreateArticleForm extends Component {
   state = {
     author: "",
@@ -72,7 +71,6 @@ class CreateArticleForm extends Component {
               </Form>
             }
           </div>
-
         </Container>
       </>
     )

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
+
 export class LoginForm extends Component {
   state = {
     renderLoginForm: true,
@@ -16,7 +17,7 @@ export class LoginForm extends Component {
     const { email, password } = this.state;
     signInUser({ email, password })
       .then(() => {
-        this.setState({ renderLoginForm: false })
+        this.setState({ renderLoginForm: false });
       })
       .catch(error => {
         console.log("error is", error);
@@ -24,44 +25,54 @@ export class LoginForm extends Component {
   };
 
   render() {
-    let loginFields;
-    let userGreeting;
-
-    if (this.state.renderLoginForm === true) {
-      loginFields = (
-        <Form id="login-form" onSubmit={this.loginHandler}>
-          <Form.Field>
-            <input
-              id="email"
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </Form.Field>
-          <Form.Field>
-            <input
-              id="password"
-              type="password"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
-          </Form.Field>
-          <Button id="login-form-submit" type="submit">
-            Proceed
-            </Button>
-        </Form>
-      );
-    }
-
-    if (this.props.currentUser.isSignedIn === true) {
-      userGreeting = `Hello ${this.props.currentUser.attributes.uid}!`;
-    }
-
     return (
-      <>
-        <Container>
-          {userGreeting}
-          {loginFields}
-        </Container>
+      <Container>
+        {this.props.currentUser.isSignedIn
+          ? `Hello ${this.props.currentUser.attributes.uid}!`
+          : ""}
 
-      </>
+        {!this.props.currentUser.isSignedIn ? (
+          <Button
+            id="login-button"
+            onClick={() =>
+              this.setState({
+                renderLoginForm: !this.state.renderLoginForm
+              })
+            }
+          >
+            Login
+          </Button>
+        ) : (
+          ""
+        )}
+
+        {this.state.renderLoginForm ? (
+          <Form id="login-form" onSubmit={this.loginHandler}>
+            <Form.Field>
+              <label>Account E-Mail Address</label>
+              <input
+                id="email"
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+            </Form.Field>
+
+            <Form.Field>
+              <label>Password</label>
+              <input
+                id="password"
+                type="password"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+            </Form.Field>
+
+            <Button id="login-form-submit" type="submit">
+              Login
+            </Button>
+          </Form>
+        ) : (
+          ""
+        )}
+      </Container>
     );
   }
 }

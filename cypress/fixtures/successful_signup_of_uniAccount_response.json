@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "data": {
+    "allow_password_change": false,
+    "name": "Harvard",
+    "role": "University",
+    "email": "harvard@mail.com"
+  }
+}
