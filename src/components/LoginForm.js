@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
-
 export class LoginForm extends Component {
   state = {
     renderLoginForm: true,
@@ -24,6 +23,7 @@ export class LoginForm extends Component {
       });
   };
 
+
   render() {
     return (
       <Container>
@@ -43,8 +43,8 @@ export class LoginForm extends Component {
             Login
           </Button>
         ) : (
-          ""
-        )}
+            ""
+          )}
 
         {this.state.renderLoginForm ? (
           <Form id="login-form" onSubmit={this.loginHandler}>
@@ -70,8 +70,8 @@ export class LoginForm extends Component {
             </Button>
           </Form>
         ) : (
-          ""
-        )}
+            ""
+          )}
       </Container>
     );
   }
