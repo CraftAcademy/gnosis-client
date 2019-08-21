@@ -14,6 +14,7 @@ describe("University Sign-Up", () => {
       "harvard@mail.com",
       "password",
       "password_confirmation"
+    
     );
     cy.get("#payment-form").within(() => {
       cy.get('select[id="payment-type"]').select("card-payment");

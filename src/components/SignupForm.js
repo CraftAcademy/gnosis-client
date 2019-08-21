@@ -3,6 +3,7 @@ import PaymentForm from "./PaymentForm";
 import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
+import { isDebuggerStatement } from "@babel/types";
 
 class Signupform extends Component {
   state = {
@@ -45,7 +46,6 @@ class Signupform extends Component {
 
   render() {
     let saveUserStatus;
-
     if (this.state.userSaved === true) {
       saveUserStatus =
         `Payment successful! Your ${this.state.role} account successfully created!`;
@@ -105,6 +105,7 @@ class Signupform extends Component {
               <label>Password</label>
               <input
                 id="password"
+                type="password"
                 value={this.state.password}
                 onChange={e => this.setState({ password: e.target.value })}
               />
@@ -114,6 +115,7 @@ class Signupform extends Component {
               <label>Password Confirmation</label>
               <input
                 id="password-confirmation"
+                type="password"
                 value={this.state.password_confirmation}
                 onChange={e =>
                   this.setState({ password_confirmation: e.target.value })
