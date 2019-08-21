@@ -6,4 +6,8 @@ describe('User can log in', () => {
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.get('#flash').should('contain', 'Hello climate_harvard@mail.com!')
   })
+  it('unsuccessfully', () => {
+    cy.research_group_login("climate_harvard@mail.com", "wrong_password");
+    cy.get('#flash').should('contain', 'Invalid credentials, please try again.')
+  })
 })
