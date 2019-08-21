@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 import { Container, Form, Button } from "semantic-ui-react";
+import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
 
 export class LoginForm extends Component {
   state = {
-    renderLoginForm: false,
+    renderLoginForm: true,
     email: "",
     password: ""
   };

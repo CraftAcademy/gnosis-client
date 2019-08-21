@@ -58,7 +58,7 @@ Cypress.Commands.add(
   "university_success_signup",
   (accountType, name, email, password, password_confirmation) => {
     cy.visit("http://localhost:3001");
-    cy.get("#sign-up").click();
+    cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
       cy.get('select[id="accountType"]').select(accountType);
       cy.get('input[id="name"]').type(name);
@@ -73,7 +73,7 @@ Cypress.Commands.add(
   "university_unsucces_signup",
   (accountType, name, email, password) => {
     cy.visit("http://localhost:3001");
-    cy.get("#sign-up").click();
+    cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
       cy.get('select[id="accountType"]').select(accountType);
       cy.get('input[id="name"]').type(name);

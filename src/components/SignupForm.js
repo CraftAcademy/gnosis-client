@@ -4,17 +4,15 @@ import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
 
-export class Signupform extends Component {
+class Signupform extends Component {
   state = {
-    renderSignupForm: false,
-    renderSignupButton: true,
+    renderSignupForm: true,
     accountType: "",
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
-    userSaved: false,
-    errorMessage: ""
+    userSaved: false
   };
 
   async saveNewUserHandler(e) {
@@ -41,9 +39,7 @@ export class Signupform extends Component {
         });
       })
       .catch(error => {
-        this.setState({
-          errorMessage: error.response.data.message
-        });
+        this.props.dispatchFlash(error)
       })
   }
 
@@ -62,21 +58,6 @@ export class Signupform extends Component {
 
     return (
       <Container>
-        {this.state.renderSignupButton ? (
-          <Button
-            id="sign-up"
-            onClick={() =>
-              this.setState({
-                renderSignupForm: true,
-                renderSignupButton: false
-              })
-            }
-          >
-            Sign Up
-          </Button>
-        ) : (
-          ""
-        )}
 
         {this.state.renderSignupForm ? (
           <Form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
@@ -158,8 +139,8 @@ export class Signupform extends Component {
             </Button>
           </Form>
         ) : (
-          ""
-        )}
+            ""
+          )}
         {saveUserStatus}
       </Container>
     );
@@ -172,7 +153,14 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+  dispatchFlash: (error) => (
+    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: error.response.data.message, status: 'error' } }
+  ),
+  registerUser
+}
+
 export default connect(
   mapStateToProps,
-  { registerUser }
+  mapDispatchToProps
 )(Signupform);
