@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Container, Form, Button } from "semantic-ui-react";
 import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
 
-export class LoginForm extends Component {
+class LoginForm extends Component {
   state = {
     renderLoginForm: true,
     email: "",
@@ -17,36 +17,15 @@ export class LoginForm extends Component {
     signInUser({ email, password })
       .then(() => {
         this.setState({ renderLoginForm: false });
+        this.props.dispatchFlash(`Hello ${this.props.currentUser.attributes.uid}!`)
       })
-      .catch(error => {
-        console.log("error is", error);
-      });
   };
 
 
   render() {
     return (
       <Container>
-        {this.props.currentUser.isSignedIn
-          ? `Hello ${this.props.currentUser.attributes.uid}!`
-          : ""}
-
-        {!this.props.currentUser.isSignedIn ? (
-          <Button
-            id="login-button"
-            onClick={() =>
-              this.setState({
-                renderLoginForm: !this.state.renderLoginForm
-              })
-            }
-          >
-            Login
-          </Button>
-        ) : (
-            ""
-          )}
-
-        {this.state.renderLoginForm ? (
+        {this.state.renderLoginForm && (
           <Form id="login-form" onSubmit={this.loginHandler}>
             <Form.Field>
               <label>Account E-Mail Address</label>
@@ -69,9 +48,7 @@ export class LoginForm extends Component {
               Login
             </Button>
           </Form>
-        ) : (
-            ""
-          )}
+        )}
       </Container>
     );
   }
@@ -82,7 +59,15 @@ const mapStateToProps = state => {
     currentUser: state.reduxTokenAuth.currentUser
   };
 };
+
+const mapDispatchToProps = {
+  dispatchFlash: (message) => (
+    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: message, status: 'success' } }
+  ),
+  signInUser
+}
+
 export default connect(
   mapStateToProps,
-  { signInUser }
+  mapDispatchToProps
 )(LoginForm);
