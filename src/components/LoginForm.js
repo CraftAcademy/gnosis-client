@@ -18,6 +18,8 @@ class LoginForm extends Component {
       .then(() => {
         this.setState({ renderLoginForm: false });
         this.props.dispatchFlash(`Hello ${this.props.currentUser.attributes.uid}!`)
+      }).catch((error) => {
+        this.props.dispatchFlash(error.response.data.errors[0])
       })
   };
 
