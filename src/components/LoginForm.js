@@ -1,18 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Container, Form, Button } from "semantic-ui-react";
-import { signInUser } from "../redux/actions/reduxTokenAuthConfig";
-
-
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+export class LoginForm extends Component {
+  state = {
     renderLoginForm: true,
     email: "",
-    password: "",
-    authenticated: false,
-    message: ''
+    password: ""
   };
 
   loginHandler = e => {
@@ -28,22 +18,27 @@ class LoginForm extends Component {
       });
   };
 
-  // async onLogin(e) {
-  //   e.preventDefault();
-  //   let resp = await authenticate(this.state.email, this.state.password)
-  //   if (resp.authenticated === true) {
-  //     this.setState({ authenticated: true });
-  //   } else {
-  //     this.setState({ message: resp.message, renderLoginForm: false })
-  //   }
-  // }
-
-  render() =>  
+  render() {
     return (
       <Container>
         {this.props.currentUser.isSignedIn
           ? `Hello ${this.props.currentUser.attributes.uid}!`
           : ""}
+
+        {!this.props.currentUser.isSignedIn ? (
+          <Button
+            id="login-button"
+            onClick={() =>
+              this.setState({
+                renderLoginForm: !this.state.renderLoginForm
+              })
+            }
+          >
+            Login
+          </Button>
+        ) : (
+          ""
+        )}
 
         {this.state.renderLoginForm ? (
           <Form id="login-form" onSubmit={this.loginHandler}>
@@ -64,10 +59,7 @@ class LoginForm extends Component {
               />
             </Form.Field>
 
-            <Button 
-              id="login-form-submit" 
-              type="submit"
-              onClick={(e) => props.loginHandler(e)}>
+            <Button id="login-form-submit" type="submit">
               Login
             </Button>
           </Form>
@@ -76,14 +68,14 @@ class LoginForm extends Component {
         )}
       </Container>
     );
-  };
-};
+  }
+}
 
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
   };
-}
+};
 export default connect(
   mapStateToProps,
   { signInUser }
