@@ -15,11 +15,6 @@ class Signupform extends Component {
     userSaved: false
   };
 
-  componentDidMount() {
-    // debugger
-  }
-
-
   async saveNewUserHandler(e) {
     e.preventDefault();
     const { registerUser } = this.props;
@@ -164,8 +159,6 @@ const mapDispatchToProps = {
   ),
   registerUser
 }
-
-
 
 export default connect(
   mapStateToProps,
