@@ -2,7 +2,6 @@ import React from "react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
 import NavBar from "./components/NavBar.js";
-import "./styling/App.css";
 import "./styling/Navbar.css";
 import { Switch, Route } from 'react-router-dom';
 import SignupForm from "./components/SignupForm";

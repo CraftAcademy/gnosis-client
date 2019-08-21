@@ -1,7 +1,5 @@
 describe("Happy Path: Visitor can visit client site connected to api with articles", () => {
   before(function () {
-    cy.viewport('iphone-6+') 
-
     cy.server();
     cy.route({
       method: "GET",

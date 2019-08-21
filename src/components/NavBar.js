@@ -36,9 +36,9 @@ class NavBar extends Component {
     }
     return (
       <>
-        <div id="navbar" className="ui stackable menu">
+        <div className="ui stackable menu">
           <Container>
-            <Menu.Item className="header" to="/">
+            <Menu.Item className="header logo" to="/">
               GNOSIS
             </Menu.Item>
             <Menu.Item as={NavLink} to="/">Home</Menu.Item>

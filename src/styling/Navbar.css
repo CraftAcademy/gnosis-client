@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lexend+Giga|Abel&display=swap");
 
-
-#header {
-  font-family: "Lexend Giga", sans-serif;
-  text-align: center;
-  font-size: 55px;
-  color: rgb(21, 55, 75);
-  width: 100% !important;
-}
-
-#navbar{
+.logo{
   font-family: "Lexend Giga", sans-serif;
   font-size: 15,5px;
-
 }
