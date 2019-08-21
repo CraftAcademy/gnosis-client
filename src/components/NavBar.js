@@ -21,7 +21,7 @@ class NavBar extends Component {
       flashMessage = <AlertMessage />
     }
 
-    if (this.props.currentUser.attributes.role === "research_group") {
+    if (this.props.currentUser.attributes.role === "research_group_user") {
       createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
     }
 
