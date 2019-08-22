@@ -2,12 +2,17 @@ describe("University pay for subscription", () => {
 
   beforeEach(() => {
     cy.server();
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v0/subscriptions",
+      response: "fixture:successful_subscription_payment_request.json"
+    });
     cy.university_login("harvard@mail.com", "password");
     cy.get("#subscribe-button").click();
   });
 
   it("Payment is successfully processed", () => {
-    cy.wait(1000);
+    cy.wait(2000);
     cy.get(".__PrivateStripeElement > iframe").then($elements => {
       const stripeElementsInputSelector = ".InputElement";
 

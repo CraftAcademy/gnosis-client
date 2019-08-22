@@ -5,24 +5,24 @@ import {
   CardCvcElement,
   injectStripe
 } from "react-stripe-elements";
+import axios from "axios";
 import { Form } from "semantic-ui-react";
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = { complete: false };
-    this.submit = this.submit.bind(this);
+    this.submitPayment = this.submitPayment.bind(this);
   }
 
-  async submit(ev) {
+  async submitPayment() {
     let { token } = await this.props.stripe.createToken({ name: "Name" });
-    let response = await fetch("/charge", {
-      method: "POST",
+    let response = await axios.post("/subscriptions", {
       headers: { "Content-Type": "text/plain" },
       body: token.id
     });
 
-    if (response.ok) this.setState({ complete: true });
+    if (response.status === 200) this.setState({ complete: true });
   }
 
   render() {
@@ -47,7 +47,7 @@ class CheckoutForm extends Component {
             <CardCvcElement />
           </Form.Field>
           <Form.Field>
-            <button onClick={this.submit} id="submit-payment-button">
+            <button onClick={this.submitPayment} id="submit-payment-button">
               Proceed with Payment
             </button>
           </Form.Field>
