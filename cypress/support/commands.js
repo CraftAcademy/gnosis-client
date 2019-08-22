@@ -13,6 +13,21 @@ Cypress.Commands.add("research_group_login", (email, password) => {
   cy.get("#login-form-submit").click();
 });
 
+Cypress.Commands.add("university_login", (email, password) => {
+  cy.route({
+    method: "POST",
+    url: "http://localhost:3000/api/v0/auth/sign_in",
+    response: "fixture:successful_university_login.json"
+  });
+  cy.visit("http://localhost:3001");
+  cy.get("#login-button").click();
+  cy.get("#login-form").within(() => {
+    cy.get("#email").type(email);
+    cy.get("#password").type(password);
+  });
+  cy.get("#login-form-submit").click();
+});
+
 Cypress.Commands.add("research_group_wrong_login", (email, password) => {
   cy.route({
     method: "POST",
