@@ -28,18 +28,18 @@ class CheckoutForm extends Component {
               Yearly - 10,000SEK/each
             </Form.Field>
           </Form.Field>
-          <Form.Field>
+          {/* <Form.Field > */}
             <CardNumberElement />
-          </Form.Field>
-          <Form.Field>
+          {/* </Form.Field> */}
+          {/* <Form.Field> */}
             <CardExpiryElement />
-          </Form.Field>
-          <Form.Field>
+          {/* </Form.Field>
+          <Form.Field> */}
             <CardCvcElement />
-          </Form.Field>
-          <Form.Field>
+          {/* </Form.Field>
+          <Form.Field> */}
             <button onClick={this.submit}>Send</button>
-          </Form.Field>
+          {/* </Form.Field> */}
         </Form>
       </div>
     );

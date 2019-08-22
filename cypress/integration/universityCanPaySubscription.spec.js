@@ -7,11 +7,22 @@ describe("University pay for subscription", () => {
   });
 
   it("Payment is successfully processed", () => {
-    cy.get("#payment-form").within(() => {
-      cy.get('input[id="card-number"]').type("4242 4242 4242 4242");
-      cy.get('input[id="expiration date"]').type("10-21");
-      cy.get('input[id="CVC"]').type("123");
+    cy.get(".__PrivateStripeElement > iframe").then($elements => {
+      const stripeElementsInputSelector = ".InputElement";
+
+      const creditInput = $elements
+        .eq(0)
+        .contents()
+        .find(stripeElementsInputSelector);
+      cy.wrap(creditInput).type("4242424242424242");
+
+      const expirationInput = $elements
+        .eq(1)
+        .contents()
+        .find(stripeElementsInputSelector);
+      cy.wrap(expirationInput).type("12/59");
     });
+
     cy.get("#submit-account-button").click();
     cy.contains("Payment successful!");
   });
