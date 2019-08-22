@@ -1,8 +1,6 @@
-describe('University is redirected to payment form  after login', () => {
+describe('University can see payment form after signup', () => {
   before(function () {
     cy.server();
-  });
-  it('Subscribes successfully', () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
@@ -15,6 +13,8 @@ describe('University is redirected to payment form  after login', () => {
       "password",
       "password"
     );
+  });
+  it('can click subscribe button and see payment form', () => {
     cy.get("#submit-account-button").click();
     cy.get("#subscribe-button").click();
     cy.get("#payment-form").should("exist");
