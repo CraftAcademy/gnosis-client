@@ -7,6 +7,7 @@ describe("University pay for subscription", () => {
   });
 
   it("Payment is successfully processed", () => {
+    cy.wait(1000);
     cy.get(".__PrivateStripeElement > iframe").then($elements => {
       const stripeElementsInputSelector = ".InputElement";
 
@@ -29,7 +30,7 @@ describe("University pay for subscription", () => {
       cy.wrap(cvcInput).type("123");
     });
 
-    cy.get("#submit-account-button").click();
+    cy.get("#submit-payment-button").click();
     cy.contains("Payment successful!");
   });
 });
