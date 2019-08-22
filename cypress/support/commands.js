@@ -60,7 +60,7 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
-  "university_unsucces_signup",
+  "university_unsuccess_signup",
   (role, name, email, password) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();

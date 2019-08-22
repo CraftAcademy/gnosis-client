@@ -1,5 +1,6 @@
 describe('University can see payment form after signup', () => {
-  before(function () {
+
+  it('Can click subscribe button and see payment form', () => {
     cy.server();
     cy.route({
       method: "POST",
@@ -13,10 +14,14 @@ describe('University can see payment form after signup', () => {
       "password",
       "password"
     );
-  });
-  it('Can click subscribe button and see payment form', () => {
     cy.get("#submit-account-button").click();
     cy.get("#subscribe-button").click();
     cy.get("#payment-form").should("exist");
+  });
+
+  it("Subscribe button does not show to users with different roles", () => {
+    cy.server();
+    cy.research_group_login("climate_harvard@mail.com", "password");
+    cy.get("#subscribe-button").should("not.exist");
   });
 });

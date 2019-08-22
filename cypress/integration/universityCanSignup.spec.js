@@ -28,7 +28,7 @@ describe("University Sign-Up", () => {
       response: "fixture:unsuccessful_signing_up_university_response.json",
       status: 404
     });
-    cy.university_unsucces_signup(
+    cy.university_unsuccess_signup(
       "university",
       "harvard",
       "harvard@mail.com",
