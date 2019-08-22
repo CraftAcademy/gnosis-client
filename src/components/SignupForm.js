@@ -8,6 +8,7 @@ import { isDebuggerStatement } from "@babel/types";
 class Signupform extends Component {
   state = {
     renderSignupForm: true,
+    renderPaymentForm: false,
     role: "",
     name: "",
     email: "",
@@ -36,7 +37,8 @@ class Signupform extends Component {
       .then(() => {
         this.setState({
           userSaved: true,
-          renderSignupForm: false
+          renderSignupForm: false,
+          renderPaymentForm: true
         });
       })
       .catch(error => {
@@ -46,14 +48,20 @@ class Signupform extends Component {
 
   render() {
     let saveUserStatus;
+    let paymentForm
     if (this.state.userSaved === true) {
       saveUserStatus =
-        `Payment successful! Your ${this.state.role} account successfully created!`;
+        `Your ${this.state.role} account successfully created!`;
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
     ) {
       saveUserStatus = this.state.errorMessage;
+    }
+    if (this.state.renderPaymentForm === true) {
+      paymentForm = ( <PaymentForm /> )
+    } else {
+      paymentForm = ""
     }
 
     return (
@@ -133,6 +141,7 @@ class Signupform extends Component {
             ""
           )}
         {saveUserStatus}
+        {paymentForm}
       </Container>
     );
   }

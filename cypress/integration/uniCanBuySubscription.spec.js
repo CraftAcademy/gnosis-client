@@ -16,8 +16,7 @@ describe('University can buy yearly subscription after sign up', () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.location("pathname").should("eq", "/payment");
-    cy.get('#flash').should('contain', 'Your university account successfully created!')
+    cy.contains('Your university account successfully created!');
     cy.get("#payment-form").within(() => {
       cy.get('input[id="card-number"]').type("4242 4242 4242 4242");
       cy.get('input[id="card-owner"]').type("Harvard University");
