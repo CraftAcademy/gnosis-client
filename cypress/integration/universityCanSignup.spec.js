@@ -13,7 +13,7 @@ describe("University Sign-Up", () => {
       "harvard",
       "harvard@mail.com",
       "password",
-      "password_confirmation"
+      "password"
     
     );
     cy.get("#payment-form").within(() => {

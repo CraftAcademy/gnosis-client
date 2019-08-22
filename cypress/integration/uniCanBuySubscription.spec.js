@@ -8,7 +8,7 @@ describe('University can buy yearly subscription after sign up', () => {
       "harvard",
       "harvard@mail.com",
       "password",
-      "password_confirmation"
+      "password"
     );
     cy.get("#submit-account-button").click();
     cy.location("pathname").should("eq", "/payment");

@@ -123,7 +123,7 @@ class Signupform extends Component {
               />
             </Form.Field>
 
-            {this.state.role === "university" ? <PaymentForm /> : ""}
+            {/* {this.state.role === "university" ? <PaymentForm /> : ""} */}
 
             <Button id="submit-account-button" type="submit">
               Sign Me Up!
