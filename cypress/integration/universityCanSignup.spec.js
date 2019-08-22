@@ -21,7 +21,7 @@ describe("University Sign-Up", () => {
 
 
 
-  it("User can't sign up with invalid credentials", () => {
+  it("User can't sign up with unmatching credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",

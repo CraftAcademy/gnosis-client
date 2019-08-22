@@ -4,7 +4,7 @@ let development = "http://localhost:3000/api/v0/auth";
 let production = "https://gnosis-api.herokuapp.com/api/v0/auth";
 
 const config = {
-  authUrl: development,
+  authUrl: production,
   userAttributes: {
     uid: "uid",
     role: "role",
