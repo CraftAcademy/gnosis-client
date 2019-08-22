@@ -3,7 +3,6 @@ import PaymentForm from "./PaymentForm";
 import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
-import { isDebuggerStatement } from "@babel/types";
 
 class SignupForm extends Component {
   state = {

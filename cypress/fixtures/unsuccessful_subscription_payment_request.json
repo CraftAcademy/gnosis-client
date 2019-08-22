@@ -1,0 +1,7 @@
+{
+  "status": 422,
+  "headers": {},
+  "body": {
+    "message": "Payment failed!"
+  }
+}
