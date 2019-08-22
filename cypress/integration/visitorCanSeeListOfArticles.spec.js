@@ -1,4 +1,4 @@
-describe("Happy Path: Visitor can visit client site connected to api with articles", () => {
+describe("Visitor can see articles when visiting the App", () => {
   before(function () {
     cy.server();
     cy.route({
@@ -9,12 +9,12 @@ describe("Happy Path: Visitor can visit client site connected to api with articl
     cy.visit("http://localhost:3001");
   });
 
-  it("and sees two articles", async () => {
+  it("Two articles are displayed", async () => {
     cy.get("#article_1");
     cy.get("#article_2");
   });
 
-  it("and sees the content of article 1", async () => {
+  it("Article content is visible", async () => {
     cy.get("#article_1").within(() => {
       cy.get("#title").contains(
         "A study on the maladapted social behaviours of pidgeons"
@@ -26,12 +26,12 @@ describe("Happy Path: Visitor can visit client site connected to api with articl
   });
 });
 
-describe("Sad Path: Visitor does not see articles when visiting the site", () => {
+describe("Visitor does not see articles when visiting the site", () => {
   before(function () {
     cy.visit("http://localhost:3001");
   });
 
-  it("displays an error if articles are unavailable", async () => {
+  it("Articles are unavailable", async () => {
     cy.get(".articles").contains("Articles are currently unavailable.");
   });
 });

@@ -1,11 +1,11 @@
-describe("Can't create article ", () => {
+describe("Universities can't create articles", () => {
   it("Visitors can't create articles", () => {
     cy.visit("http://localhost:3001");
     cy.get("#login-button").should("exist");
     cy.get("#create-article-button").should("not.exist");
   });
 
-  it("Universities can't create articles", () => {
+  it("Create Article button not shown for University", () => {
     cy.server();
     cy.university_login("harvard@mail.com", "password");
     cy.contains("Hello harvard@mail.com!");

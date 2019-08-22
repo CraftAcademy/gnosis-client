@@ -4,7 +4,7 @@ describe('University can see payment form after signup', () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:successful_signup_of_uniAccount_response.json"
+      response: "fixture:successful_signup_of_university_response.json"
     });
     cy.university_success_signup(
       "university",
@@ -14,7 +14,7 @@ describe('University can see payment form after signup', () => {
       "password"
     );
   });
-  it('can click subscribe button and see payment form', () => {
+  it('Can click subscribe button and see payment form', () => {
     cy.get("#submit-account-button").click();
     cy.get("#subscribe-button").click();
     cy.get("#payment-form").should("exist");

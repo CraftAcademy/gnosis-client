@@ -6,7 +6,7 @@ describe("University Sign-Up", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:successful_signup_of_uniAccount_response.json"
+      response: "fixture:successful_signup_of_university_response.json"
     });
     cy.university_success_signup(
       "university",
@@ -21,11 +21,11 @@ describe("University Sign-Up", () => {
 
 
 
-  it("User can't sign up without all form fields filled out (sad path)", () => {
+  it("User can't sign up with invalid credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:unsuccessfully_signing_up_uniAccount_response.json",
+      response: "fixture:unsuccessful_signing_up_university_response.json",
       status: 404
     });
     cy.university_unsucces_signup(
@@ -34,7 +34,6 @@ describe("University Sign-Up", () => {
       "harvard@mail.com",
       "password",
       "password_confirmation"
-      
     );
     cy.get("#submit-account-button").click();
     cy.contains("Invalid sign up credentials. Please try again.");
