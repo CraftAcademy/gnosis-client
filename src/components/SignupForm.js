@@ -4,7 +4,7 @@ import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
 
-class Signupform extends Component {
+class SignupForm extends Component {
   state = {
     renderSignupForm: true,
     role: "",
@@ -35,19 +35,28 @@ class Signupform extends Component {
       .then(() => {
         this.setState({
           userSaved: true,
+          renderSignupForm: false
         });
+        this.props.dispatchFlash(
+          `Your ${this.state.role} account successfully created!`,
+          "success"
+        );
       })
       .catch(error => {
-        this.props.dispatchFlash(error)
-      })
+        this.props.dispatchFlash(error.response.data.errors[0], "error");
+      });
   }
 
   render() {
     let saveUserStatus;
-    let paymentForm
-    if (this.state.userSaved === true) {
-      saveUserStatus =
-        `Your ${this.state.role} account successfully created!`;
+    let paymentForm;
+    let universityWelcome
+
+    if (
+      this.state.userSaved === true &&
+      this.props.currentUser.attributes.role === "University"
+    ) {
+      universityWelcome = `Welcome to Gnosis! To obtain your Research Group account keys, please subscribe!`;
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
@@ -126,9 +135,6 @@ class Signupform extends Component {
                 }
               />
             </Form.Field>
-
-            {/* {this.state.role === "university" ? <PaymentForm /> : ""} */}
-
             <Button id="submit-account-button" type="submit" >
               Sign Me Up!
             </Button> 
@@ -138,6 +144,7 @@ class Signupform extends Component {
           )}
         {saveUserStatus}
         {paymentForm}
+        {universityWelcome}
       </Container>
     );
   }
@@ -150,13 +157,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  dispatchFlash: (error) => (
-    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: error.response.data.message, status: 'error' } }
-  ),
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  }),
   registerUser
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Signupform);
+)(SignupForm);

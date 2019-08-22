@@ -37,6 +37,6 @@ describe("University Sign-Up", () => {
       
     );
     cy.get("#submit-account-button").click();
-    cy.contains("No field can be blank!");
+    cy.contains("Invalid sign up credentials. Please try again.");
   });
 });

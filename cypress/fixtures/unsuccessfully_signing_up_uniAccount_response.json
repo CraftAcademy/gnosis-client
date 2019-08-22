@@ -1,3 +1,6 @@
 {
-  "message": "No field can be blank!"
+  "success": false,
+  "errors": [
+    "Invalid sign up credentials. Please try again."
+  ]
 }
