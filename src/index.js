@@ -10,7 +10,7 @@ import axios from "axios";
 let development = "http://localhost:3000/api/v0";
 let production = "https://gnosis-api.herokuapp.com/api/v0";
 
-axios.defaults.baseURL = development
+axios.defaults.baseURL = production;
 
 const store = configureStore();
 
