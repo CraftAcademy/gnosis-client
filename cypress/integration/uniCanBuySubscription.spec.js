@@ -3,6 +3,11 @@ describe('University can buy yearly subscription after sign up', () => {
     cy.server();
   });
   it('Subscribes successfully', () => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/v0/auth",
+      response: "fixture:successful_signup_of_uniAccount_response.json"
+    });
     cy.university_success_signup(
       "university",
       "harvard",

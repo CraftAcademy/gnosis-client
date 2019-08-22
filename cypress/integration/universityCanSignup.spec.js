@@ -14,15 +14,7 @@ describe("University Sign-Up", () => {
       "harvard@mail.com",
       "password",
       "password"
-    
     );
-    cy.get("#payment-form").within(() => {
-      cy.get('select[id="payment-type"]').select("card-payment");
-      cy.get('input[id="card-number"]').type("6666 6666 6666 6666");
-      cy.get('input[id="card-owner"]').type("JOHN DOE FOSHO");
-      cy.get('input[id="expiration date"]').type("10-21");
-      cy.get('input[id="CVC"]').type("666");
-    });
     cy.get("#submit-account-button").click();
     cy.contains("Payment successful! Your university account successfully created!");
   });
@@ -44,13 +36,6 @@ describe("University Sign-Up", () => {
       "password_confirmation"
       
     );
-    cy.get("#payment-form").within(() => {
-      cy.get('select[id="payment-type"]').select("card-payment");
-      cy.get('input[id="card-number"]').type("6666 6666 6666 6666");
-      cy.get('input[id="card-owner"]').type("JOHN DOE FOSHO");
-      cy.get('input[id="expiration date"]').type("10-21");
-      cy.get('input[id="CVC"]').type("666");
-    });
     cy.get("#submit-account-button").click();
     cy.contains("No field can be blank!");
   });
