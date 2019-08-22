@@ -1,4 +1,4 @@
-describe('University can buy yearly subscription after sign up', () => {
+describe('University is redirected to payment form  after login', () => {
   before(function () {
     cy.server();
   });
@@ -16,15 +16,7 @@ describe('University can buy yearly subscription after sign up', () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.contains('Your university account successfully created!');
-    cy.get("#payment-form").within(() => {
-      cy.get('input[id="card-number"]').type("4242 4242 4242 4242");
-      cy.get('input[id="card-owner"]').type("Harvard University");
-      cy.get('input[id="expiration date"]').type("10-21");
-      cy.get('input[id="CVC"]').type("123");
-    });
-    cy.get("#process-payment").click();
-    cy.location("pathname").should("eq", "/user_profile");
-    cy.get('#flash').should('contain', 'Payment was successful!')
+    cy.location("pathname").should("eq", "/payment");
+    cy.get("#payment-form").should("exist");
   });
 });

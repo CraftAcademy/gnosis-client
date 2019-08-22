@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
 import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
-import { isDebuggerStatement } from "@babel/types";
+import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
+import { NavLink } from 'react-router-dom';
 
 class Signupform extends Component {
   state = {
     renderSignupForm: true,
-    renderPaymentForm: false,
     role: "",
     name: "",
     email: "",
@@ -37,8 +36,6 @@ class Signupform extends Component {
       .then(() => {
         this.setState({
           userSaved: true,
-          renderSignupForm: false,
-          renderPaymentForm: true
         });
       })
       .catch(error => {
@@ -133,9 +130,9 @@ class Signupform extends Component {
 
             {/* {this.state.role === "university" ? <PaymentForm /> : ""} */}
 
-            <Button id="submit-account-button" type="submit">
+            <Button id="submit-account-button" type="submit" as={NavLink} to="/payment">
               Sign Me Up!
-            </Button>
+            </Button> 
           </Form>
         ) : (
             ""
