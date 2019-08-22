@@ -1,11 +1,8 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:3000/api/v0";
-
 const saveArticle = async (author, title, body) => {
-  const path = apiUrl + "/articles";
   try {
-    let response = await axios.post(path, {
+    let response = await axios.post("/articles", {
       data: {
         author: author,
         title: title,
@@ -19,3 +16,4 @@ const saveArticle = async (author, title, body) => {
 };
 
 export { saveArticle };
+  

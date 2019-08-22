@@ -19,7 +19,7 @@ class DisplayArticles extends Component {
 
   async getArticles() {
     try {
-      const response = await axios.get("http://localhost:3000/api/v0/articles");
+      const response = await axios.get("/articles");
       this.setState({
         articles: response.data
       });

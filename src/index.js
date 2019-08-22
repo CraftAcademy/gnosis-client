@@ -5,6 +5,12 @@ import App from "./App";
 import { Provider } from "react-redux";
 import 'semantic-ui-css/semantic.min.css';
 import configureStore from "./redux/store/configureStore";
+import axios from "axios";
+
+let development = "http://localhost:3000/api/v0";
+let production = "https://gnosis-api.herokuapp.com/api/v0";
+
+axios.defaults.baseURL = production;
 
 const store = configureStore();
 
