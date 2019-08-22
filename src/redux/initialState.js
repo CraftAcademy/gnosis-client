@@ -5,7 +5,8 @@ const initialState = {
       isSignedIn: false,
       attributes: {
         uid: '',
-        role: ''
+        role: '',
+        subscriber: false
       }
     }
   }

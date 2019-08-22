@@ -3,7 +3,6 @@ import PaymentForm from "./PaymentForm";
 import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
-import { NavLink } from 'react-router-dom';
 
 class Signupform extends Component {
   state = {
@@ -130,7 +129,7 @@ class Signupform extends Component {
 
             {/* {this.state.role === "university" ? <PaymentForm /> : ""} */}
 
-            <Button id="submit-account-button" type="submit" as={NavLink} to="/payment">
+            <Button id="submit-account-button" type="submit" >
               Sign Me Up!
             </Button> 
           </Form>

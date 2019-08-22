@@ -7,12 +7,14 @@ const config = {
   authUrl: development,
   userAttributes: {
     uid: "uid",
-    role: "role"
+    role: "role",
+    subscriber: "subscriber"
   },
   userRegistrationAttributes: {
     password_confirmation: "password_confirmation",
     role: "role",
-    name: "name"
+    name: "name",
+    subscriber: "subscriber"
   }
 };
 
