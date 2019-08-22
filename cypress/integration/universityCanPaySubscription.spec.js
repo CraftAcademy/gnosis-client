@@ -21,6 +21,12 @@ describe("University pay for subscription", () => {
         .contents()
         .find(stripeElementsInputSelector);
       cy.wrap(expirationInput).type("12/59");
+
+      const cvcInput = $elements
+        .eq(2)
+        .contents()
+        .find(stripeElementsInputSelector);
+      cy.wrap(cvcInput).type("123");
     });
 
     cy.get("#submit-account-button").click();
