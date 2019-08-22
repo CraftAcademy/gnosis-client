@@ -12,6 +12,7 @@ class NavBar extends Component {
 
   render() {
     let createArticleButton;
+    let subscribeButton;
     let flashMessage;
     let loginActions;
 
@@ -23,6 +24,17 @@ class NavBar extends Component {
 
     if (this.props.currentUser.attributes.role === "research_group") {
       createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
+    }
+
+    if (
+      this.props.currentUser.attributes.role === "University" &&
+      this.props.currentUser.attributes.subscriber === false
+    ) {
+      subscribeButton = (
+        <Menu.Item id="subscribe-button" as={NavLink} to="/payment">
+          Subscribe
+        </Menu.Item>
+      );
     }
 
     if (this.props.currentUser.isSignedIn === false) {
@@ -41,28 +53,42 @@ class NavBar extends Component {
             <Menu.Item className="header logo" to="/">
               GNOSIS
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+            <Menu.Item as={NavLink} to="/">
+              Home
+            </Menu.Item>
             <div className="ui simple dropdown item">
-              Categories <i className="dropdown icon"></i>
+              Categories <i className="dropdown icon" />
               <Menu secondary id="navbar">
-                <Menu.Item name='environment' active={activeItem === 'home'} onClick={this.handleItemClick} />
-                <Menu.Item name='medicine' active={activeItem === 'home'} onClick={this.handleItemClick} />
-                <Menu.Item name='outreach' active={activeItem === 'home'} onClick={this.handleItemClick} />
+                <Menu.Item
+                  name="environment"
+                  active={activeItem === "home"}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="medicine"
+                  active={activeItem === "home"}
+                  onClick={this.handleItemClick}
+                />
+                <Menu.Item
+                  name="outreach"
+                  active={activeItem === "home"}
+                  onClick={this.handleItemClick}
+                />
               </Menu>
             </div>
-            <Menu.Menu position='right'>
-              <Menu.Item><Input icon='search' placeholder='Search...' /></Menu.Item>
+            <Menu.Menu position="right">
+              <Menu.Item>
+                <Input icon="search" placeholder="Search..." />
+              </Menu.Item>
               {createArticleButton}
-
+              {subscribeButton}
               {loginActions}
             </Menu.Menu>
           </Container>
         </div>
-        <Container>
-          {flashMessage}
-        </Container>
+        <Container>{flashMessage}</Container>
       </>
-    )
+    );
   }
 }
 

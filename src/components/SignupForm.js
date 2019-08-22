@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
 import { isDebuggerStatement } from "@babel/types";
 
-class Signupform extends Component {
+class SignupForm extends Component {
   state = {
     renderSignupForm: true,
     role: "",
@@ -154,4 +154,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Signupform);
+)(SignupForm);
