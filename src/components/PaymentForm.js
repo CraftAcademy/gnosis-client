@@ -1,20 +1,20 @@
 import React, { Component } from "react";
+import { Elements, StripeProvider } from "react-stripe-elements";
+import CheckoutForm from "./CheckoutForm";
 import { Form } from "semantic-ui-react";
 
-export class PaymentFields extends Component {
+class PaymentForm extends Component {
   render() {
     return (
-      <Form id="payment-form">
-        <Form.Field>
-          <label>Select your subscription type:</label>
-          <Form.Field>
-            <input type="radio" name="subscriptionType" />
-            Yearly - 10,000SEK/each
-          </Form.Field>
-        </Form.Field>
-      </Form>
+      <StripeProvider apiKey="pk_test_7rIPo7H0D768Gw8L7YdJqLAv">
+        <div>
+          <Elements>
+            <CheckoutForm />
+          </Elements>
+        </div>
+      </StripeProvider>
     );
   }
 }
 
-export default PaymentFields;
+export default PaymentForm;
