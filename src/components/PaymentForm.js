@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import CheckoutForm from "./CheckoutForm";
-import { Form } from "semantic-ui-react";
 
 class PaymentForm extends Component {
   render() {

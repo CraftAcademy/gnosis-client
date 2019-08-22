@@ -6,7 +6,7 @@ import {
   injectStripe
 } from "react-stripe-elements";
 import axios from "axios";
-import { Form } from "semantic-ui-react";
+import { Form, Button, Card } from "semantic-ui-react";
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -33,8 +33,10 @@ class CheckoutForm extends Component {
           <Form.Field>
             <label>Select your subscription type:</label>
             <Form.Field>
-              <input type="radio" name="subscriptionType" />
-              Yearly - 10,000SEK/each
+              <Card>
+                <Card.Content header="Yearly" />
+                <Card.Content description="10,000 zSEK" />
+              </Card>
             </Form.Field>
           </Form.Field>
           <Form.Field>
@@ -47,9 +49,9 @@ class CheckoutForm extends Component {
             <CardCvcElement />
           </Form.Field>
           <Form.Field>
-            <button onClick={this.submitPayment} id="submit-payment-button">
+            <Button onClick={this.submitPayment} id="submit-payment-button">
               Proceed with Payment
-            </button>
+            </Button>
           </Form.Field>
         </Form>
       </div>
