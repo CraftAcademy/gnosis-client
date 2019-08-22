@@ -16,7 +16,7 @@ describe("University Sign-Up", () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.contains("Payment successful! Your university account successfully created!");
+    cy.contains("Your university account successfully created!");
   });
 
 

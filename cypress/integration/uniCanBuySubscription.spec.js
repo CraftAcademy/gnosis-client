@@ -16,7 +16,7 @@ describe('University is redirected to payment form  after login', () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.location("pathname").should("eq", "/payment");
+    cy.get("#subscribe-button").click();
     cy.get("#payment-form").should("exist");
   });
 });
