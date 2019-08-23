@@ -84,7 +84,7 @@ Cypress.Commands.add(
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
       cy.get('input[id="password-confirmation"]').type(password_confirmation);
-      cy.get('input[id="subscription_key"]').type(subscription_key);
+      cy.get('input[id="subscription-key"]').type(subscription_key);
     });
   }
 );
@@ -100,7 +100,7 @@ Cypress.Commands.add(
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
       cy.get('input[id="password-confirmation"]').type(password_confirmation);
-      cy.get('input[id="subscription_key"]').type(subscription_key);
+      cy.get('input[id="subscription-key"]').type(subscription_key);
     });
   }
 );

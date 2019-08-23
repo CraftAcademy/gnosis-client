@@ -12,19 +12,14 @@ class SignupForm extends Component {
     email: "",
     password: "",
     password_confirmation: "",
-    userSaved: false
+    userSaved: false,
+    subscription_key: ''
   };
 
   async saveNewUserHandler(e) {
     e.preventDefault();
     const { registerUser } = this.props;
-    const {
-      name,
-      email,
-      password,
-      password_confirmation,
-      role
-    } = this.state;
+    const { name, email, password, password_confirmation, role } = this.state;
     registerUser({
       name,
       email,
@@ -50,7 +45,7 @@ class SignupForm extends Component {
   render() {
     let saveUserStatus;
     let paymentForm;
-    let universityWelcome
+    let universityWelcome;
 
     if (
       this.state.userSaved === true &&
@@ -64,14 +59,13 @@ class SignupForm extends Component {
       saveUserStatus = this.state.errorMessage;
     }
     if (this.state.renderPaymentForm === true) {
-      paymentForm = ( <PaymentForm /> )
+      paymentForm = <PaymentForm />;
     } else {
-      paymentForm = ""
+      paymentForm = "";
     }
 
     return (
       <Container>
-
         {this.state.renderSignupForm ? (
           <Form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
             <Form.Field>
@@ -135,13 +129,29 @@ class SignupForm extends Component {
                 }
               />
             </Form.Field>
-            <Button id="submit-account-button" type="submit" >
+
+            {this.state.role === "research_group" ? (
+              <Form.Field>
+                <label>Subscription Key</label>
+                <input
+                  id="subscription-key"
+                  value={this.state.subscription_key}
+                  onChange={e =>
+                    this.setState({ subscription_key: e.target.value })
+                  }
+                />
+              </Form.Field>
+            ) : (
+              ""
+            )}
+
+            <Button id="submit-account-button" type="submit">
               Sign Me Up!
-            </Button> 
+            </Button>
           </Form>
         ) : (
-            ""
-          )}
+          ""
+        )}
         {saveUserStatus}
         {paymentForm}
         {universityWelcome}
