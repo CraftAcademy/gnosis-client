@@ -41,7 +41,7 @@ class NavBar extends Component {
             <Menu.Item className="header logo" to="/">
               GNOSIS
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/">Home</Menu.Item>
+            <Menu.Item id="homebutton" as={NavLink} to="/">Home</Menu.Item>
             <div className="ui simple dropdown item">
               Categories <i className="dropdown icon"></i>
               <Menu secondary id="navbar">
