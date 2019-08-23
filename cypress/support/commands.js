@@ -2,7 +2,7 @@ Cypress.Commands.add("research_group_login", (email, password) => {
   cy.route({
     method: "POST",
     url: "http://localhost:3000/api/v0/auth/sign_in",
-    response: "fixture:research-group-login.json"
+    response: "fixture:successful_research_group_login.json"
   });
   cy.visit("http://localhost:3001");
   cy.get("#login-button").click();
@@ -32,7 +32,7 @@ Cypress.Commands.add("research_group_wrong_login", (email, password) => {
   cy.route({
     method: "POST",
     url: "http://localhost:3000/api/v0/auth/sign_in",
-    response: "fixture:research-group-wrong-login.json",
+    response: "fixture:unsuccessful_research_group_login.json",
     status: 401
   });
   cy.visit("http://localhost:3001");
@@ -44,12 +44,11 @@ Cypress.Commands.add("research_group_wrong_login", (email, password) => {
   cy.get("#login-form-submit").click();
 });
 
-
 Cypress.Commands.add("university_login", (email, password) => {
   cy.route({
     method: "POST",
     url: "http://localhost:3000/api/v0/auth/sign_in",
-    response: "fixture:university-login.json"
+    response: "fixture:successful_university_login.json"
   });
   cy.visit("http://localhost:3001");
   cy.get("#login-button").click();
@@ -61,7 +60,7 @@ Cypress.Commands.add("university_login", (email, password) => {
 });
 
 Cypress.Commands.add(
-  "university_success_signup",
+  "university_successful_signup",
   (role, name, email, password, password_confirmation) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
@@ -76,7 +75,7 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
-  "university_unsucces_signup",
+  "university_unsuccessful_signup",
   (role, name, email, password) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
@@ -85,7 +84,6 @@ Cypress.Commands.add(
       cy.get('input[id="name"]').type(name);
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
-      
     });
   }
 );

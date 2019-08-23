@@ -11,7 +11,10 @@ import { Form, Button, Card } from "semantic-ui-react";
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { complete: false };
+    this.state = { 
+      complete: false, 
+      failed: false 
+    };
     this.submitPayment = this.submitPayment.bind(this);
   }
 
@@ -22,11 +25,18 @@ class CheckoutForm extends Component {
       body: token.id
     });
 
-    if (response.status === 200) this.setState({ complete: true });
+    if (response.status === 200) {
+      this.setState({ complete: true });
+    }
+
+    if (response.status === 422) {
+      this.setState({ failed: true });
+    }
   }
 
   render() {
     if (this.state.complete) return <h1>Payment successful!</h1>;
+    if (this.state.failed) return <h1>Payment failed!</h1>;
     return (
       <div>
         <Form id="payment-form">

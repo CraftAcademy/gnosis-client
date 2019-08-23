@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
 import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { registerUser } from "../redux/actions/reduxTokenAuthConfig"
-import { isDebuggerStatement } from "@babel/types";
+import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
 
 class SignupForm extends Component {
   state = {
@@ -38,22 +37,36 @@ class SignupForm extends Component {
           userSaved: true,
           renderSignupForm: false
         });
+        this.props.dispatchFlash(
+          `Your ${this.state.role} account successfully created!`,
+          "success"
+        );
       })
       .catch(error => {
-        this.props.dispatchFlash(error)
-      })
+        this.props.dispatchFlash(error.response.data.errors[0], "error");
+      });
   }
 
   render() {
     let saveUserStatus;
-    if (this.state.userSaved === true) {
-      saveUserStatus =
-        `Payment successful! Your ${this.state.role} account successfully created!`;
+    let paymentForm;
+    let universityWelcome
+
+    if (
+      this.state.userSaved === true &&
+      this.props.currentUser.attributes.role === "University"
+    ) {
+      universityWelcome = `Welcome to Gnosis! To obtain your Research Group account keys, please subscribe!`;
     } else if (
       this.state.userSaved === false &&
       this.state.errorMessage !== ""
     ) {
       saveUserStatus = this.state.errorMessage;
+    }
+    if (this.state.renderPaymentForm === true) {
+      paymentForm = ( <PaymentForm /> )
+    } else {
+      paymentForm = ""
     }
 
     return (
@@ -122,17 +135,16 @@ class SignupForm extends Component {
                 }
               />
             </Form.Field>
-
-            {this.state.role === "university" ? <PaymentForm /> : ""}
-
-            <Button id="submit-account-button" type="submit">
+            <Button id="submit-account-button" type="submit" >
               Sign Me Up!
-            </Button>
+            </Button> 
           </Form>
         ) : (
             ""
           )}
         {saveUserStatus}
+        {paymentForm}
+        {universityWelcome}
       </Container>
     );
   }
@@ -145,11 +157,12 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  dispatchFlash: (error) => (
-    { type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: error.response.data.message, status: 'error' } }
-  ),
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  }),
   registerUser
-}
+};
 
 export default connect(
   mapStateToProps,
