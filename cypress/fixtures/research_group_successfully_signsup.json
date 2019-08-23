@@ -5,6 +5,7 @@
     "name": "Cancer Research Group",
     "role": "research_group",
     "email": "cancerresearch@mail.com",
-    "subscriber": false
+    "subscriber": false,
+    "registration_key": "abcd1234"
   }
 }
