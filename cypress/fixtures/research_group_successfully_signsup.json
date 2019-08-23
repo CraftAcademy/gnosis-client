@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "data": {
+    "allow_password_change": false,
+    "name": "Cancer Research Group",
+    "role": "research_group",
+    "email": "cancerresearch@mail.com",
+    "subscriber": false
+  }
+}
