@@ -6,39 +6,44 @@ import {
   injectStripe
 } from "react-stripe-elements";
 import axios from "axios";
-import { Form, Button, Card } from "semantic-ui-react";
+import { Form, Button, Card, Container } from "semantic-ui-react";
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      complete: false, 
-      failed: false 
+    this.state = {
+      complete: false,
+      failed: false,
+      renderStripeForm: true
     };
     this.submitPayment = this.submitPayment.bind(this);
   }
 
   async submitPayment() {
-    let { token } = await this.props.stripe.createToken({ name: "Name" });
+    let token = await this.props.stripe.createToken();
     let response = await axios.post("/subscriptions", {
-      headers: { "Content-Type": "text/plain" },
       body: token.id
     });
-
-    if (response.status === 200) {
-      this.setState({ complete: true });
+    console.log(response)
+    debugger
+    if (response.data.message) {
+      this.setState({ 
+        complete: true,
+        renderStripeForm: false
+      });
     }
 
-    if (response.status === 422) {
+    if (response.data.error) {
       this.setState({ failed: true });
     }
   }
 
   render() {
-    if (this.state.complete) return <h1>Payment successful!</h1>;
-    if (this.state.failed) return <h1>Payment failed!</h1>;
-    return (
-      <div>
+    let stripeForm
+    let paymentStatus
+
+    if (this.state.renderStripeForm) {
+      stripeForm = (
         <Form id="payment-form">
           <Form.Field>
             <label>Select your subscription type:</label>
@@ -68,12 +73,37 @@ class CheckoutForm extends Component {
             </Form.Field>
           </Form.Field>
           <Form.Field>
-            <Button onClick={this.submitPayment} id="submit-payment-button">
+            <Button
+              onClick={this.submitPayment}
+              id="submit-payment-button"
+            >
               Proceed with Payment
             </Button>
           </Form.Field>
         </Form>
-      </div>
+      );
+    }
+
+    if (this.state.complete) {
+      paymentStatus = (
+        <Card>
+          <Card.Content header="Payment successful!" />
+        </Card>
+      );
+      }
+        
+    if (this.state.failed) {
+      paymentStatus = (
+        <Card>
+          <Card.Content header="Payment failed!" />
+        </Card>
+      )
+    }
+    return (
+      <Container>  
+        {paymentStatus} 
+        {stripeForm}
+      </Container>
     );
   }
 }
