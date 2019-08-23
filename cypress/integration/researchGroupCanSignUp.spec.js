@@ -33,7 +33,7 @@ describe("Research Group Sign-Up", () => {
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
       response:"fixture:unsuccessful_research_group_sign_up.json",
-      status: 404
+      status: 422
     });
     cy.research_group_successful_signup(
       "research_group",

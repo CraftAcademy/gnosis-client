@@ -1,4 +1,4 @@
 {
-  "status": false,
+  "status": 422,
   "errors": ["Invalid registration key. Please try again."]
 }
