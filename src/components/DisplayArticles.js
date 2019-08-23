@@ -5,41 +5,34 @@ import { Container } from "semantic-ui-react";
 
 
 class DisplayArticles extends Component {
-  constructor() {
-    super();
-    this.state = {
-      articles: [],
-      articlesAvailability: true
+  state = {
+      articles: []
     };
-  }
+
 
   componentDidMount() {
     this.getArticles();
   }
 
   async getArticles() {
-    try {
-      const response = await axios.get("/articles");
+    const response = await axios.get("/articles");
+    if (response.data.length > 0) { 
       this.setState({
         articles: response.data
-      });
-    } catch (error) {
-      this.setState({
-        articlesAvailability: false
       });
     }
   }
 
   render() {
-    const availability = this.state.articlesAvailability;
-    const articlesDisplay = this.state.articles.map(article => {
-      return <ArticleTemplate article={article} />
+
+    const articlesDisplay = this.state.articles.length > 0 && this.state.articles.map(article => {
+      return <ArticleTemplate key={article.id} article={article} />
     })
 
     return (
       <>
         <Container>
-          {availability ?
+          {articlesDisplay ?
             articlesDisplay :
             <div className="articles">
               <p>Articles are currently unavailable.</p>

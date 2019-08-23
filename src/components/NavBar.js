@@ -31,7 +31,11 @@ class NavBar extends Component {
       this.props.currentUser.attributes.subscriber === false
     ) {
       subscribeButton = (
-        <Menu.Item id="subscribe-button" as={NavLink} to="/payment">
+        <Menu.Item
+          id="subscribe-button"
+          as={NavLink}
+          to="/payment"
+        >
           Subscribe
         </Menu.Item>
       );
