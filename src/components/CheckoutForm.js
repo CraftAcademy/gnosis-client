@@ -12,8 +12,8 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      complete: false,
-      failed: false,
+      success: "",
+      error: "",
       renderStripeForm: true
     };
     this.submitPayment = this.submitPayment.bind(this);
@@ -28,13 +28,13 @@ class CheckoutForm extends Component {
     debugger
     if (response.data.message) {
       this.setState({ 
-        complete: true,
+        success: `${response.data.message}`,
         renderStripeForm: false
       });
     }
 
     if (response.data.error) {
-      this.setState({ failed: true });
+      this.setState({ error: `${response.data.error}` });
     }
   }
 
@@ -84,20 +84,20 @@ class CheckoutForm extends Component {
       );
     }
 
-    if (this.state.complete) {
+    if (this.state.success !== "") {
       paymentStatus = (
         <Card>
-          <Card.Content header="Payment successful!" />
+          <Card.Content header={this.state.success} />
         </Card>
       );
       }
         
-    if (this.state.failed) {
+    if (this.state.error !== "") {
       paymentStatus = (
         <Card>
-          <Card.Content header="Payment failed!" />
+          <Card.Content header={this.state.error} />
         </Card>
-      )
+      );
     }
     return (
       <Container>  
