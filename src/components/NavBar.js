@@ -4,6 +4,7 @@ import { Container, Menu, Input } from "semantic-ui-react";
 import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 class NavBar extends Component {
   state = { activeItem: "latest news" };
@@ -16,6 +17,7 @@ class NavBar extends Component {
     let loginActions;
 
     const { activeItem } = this.state;
+    const { t } = useTranslation();
 
     if (this.props.showFlash === true) {
       flashMessage = <AlertMessage />;
@@ -72,17 +74,14 @@ class NavBar extends Component {
               </Menu>
             </div>
             <div className="ui simple dropdown item">
-              Language <i className="dropdown icon" />
+              {t('navbar.languages')} <i className="dropdown icon" />
               <Menu secondary id="language">
                 <Menu.Item
                   name="Swedish"
                   // <i> PUT IN A FLAG!!!
                   onClick={this.handleItemClick}
                 />
-                <Menu.Item
-                  name="English"
-                  onClick={this.handleItemClick}
-                />
+                <Menu.Item name="English" onClick={this.handleItemClick} />
               </Menu>
             </div>
             <Menu.Menu position="right">
