@@ -17,7 +17,7 @@ describe('University can see payment form after signup', () => {
       url: "http://localhost:3000/api/v0/auth",
       response: "fixture:successful_signup_of_university_response.json"
     });
-    cy.university_success_signup(
+    cy.university_successful_signup(
       "university",
       "harvard",
       "harvard@mail.com",

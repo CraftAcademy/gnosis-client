@@ -14,7 +14,7 @@ describe("University Sign-Up", () => {
       url: "http://localhost:3000/api/v0/auth",
       response: "fixture:successful_signup_of_university_response.json"
     });
-    cy.university_success_signup(
+    cy.university_successful_signup(
       "university",
       "harvard",
       "harvard@mail.com",
@@ -28,14 +28,14 @@ describe("University Sign-Up", () => {
 
 
 
-  it("User can't sign up with unmatching credentials", () => {
+  it("User can't sign up with invalid credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
       response: "fixture:unsuccessful_signing_up_university_response.json",
       status: 404
     });
-    cy.university_unsuccess_signup(
+    cy.university_unsuccessful_signup(
       "university",
       "harvard",
       "harvard@mail.com",
