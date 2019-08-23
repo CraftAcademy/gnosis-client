@@ -25,14 +25,15 @@ describe("Research Group Sign-Up", () => {
     cy.get("#submit-account-button").click();
     cy.get("#flash").should(
       "contain",
-      "Your research group account was successfully created!"
+      "Your research_group account successfully created!"
     );
   });
   it("User can't sign up without valid Subscription Key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:research_group_unsuccessfully_signsup.json"
+      response: "fixture:research_group_unsuccessfully_signsup.json",
+      status: 404
     });
     cy.research_group_successful_signup(
       "research_group",
@@ -43,9 +44,8 @@ describe("Research Group Sign-Up", () => {
       "wrong_subscription_key"
     );
     cy.get("#submit-account-button").click();
-    cy.get("#flash").should(
-      "contain",
-      "Invalid subscription key. Please try again."
-    );
+    debugger;
+    cy.get('#flash')
+      .should('contain',"Invalid subscription key. Please try again.");
   });
 });
