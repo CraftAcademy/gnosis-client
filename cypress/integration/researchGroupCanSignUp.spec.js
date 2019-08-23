@@ -12,12 +12,12 @@ describe("Research Group Sign-Up", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:research_group_successfully_signsup.json"
+      response: "fixture:successful_research_group_sign_up.json"
     });
     cy.research_group_successful_signup(
       "research_group",
       "Cancer Research Group",
-      "cancerresearch@mail.com",
+      "cancer_research@mail.com",
       "password",
       "password",
       "abcd1234"
@@ -28,17 +28,17 @@ describe("Research Group Sign-Up", () => {
       "Your research_group account successfully created!"
     );
   });
-  it("User can't sign up without valid Rubscription Key", () => {
+  it("User can't sign up without valid Subscription Key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
-      response: "fixture:research_group_unsuccessfully_signsup.json",
+      response:"fixture:unsuccessful_research_group_sign_up.json",
       status: 404
     });
     cy.research_group_successful_signup(
       "research_group",
       "Cancer Research Group",
-      "cancerresearch@mail.com",
+      "cancer_research@mail.com",
       "password",
       "password",
       "wrong_registration_key"
