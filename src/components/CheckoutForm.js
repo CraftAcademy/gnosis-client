@@ -24,10 +24,9 @@ class CheckoutForm extends Component {
     let response = await axios.post("/subscriptions", {
       body: token.id
     });
-    console.log(response)
-    debugger
+    
     if (response.data.message) {
-      this.setState({ 
+      this.setState({
         success: `${response.data.message}`,
         renderStripeForm: false
       });
@@ -39,8 +38,8 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    let stripeForm
-    let paymentStatus
+    let stripeForm;
+    let paymentStatus;
 
     if (this.state.renderStripeForm) {
       stripeForm = (
@@ -73,10 +72,7 @@ class CheckoutForm extends Component {
             </Form.Field>
           </Form.Field>
           <Form.Field>
-            <Button
-              onClick={this.submitPayment}
-              id="submit-payment-button"
-            >
+            <Button onClick={this.submitPayment} id="submit-payment-button">
               Proceed with Payment
             </Button>
           </Form.Field>
@@ -90,8 +86,8 @@ class CheckoutForm extends Component {
           <Card.Content header={this.state.success} />
         </Card>
       );
-      }
-        
+    }
+
     if (this.state.error !== "") {
       paymentStatus = (
         <Card>
@@ -100,8 +96,8 @@ class CheckoutForm extends Component {
       );
     }
     return (
-      <Container>  
-        {paymentStatus} 
+      <Container>
+        {paymentStatus}
         {stripeForm}
       </Container>
     );
