@@ -51,7 +51,7 @@ describe("University pay for subscription", () => {
       method: "POST",
       url: "http://localhost:3000/api/v0/subscriptions",
       response: "fixture:unsuccessful_subscription_payment_request.json",
-      status: 422
+      status: 200
     });
     cy.wait(2000);
     cy.get(".__PrivateStripeElement > iframe").then($elements => {

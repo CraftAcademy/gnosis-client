@@ -50,13 +50,22 @@ class CheckoutForm extends Component {
             </Form.Field>
           </Form.Field>
           <Form.Field>
-            <CardNumberElement />
+            <label>Credit Card Number:</label>
+            <Form.Field>
+              <CardNumberElement />
+            </Form.Field>
           </Form.Field>
           <Form.Field>
-            <CardExpiryElement />
+            <label>Expire Date:</label>
+            <Form.Field>
+              <CardExpiryElement />
+            </Form.Field>
           </Form.Field>
           <Form.Field>
-            <CardCvcElement />
+            <label>CVC Number:</label>
+            <Form.Field>
+              <CardCvcElement />
+            </Form.Field>
           </Form.Field>
           <Form.Field>
             <Button onClick={this.submitPayment} id="submit-payment-button">
