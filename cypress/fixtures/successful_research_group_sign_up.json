@@ -6,6 +6,7 @@
     "role": "research_group",
     "email": "cancer_research@mail.com",
     "subscriber": false,
-    "registration_key": "abcd1234"
+    "registration_key": "abcd1234",
+    "university_id": 1
   }
 }
