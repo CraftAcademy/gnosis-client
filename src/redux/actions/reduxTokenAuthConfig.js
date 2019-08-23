@@ -1,6 +1,9 @@
 import { generateAuthActions } from "redux-token-auth";
-let baseUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL 
-let authUrl = baseUrl + '/auth'
+let baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PROD_API_URL
+    : process.env.REACT_APP_DEV_API_URL;
+let authUrl = baseUrl + "/auth";
 const config = {
   authUrl: authUrl,
   userAttributes: {
@@ -13,7 +16,7 @@ const config = {
     role: "role",
     name: "name",
     subscriber: "subscriber",
-    subscription_key: "subscription_key"
+    registration_key: "registration_key"
   }
 };
 

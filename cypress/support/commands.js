@@ -75,7 +75,7 @@ Cypress.Commands.add(
 
 Cypress.Commands.add(
   "research_group_successful_signup",
-  (role, name, email, password, password_confirmation, subscription_key) => {
+  (role, name, email, password, password_confirmation, registration_key) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
@@ -84,14 +84,14 @@ Cypress.Commands.add(
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
       cy.get('input[id="password-confirmation"]').type(password_confirmation);
-      cy.get('input[id="subscription-key"]').type(subscription_key);
+      cy.get('input[id="subscription-key"]').type(registration_key);
     });
   }
 );
 
 Cypress.Commands.add(
   "research_group_unsuccessful_signup",
-  (role, name, email, password, password_confirmation, subscription_key) => {
+  (role, name, email, password, password_confirmation, registration_key) => {
     cy.visit("http://localhost:3001");
     cy.get("#sign-up-button").click();
     cy.get("#signup-form").within(() => {
@@ -100,8 +100,7 @@ Cypress.Commands.add(
       cy.get('input[id="email"]').type(email);
       cy.get('input[id="password"]').type(password);
       cy.get('input[id="password-confirmation"]').type(password_confirmation);
-      cy.get('input[id="subscription-key"]').type(subscription_key);
+      cy.get('input[id="subscription-key"]').type(registration_key);
     });
   }
 );
-

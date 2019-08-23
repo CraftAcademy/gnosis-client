@@ -28,7 +28,7 @@ describe("Research Group Sign-Up", () => {
       "Your research_group account successfully created!"
     );
   });
-  it("User can't sign up without valid Subscription Key", () => {
+  it("User can't sign up without valid Rubscription Key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
@@ -41,11 +41,12 @@ describe("Research Group Sign-Up", () => {
       "cancerresearch@mail.com",
       "password",
       "password",
-      "wrong_subscription_key"
+      "wrong_registration_key"
     );
     cy.get("#submit-account-button").click();
-    debugger;
-    cy.get('#flash')
-      .should('contain',"Invalid subscription key. Please try again.");
+    cy.get("#flash").should(
+      "contain",
+      "Invalid registration key. Please try again."
+    );
   });
 });

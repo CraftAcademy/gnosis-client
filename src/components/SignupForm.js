@@ -13,20 +13,27 @@ class SignupForm extends Component {
     password: "",
     password_confirmation: "",
     userSaved: false,
-    subscription_key: ''
+    registration_key: ""
   };
 
   async saveNewUserHandler(e) {
     e.preventDefault();
     const { registerUser } = this.props;
-    const { name, email, password, password_confirmation, role, subscription_key } = this.state;
+    const {
+      name,
+      email,
+      password,
+      password_confirmation,
+      role,
+      registration_key
+    } = this.state;
     registerUser({
       name,
       email,
       password,
       password_confirmation,
       role,
-      subscription_key
+      registration_key
     })
       .then(() => {
         this.setState({
@@ -133,12 +140,12 @@ class SignupForm extends Component {
 
             {this.state.role === "research_group" ? (
               <Form.Field>
-                <label>Subscription Key</label>
+                <label>Registration Key</label>
                 <input
                   id="subscription-key"
-                  value={this.state.subscription_key}
+                  value={this.state.registration_key}
                   onChange={e =>
-                    this.setState({ subscription_key: e.target.value })
+                    this.setState({ registration_key: e.target.value })
                   }
                 />
               </Form.Field>
