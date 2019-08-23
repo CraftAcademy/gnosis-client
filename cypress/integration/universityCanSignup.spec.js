@@ -1,5 +1,5 @@
 describe("University Sign-Up", () => {
-  beforeEach(function() {
+  beforeEach(function () {
     cy.server();
     cy.route({
       method: 'GET',
@@ -22,7 +22,8 @@ describe("University Sign-Up", () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.contains("Your university account successfully created!");
+    cy.get('#flash')
+      .should('contain', "Your university account successfully created!");
   });
 
 
@@ -42,6 +43,7 @@ describe("University Sign-Up", () => {
       "password_confirmation"
     );
     cy.get("#submit-account-button").click();
-    cy.contains("Invalid sign up credentials. Please try again.");
+    cy.get('#flash')
+      .should('contain',"Invalid sign up credentials. Please try again.");
   });
 });
