@@ -6,7 +6,8 @@ const initialState = {
       attributes: {
         uid: '',
         role: '',
-        subscriber: false
+        subscriber: false,
+        subscription_key: ''
       }
     }
   }

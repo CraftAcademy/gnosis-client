@@ -12,7 +12,8 @@ const config = {
     password_confirmation: "password_confirmation",
     role: "role",
     name: "name",
-    subscriber: "subscriber"
+    subscriber: "subscriber",
+    subscription_key: "subscription_key"
   }
 };
 

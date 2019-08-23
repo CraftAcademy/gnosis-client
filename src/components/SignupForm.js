@@ -19,13 +19,14 @@ class SignupForm extends Component {
   async saveNewUserHandler(e) {
     e.preventDefault();
     const { registerUser } = this.props;
-    const { name, email, password, password_confirmation, role } = this.state;
+    const { name, email, password, password_confirmation, role, subscription_key } = this.state;
     registerUser({
       name,
       email,
       password,
       password_confirmation,
-      role
+      role,
+      subscription_key
     })
       .then(() => {
         this.setState({
