@@ -1,6 +1,12 @@
 describe("University Sign-Up", () => {
   beforeEach(function() {
     cy.server();
+    cy.route({
+      method: 'GET',
+      url: "http://localhost:3000/api/v0/articles",
+      response: "fixture:articles.json",
+      status: 200
+    })
   });
   it("User can successfully sign-up as a University", () => {
     cy.route({

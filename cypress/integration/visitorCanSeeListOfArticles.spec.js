@@ -1,5 +1,5 @@
 describe("Visitor can see articles when visiting the App", () => {
-  before(function () {
+  beforeEach(() => {
     cy.server();
     cy.route({
       method: "GET",
@@ -27,11 +27,18 @@ describe("Visitor can see articles when visiting the App", () => {
 });
 
 describe("Visitor does not see articles when visiting the site", () => {
-  before(function () {
+  beforeEach(() => {
+    cy.server();
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v0/articles",
+      response: { "data": [] }
+    });
     cy.visit("http://localhost:3001");
   });
 
   it("Articles are unavailable", async () => {
-    cy.get(".articles").contains("Articles are currently unavailable.");
+    cy.get(".articles")
+      .should('contain', "Articles are currently unavailable.");
   });
 });

@@ -1,6 +1,11 @@
 describe('User can log in', () => {
   beforeEach(() => {
     cy.server();
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v0/articles",
+      response: "fixture:articles.json"
+    });
   });
   it('Successfully', () => {
     cy.research_group_login("climate_harvard@mail.com", "password");
