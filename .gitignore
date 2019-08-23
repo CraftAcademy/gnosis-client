@@ -27,3 +27,5 @@ cypress.json
 log
 
 tmp
+
+.env

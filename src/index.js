@@ -7,10 +7,8 @@ import 'semantic-ui-css/semantic.min.css';
 import configureStore from "./redux/store/configureStore";
 import axios from "axios";
 
-let development = "http://localhost:3000/api/v0";
-let production = "https://gnosis-api.herokuapp.com/api/v0";
 
-axios.defaults.baseURL = production;
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL
 
 const store = configureStore();
 

@@ -1,18 +1,18 @@
 import { generateAuthActions } from "redux-token-auth";
-
-let development = "http://localhost:3000/api/v0/auth";
-let production = "https://gnosis-api.herokuapp.com/api/v0/auth";
-
+let baseUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL 
+let authUrl = baseUrl + '/auth'
 const config = {
-  authUrl: production,
+  authUrl: authUrl,
   userAttributes: {
     uid: "uid",
-    role: "role"
+    role: "role",
+    subscriber: "subscriber"
   },
   userRegistrationAttributes: {
     password_confirmation: "password_confirmation",
     role: "role",
-    name: "name"
+    name: "name",
+    subscriber: "subscriber"
   }
 };
 
