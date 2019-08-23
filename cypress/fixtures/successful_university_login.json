@@ -4,7 +4,7 @@
     "name": "Harvard",
     "email": "harvard@mail.com",
     "uid": "harvard@mail.com",
-    "role": "University",
+    "role": "university",
     "subscriber": false
   }
 }
