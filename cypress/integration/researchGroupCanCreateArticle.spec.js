@@ -29,7 +29,7 @@ describe("Research Group can post article", () => {
     });
 
     cy.get('#flash').should('contain', "Article successfully created")
-    cy.wait(7000)
+    cy.wait(2000)
     cy.get('#flash').should('not.contain', "Article successfully created")
     cy.get("#create-article-form").should("not.exist");
   });

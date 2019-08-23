@@ -45,7 +45,7 @@ class CheckoutForm extends Component {
             <Form.Field>
               <Card>
                 <Card.Content header="Yearly" />
-                <Card.Content description="10,000 zSEK" />
+                <Card.Content description="10 000 SEK" />
               </Card>
             </Form.Field>
           </Form.Field>

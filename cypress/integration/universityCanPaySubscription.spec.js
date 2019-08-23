@@ -2,6 +2,12 @@ describe("University pay for subscription", () => {
 
   beforeEach(() => {
     cy.server();
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v0/articles",
+      response: "fixture:articles.json",
+      status: 200
+    });
     cy.university_login("harvard@mail.com", "password");
     cy.get("#subscribe-button").click();
   });
