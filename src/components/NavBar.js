@@ -5,6 +5,7 @@ import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 class NavBar extends Component {
   state = { activeItem: "latest news" };

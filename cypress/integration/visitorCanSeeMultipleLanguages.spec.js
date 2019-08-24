@@ -1,4 +1,4 @@
-describe("Visitor can see home button in", () => {
+describe("Visitor can select language from language list", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -9,15 +9,15 @@ describe("Visitor can see home button in", () => {
     cy.visit("http://localhost:3001");
   });
 
-  // // Initial state using browser with Swedish IP
-  // it("default/fall-back language", async () => {
-  //   cy.contains("#homebutton").should("be.visible");
-  // });
+  // Initial state using browser with Swedish IP
+  it("fall-back language", async () => {
+    cy.get("#language").should("exist");
+  });
 
   // Select new language from pull down menu (English)
 
   // Check home button language with new state
   it("default/fall-back language", async () => {
-    cy.contains("#homebutton", "Home").should("be.visible");
+    cy.get("#language").should("exist");
   });
 });
