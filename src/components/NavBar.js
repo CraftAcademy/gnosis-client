@@ -33,7 +33,7 @@ class NavBar extends Component {
     if (this.props.currentUser.attributes.role === "research_group") {
       createArticleButton = (
         <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">
-          Create Article
+          {i18n.t('navbar:create_article')}
         </Menu.Item>
       );
     }
@@ -48,7 +48,7 @@ class NavBar extends Component {
           as={NavLink}
           to="/payment"
         >
-          Subscribe
+          {i18n.t('navbar:subscribe')}
         </Menu.Item>
       );
     }

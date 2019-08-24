@@ -23,7 +23,9 @@ i18n
           outreach: 'Outreach',
           search: 'Search...',
           login: 'Log in',
-          signup: 'Sign up'
+          signup: 'Sign up',
+          create_article: 'Create Article',
+          subscribe: 'Subscribe'
         }
       },
       sv: {
@@ -38,7 +40,9 @@ i18n
           outreach: 'Insatsarbete',
           search: 'Sök...',
           login: 'Logga in',
-          signup: 'Bli medlem'
+          signup: 'Bli medlem',
+          create_article: 'Skriv artikel',
+          subscribe: 'Prenumerera'
         }
       }
     },
