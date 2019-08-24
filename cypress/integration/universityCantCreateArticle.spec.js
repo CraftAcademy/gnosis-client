@@ -1,5 +1,4 @@
 describe("Universities can't create articles", () => {
-
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -25,3 +24,5 @@ describe("Universities can't create articles", () => {
     cy.get("#create-article-button").should("not.exist");
   });
 });
+
+
