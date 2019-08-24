@@ -7,9 +7,9 @@ class UpdateLanguage extends Component {
   render() {
     return (
       <>
-      <div className="ui simple dropdown item">
+      <div id="Language" className="ui simple dropdown item">
         {i18n.t('navbar:language')} <i className="dropdown icon" />
-          <Menu secondary id="Language">
+          <Menu secondary>
           <Menu.Item
             id="Swedish"
             name="Swedish"

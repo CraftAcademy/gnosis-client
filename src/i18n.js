@@ -13,11 +13,13 @@ i18n
     resources: {
       en: {
         navbar: {
+          home: 'Home',
           language: 'Languages'
         }
       },
       sv: {
         navbar: {
+          home: 'Hem',
           language: 'Språk'
         }
       }

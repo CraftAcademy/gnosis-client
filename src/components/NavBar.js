@@ -5,6 +5,7 @@ import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
 import UpdateLanguage from './UpdateLanguage';
+import i18n from "../i18n";
 
 class NavBar extends Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class NavBar extends Component {
               GNOSIS
             </Menu.Item>
             <Menu.Item id="homebutton" as={NavLink} to="/">
-              Home
+            {i18n.t('navbar:home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
               Categories <i className="dropdown icon" />
