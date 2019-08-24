@@ -13,12 +13,12 @@ i18n
     resources: {
       en: {
         navbar: {
-          languages: 'Languages'
+          language: 'Languages'
         }
       },
       sv: {
         navbar: {
-          languages: 'Språk'
+          language: 'Språk'
         }
       }
     },
