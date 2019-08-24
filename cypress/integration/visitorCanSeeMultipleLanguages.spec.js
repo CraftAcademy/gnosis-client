@@ -1,27 +1,25 @@
-describe("Visitor can select language from language list", () => {
+describe("Visitor can change language from", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
       method: "GET",
       url: "http://localhost:3000/api/v0/articles",
-      response: "fixture:articles.json"
     });
     cy.visit("http://localhost:3001");
   });
 
-  // Initial state using browser with Swedish IP
-  it("fall-back language", () => {
-      cy.contains("#homebutton", "Home").should("be.visible");
-      cy.get("#Language").contains('Language').next('#English').then($el=>{
-      cy.wrap($el).invoke('show')
-      cy.wrap($el).contains('English').click()
-    })
+  it("English to Swedish", () => {
+      cy.get('#homebutton').should('contain', 'Home');
+      cy.get('#Language').should('contain', 'Swedish');
+      cy.get('#Swedish').click({ force: true });
   });
 
-  // Select new language from pull down menu (English)
-
-  // Check home button language with new state
-  it("default/fall-back language", () => {
-    cy.get("#Language").should("exist");
+  it("Swedish to English", () => {
+    cy.get('#homebutton').should('contain', 'Home');
+    cy.get('#Language').should('contain', 'Swedish');
+    cy.get('#Swedish').click({ force: true });
+    cy.get('#homebutton').should('contain', 'Hem');
+    cy.get('#Language').should('contain', 'English');
+    cy.get('#English').click({ force: true });
   });
 });
