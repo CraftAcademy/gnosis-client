@@ -4,14 +4,13 @@ import { Container, Menu, Input } from "semantic-ui-react";
 import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
-import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import UpdateLanguage from './UpdateLanguage';
 
 class NavBar extends Component {
-  state = { 
-    language: 'en'
+  constructor(props) {
+    super(props)
+    this.ReRender = this.ReRender.bind(this);
   };
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   ReRender() {
@@ -24,7 +23,6 @@ class NavBar extends Component {
     let flashMessage;
     let loginActions;
 
-    const { activeItem } = this.state;
     const { t } = this.props;
 
     if (this.props.showFlash === true) {
@@ -81,31 +79,16 @@ class NavBar extends Component {
               <Menu secondary id="navbar">
                 <Menu.Item
                   name="environment"
-                  active={activeItem === "home"}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
                   name="medicine"
-                  active={activeItem === "home"}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
                   name="outreach"
-                  active={activeItem === "home"}
                   onClick={this.handleItemClick}
                 />
-              </Menu>
-            </div>
-            <div className="ui simple dropdown item">
-              {i18n.t('navbar:language')} <i className="dropdown icon" />
-              <Menu secondary id="language">
-                <Menu.Item
-                  name="Swedish"
-                  onClick={() =>{i18n.changeLanguage('sv',() => this.props.UpdateLanguage());}}
-                />
-                <Menu.Item 
-                  name="English" 
-                  onClick={() =>{i18n.changeLanguage('sv',() => this.props.UpdateLanguage());}} />
               </Menu>
             </div>
             <Menu.Menu position="right">
@@ -115,6 +98,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              <UpdateLanguage UpdateLanguage={this.ReRender}/>
             </Menu.Menu>
           </Container>
         </div>
