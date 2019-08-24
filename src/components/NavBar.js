@@ -8,9 +8,15 @@ import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
 
 class NavBar extends Component {
-  state = { activeItem: "latest news" };
+  state = { 
+    language: 'en'
+  };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  ReRender() {
+    this.forceUpdate();
+  }
 
   render() {
     let createArticleButton;
@@ -19,7 +25,7 @@ class NavBar extends Component {
     let loginActions;
 
     const { activeItem } = this.state;
-    const { t } = useTranslation();
+    const { t } = this.props;
 
     if (this.props.showFlash === true) {
       flashMessage = <AlertMessage />;
@@ -91,14 +97,15 @@ class NavBar extends Component {
               </Menu>
             </div>
             <div className="ui simple dropdown item">
-              {t('navbar.languages')} <i className="dropdown icon" />
+              {i18n.t('navbar:language')} <i className="dropdown icon" />
               <Menu secondary id="language">
                 <Menu.Item
                   name="Swedish"
-                  // <i> PUT IN A FLAG!!!
-                  onClick={this.handleItemClick}
+                  onClick={() =>{i18n.changeLanguage('sv',() => this.props.UpdateLanguage());}}
                 />
-                <Menu.Item name="English" onClick={this.handleItemClick} />
+                <Menu.Item 
+                  name="English" 
+                  onClick={() =>{i18n.changeLanguage('sv',() => this.props.UpdateLanguage());}} />
               </Menu>
             </div>
             <Menu.Menu position="right">
