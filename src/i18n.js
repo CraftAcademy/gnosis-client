@@ -14,13 +14,31 @@ i18n
       en: {
         navbar: {
           home: 'Home',
-          language: 'Languages'
+          language: 'Languages',
+          swedish: 'Swedish',
+          english: 'English',
+          categories: 'Categories',
+          environment: 'Environment',
+          medicine: 'Medicine',
+          outreach: 'Outreach',
+          search: 'Search...',
+          login: 'Log in',
+          signup: 'Sign up'
         }
       },
       sv: {
         navbar: {
           home: 'Hem',
-          language: 'Språk'
+          language: 'Språk',
+          swedish: 'Svenska',
+          english: 'Engelska',
+          categories: 'Kategorier',
+          environment: 'Klimat',
+          medicine: 'Medicin',
+          outreach: 'Insatsarbete',
+          search: 'Sök...',
+          login: 'Logga in',
+          signup: 'Bli medlem'
         }
       }
     },

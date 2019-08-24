@@ -6,8 +6,6 @@ import { Provider } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import configureStore from "./redux/store/configureStore";
 import axios from "axios";
-import i18n from "./i18n";
-
 
 axios.defaults.baseURL = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL
 
@@ -20,7 +18,6 @@ ReactDOM.render(
     <Provider store={store}>
       <App />
     </Provider>
-    ,
   </Router>,
   document.getElementById("root")
 );

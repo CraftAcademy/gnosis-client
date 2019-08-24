@@ -57,10 +57,10 @@ class NavBar extends Component {
       loginActions = (
         <>
           <Menu.Item as={NavLink} to="/login-form" id="login-button">
-            Log In
+            {i18n.t('navbar:login')}
           </Menu.Item>
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">
-            Sign Up
+            {i18n.t('navbar:signup')}
           </Menu.Item>
         </>
       );
@@ -76,25 +76,25 @@ class NavBar extends Component {
             {i18n.t('navbar:home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
-              Categories <i className="dropdown icon" />
+              {i18n.t('navbar:categories')} <i className="dropdown icon" />
               <Menu secondary id="navbar">
                 <Menu.Item
-                  name="environment"
+                  name={i18n.t('navbar:environment')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name="medicine"
+                  name={i18n.t('navbar:medicine')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name="outreach"
+                  name={i18n.t('navbar:outreach')}
                   onClick={this.handleItemClick}
                 />
               </Menu>
             </div>
             <Menu.Menu position="right">
               <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
+                <Input icon="search" placeholder={i18n.t('navbar:search')} />
               </Menu.Item>
               {createArticleButton}
               {subscribeButton}

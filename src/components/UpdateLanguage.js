@@ -12,12 +12,12 @@ class UpdateLanguage extends Component {
           <Menu secondary>
           <Menu.Item
             id="Swedish"
-            name="Swedish"
+            name={i18n.t('navbar:swedish')}
             onClick={() =>{i18n.changeLanguage('sv',() => this.props.UpdateLanguage());}}
           />
           <Menu.Item 
             id="English"
-            name="English" 
+            name={i18n.t('navbar:english')}
             onClick={() =>{i18n.changeLanguage('en',() => this.props.UpdateLanguage());}} 
             />
           </Menu>
