@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
 import NavBar from "./components/NavBar.js";
@@ -12,16 +12,17 @@ import PaymentForm from './components/PaymentForm';
 
 function App() {
   return (
-    <div>
-      <NavBar />
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/login-form" component={LoginForm} />
-          <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/createarticle" component={CreateArticleForm} />
-          <Route exact path="/payment" component={PaymentForm} />
-        </Switch>
-    </div>
+    <>
+      <Suspense fallback={(<div>Loading</div>)}>
+        <NavBar />
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/login-form" component={LoginForm} />
+            <Route exact path="/signup" component={SignupForm} />
+            <Route exact path="/createarticle" component={CreateArticleForm} />
+          </Switch>
+      </Suspense>
+    </>
   );
 }
 
