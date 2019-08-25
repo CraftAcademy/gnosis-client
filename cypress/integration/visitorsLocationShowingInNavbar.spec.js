@@ -2,7 +2,15 @@ import stubLocation from '../support/stubLocation';
 
 describe("Visitors Location are showing in Navbar", () => {
   beforeEach(() => {
-    cy.visit('url', { onBeforeLoad: (win) => { cy.mockGeolocation(win, lat, long) } })
+    cy.server();
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3001/api/v0/articles',
+      response: 'fixture:articles.json',
+      status: 200
+    })
+    
+    cy.visit('http://localhost:3001', { onBeforeLoad: (win) => { cy.mockGeolocation(win, lat, long) } })
    
     it('Visitor is located in New York,',() => {
       cy.visit("http://localhost:3001", stubLocation({ latitude: 40.730610, longitude: 73.935242 }));
@@ -18,4 +26,5 @@ describe("Visitors Location are showing in Navbar", () => {
       cy.visit("http://localhost:3001", stubLocation({ latitude: 34.052235, longitude: -118.243683 }));
       cy.get("#navbar-location").should("contain", "Los Angeles 67°51'20.59 N 20°13'30.47 E");
     })
-  });
+  })
+})
