@@ -1,13 +1,15 @@
-// cy.fixture('location.json').as('fakeLocation');
-// cy.get('@fakeLocation').then(fakeLocation => {
-//   cy
-//     .visit('some-url', {
-//       onBeforeLoad (win) {
-// 	cy
-// 	  .stub(win.navigator.geolocation, 'getCurrentPosition')
-// 	  .callsFake((cb) => {
-//              return cb(fakeLocation);
-// 	  });
-//       },
-//   });
-// });
+const stubLocation = options => ({
+  onBeforeLoad(win) {
+    const stubLocation = {
+      coordinates: {
+        latitude: options.latitude || null,
+        longitude: options.longitude || null
+      }
+    };
+    cy.stub(win.navigator.geolocation, "getCurrentPosition").callsFake(
+      callback => {
+        return callback(stubLocation);
+      }
+    );
+  }
+});
