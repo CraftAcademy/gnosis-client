@@ -28,14 +28,6 @@ class NavBar extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  async fetchAdress() {
-    let address = await getAddress(
-      this.state.position.coords.latitude,
-      this.state.position.coords.longitude
-    );
-    this.setState({ city: address.components.city });
-  }
-
   render() {
     let createArticleButton;
     let subscribeButton;

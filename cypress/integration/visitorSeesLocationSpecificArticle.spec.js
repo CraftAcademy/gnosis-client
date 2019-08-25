@@ -9,13 +9,29 @@ describe("Visitor can see location - specific articles", () => {
       response: "fixture:articles.json",
       status: 200
     });
-  });
-
-  it("Visitor is located in Stockholm,", () => {
     cy.visit(
       "http://localhost:3001",
       stubLocation({ latitude: 59.3293, longitude: 18.0686 })
     );
-    
-  })
+  });
+
+  it("Two articles are displayed", async () => {
+    cy.get("#article_1");
+    cy.get("#article_4");
+  });
+
+  it("Article is created in Stockholm", async () => {
+    cy.get("#article_1").within(() => {
+      cy.get("#city").contains(
+        "Stockholm"
+      );
+      cy.get("#article_4").within(() => {
+        cy.get("#city").contains(
+          "Stockholm"
+        );
+      });
+    });
+  });
+
+
 });
