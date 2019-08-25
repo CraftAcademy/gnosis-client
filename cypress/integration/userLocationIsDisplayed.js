@@ -2,13 +2,7 @@ import fakeLocation from '../support/fakeLocation'
 describe("Browser based location is dispalyed", () => {
 
   beforeEach(() => {
-    cy.server();
-    cy.route({
-      method: 'GET',
-      url: "http://localhost:3000/api/v0/articles",
-      response: "fixture:articles.json",
-      status: 200
-    })
+    cy.server({enable: false});
   })
 
   it("for visitor from Stockholm", () => {
