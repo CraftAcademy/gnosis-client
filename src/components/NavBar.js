@@ -7,8 +7,15 @@ import { connect } from 'react-redux';
 import convertToDMS from '../modules/convertDMS';
 import getAddress from '../modules/openCageWrapper'
 
+
 class NavBar extends Component {
-  state = { activeItem: 'latest news' }
+  state = { activeItem: 'latest news', position: {}, city: ''  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({position: position}, () => {this.fetchAdress()})
+    });
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
