@@ -8,7 +8,7 @@ import convertToDMS from '../modules/convertDMS';
 import getAddress from '../modules/openCageWrapper'
 
 class NavBar extends Component {
-  state = { activeItem: 'latest news' }
+  state = { activeItem: 'latest news', city: ''}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -83,7 +83,7 @@ class NavBar extends Component {
               </Menu>
             </div>
             <Menu.Item id="navbar-location">
-                  <div>jibbrish</div>
+            {this.state.city + " " + convertToDMS(this.state.position.coords.latitude, this.state.position.coords.longitude)}
               </Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item>

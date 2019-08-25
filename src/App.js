@@ -8,8 +8,7 @@ import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
 import { geolocated } from "react-geolocated";
-import convertToDMS from "../src/modules/convertDMS";
-import getAddress from '../src/modules/openCageWrapper'
+
 
 const App = () => {
   return (
