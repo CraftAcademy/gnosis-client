@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Divider, Header, Placeholder } from "semantic-ui-react";
 
-const ArticleTemplate = (props) => {
+const ArticleTemplate = props => {
   const article = props.article;
 
   return (
@@ -20,7 +20,7 @@ const ArticleTemplate = (props) => {
           <Header as="h5" textAlign="right" id="date">
             {article.date}
           </Header>
-          <Header as="h5" textAlign="right" id="date">
+          <Header as="h5" textAlign="right" id="city">
             {article.city}
           </Header>
           <Divider />
@@ -28,6 +28,6 @@ const ArticleTemplate = (props) => {
       </Container>
     </>
   );
-}
+};
 
 export default ArticleTemplate;

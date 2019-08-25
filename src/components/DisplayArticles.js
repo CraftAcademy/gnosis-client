@@ -32,7 +32,7 @@ class DisplayArticles extends Component {
       <>
         <Container>
           <p>
-            <h3>Local Research in your Area</h3>
+            <h3 id="local-research">Local Research in your Area</h3>
             {/* Insert code to match article city against user geotag here */}
           </p>
           {articlesDisplay ? (
