@@ -4,6 +4,8 @@ import { Container, Menu, Input } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
+import convertToDMS from '../modules/convertDMS';
+import getAddress from '../modules/openCageWrapper'
 
 class NavBar extends Component {
   state = { activeItem: 'latest news' }
@@ -80,6 +82,9 @@ class NavBar extends Component {
                 />
               </Menu>
             </div>
+            <Menu.Item id="navbar-location">
+                  <div>jibbrish</div>
+              </Menu.Item>
             <Menu.Menu position="right">
               <Menu.Item>
                 <Input icon="search" placeholder="Search..." />
