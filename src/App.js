@@ -10,7 +10,7 @@ import PaymentForm from './components/PaymentForm';
 
 
 
-function App() {
+const App = () => {
   return (
     <div>
       <NavBar />
