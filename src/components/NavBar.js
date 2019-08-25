@@ -1,33 +1,32 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input } from 'semantic-ui-react';
-import '../styling/Navbar.css';
-import AlertMessage from './AlertMessage';
-import { connect } from 'react-redux';
-import convertToDMS from '../modules/convertDMS';
-import getAddress from '../modules/openCageWrapper'
-
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { Container, Menu, Input } from "semantic-ui-react";
+import "../styling/Navbar.css";
+import AlertMessage from "./AlertMessage";
+import { connect } from "react-redux";
+import convertToDMS from "../modules/convertDMS";
+import getAddress from "../modules/openCageWrapper";
 
 class NavBar extends Component {
-<<<<<<< HEAD
-  state = { activeItem: 'latest news', city: ''}
-=======
-  state = { activeItem: 'latest news', position: {}, city: ''  }
+  state = { activeItem: "latest news", position: {}, city: "" };
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({position: position}, () => {this.fetchAdress()})
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({ position: position }, () => {
+        this.fetchAddress();
+      });
     });
   }
 
   async fetchAddress() {
-    let address = await getAddress(this.position.coords.latitude, this.position.coords.longitude)
-    this.setState({city: address.component.city})
+    let address = await getAddress(
+      this.position.coords.latitude,
+      this.position.coords.longitude
+    );
+    this.setState({ city: address.component.city });
   }
 
->>>>>>> 748176e01741cb7411e722f563d6d9cdb68153ec
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     let createArticleButton;
@@ -35,14 +34,18 @@ class NavBar extends Component {
     let flashMessage;
     let loginActions;
 
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     if (this.props.showFlash === true) {
-      flashMessage = <AlertMessage />
+      flashMessage = <AlertMessage />;
     }
 
     if (this.props.currentUser.attributes.role === "research_group") {
-      createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
+      createArticleButton = (
+        <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">
+          Create Article
+        </Menu.Item>
+      );
     }
 
     if (
@@ -50,11 +53,7 @@ class NavBar extends Component {
       this.props.currentUser.attributes.subscriber === false
     ) {
       subscribeButton = (
-        <Menu.Item
-          id="subscribe-button"
-          as={NavLink}
-          to="/payment"
-        >
+        <Menu.Item id="subscribe-button" as={NavLink} to="/payment">
           Subscribe
         </Menu.Item>
       );
@@ -63,12 +62,16 @@ class NavBar extends Component {
     if (this.props.currentUser.isSignedIn === false) {
       loginActions = (
         <>
-          <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
-          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
+          <Menu.Item as={NavLink} to="/login-form" id="login-button">
+            Log In
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">
+            Sign Up
+          </Menu.Item>
         </>
-      )
-
+      );
     }
+
     return (
       <>
         <div className="ui stackable menu">
@@ -99,9 +102,16 @@ class NavBar extends Component {
                 />
               </Menu>
             </div>
+            { this.state.position.coords ?
             <Menu.Item id="navbar-location">
-            {this.state.city + " " + convertToDMS(this.state.position.coords.latitude, this.state.position.coords.longitude)}
-              </Menu.Item>
+              {this.state.city +
+                " " +
+                convertToDMS(
+                  this.state.position.coords.latitude,
+                  this.state.position.coords.longitude
+                )}
+            </Menu.Item>
+            : '' }
             <Menu.Menu position="right">
               <Menu.Item>
                 <Input icon="search" placeholder="Search..." />
