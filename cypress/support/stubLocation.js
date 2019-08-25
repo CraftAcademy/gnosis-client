@@ -14,5 +14,4 @@ const stubLocation = options => ({
   }
 });
 
-
 export default stubLocation;

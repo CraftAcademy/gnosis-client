@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from './components/PaymentForm';
+import { geolocated } from 'react-geolocated';
 
 
 
