@@ -28,14 +28,6 @@ class NavBar extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({ position: position }, () => {
-        this.fetchAdress();
-      });
-    });
-  }
-
   async fetchAdress() {
     let address = await getAddress(
       this.state.position.coords.latitude,
@@ -128,8 +120,8 @@ class NavBar extends Component {
                   )}
               </Menu.Item>
             ) : (
-              ""
-            )}
+                ""
+              )}
 
             <Menu.Menu position="right">
               {createArticleButton}
