@@ -9,7 +9,7 @@ import Homepage from "./components/Homepage";
 
 
 
-function App() {
+const App = () => {
   return (
     <div>
       <NavBar />
