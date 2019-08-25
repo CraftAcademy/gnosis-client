@@ -20,10 +20,10 @@ class NavBar extends Component {
 
   async fetchAddress() {
     let address = await getAddress(
-      this.position.coords.latitude,
-      this.position.coords.longitude
+      this.state.position.coords.latitude,
+      this.state.position.coords.longitude
     );
-    this.setState({ city: address.component.city });
+    this.setState({ city: address.components.city });
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -112,8 +112,8 @@ class NavBar extends Component {
                   )}
               </Menu.Item>
             ) : (
-                ""
-              )}
+              ""
+            )}
 
             <Menu.Menu position="right">
               {createArticleButton}

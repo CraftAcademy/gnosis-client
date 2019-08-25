@@ -15,23 +15,17 @@ describe("Visitor can see location - specific articles", () => {
     );
   });
 
-  it("Two articles are displayed", async () => {
+  it("Two location-specific articles are displayed", async () => {
     cy.get("#article_1");
-    cy.get("#article_4");
+    cy.get("#article_2");
   });
 
-  it("Article is created in Stockholm", async () => {
+  it("Article is from Stockholm", async () => {
     cy.get("#article_1").within(() => {
-      cy.get("#city").contains(
-        "Stockholm"
-      );
-      cy.get("#article_4").within(() => {
-        cy.get("#city").contains(
-          "Stockholm"
-        );
+      cy.get("#city").contains("Stockholm");
+      cy.get("#article_2").within(() => {
+        cy.get("#city").contains("Stockholm");
       });
     });
   });
-
-
 });

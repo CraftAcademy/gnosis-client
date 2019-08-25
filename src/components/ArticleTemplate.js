@@ -20,6 +20,9 @@ const ArticleTemplate = (props) => {
           <Header as="h5" textAlign="right" id="date">
             {article.date}
           </Header>
+          <Header as="h5" textAlign="right" id="date">
+            {article.city}
+          </Header>
           <Divider />
         </div>
       </Container>
