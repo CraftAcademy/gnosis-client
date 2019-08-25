@@ -27,13 +27,20 @@ class DisplayArticles extends Component {
       this.state.articles.map(article => {
         return <ArticleTemplate key={article.id} article={article} />;
       });
+    
+    // TODO - Add function to map articles by city
+    // const articlesDisplayCity =
+    //   this.state.articles.length > 0 && this.state.articles.city === 
+    //   this.state.articles.map(article => {
+    //     return <ArticleTemplate key={article.id} article={article} />;
+    //   });
 
     return (
       <>
         <Container>
           <p>
             <h3 id="local-research">Local Research in your Area</h3>
-            {/* Insert code to match article city against user geotag here */}
+            {/* {articlesDisplayCity} */}
           </p>
           {articlesDisplay ? (
             articlesDisplay

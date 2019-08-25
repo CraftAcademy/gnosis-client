@@ -2,35 +2,26 @@ import stubLocation from "../support/stubLocation";
 
 describe("Visitors Location are showing in Navbar", () => {
   beforeEach(() => {
-    cy.server();
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3001/api/v0/articles",
-      response: "fixture:articles.json",
-      status: 200
-    });
+    cy.server({ enable: false });
   });
 
-  it("Visitor is located in New York,", () => {
+  it("Visitor is located in London,", () => {
     cy.visit(
       "http://localhost:3001",
-      stubLocation({ latitude: 40.73061, longitude: 73.935242 })
+      stubLocation({ latitude: 51.5074, longitude: 0.1278 })
     );
-    cy.get("#navbar-location").should(
+    cy.get("#location").should(
       "contain",
-      "New York 40° 43' 50.1960' N 73° 56' 6.8712' W"
+      "London"
     );
   });
 
-  it("Visitor is located in Kiruna,", () => {
+  it("Visitor is located in Paris,", () => {
     cy.visit(
       "http://localhost:3001",
-      stubLocation({ latitude: 67.85572, longitude: 20.22513 })
+      stubLocation({ latitude: 48.8566, longitude: 2.3522 })
     );
-    cy.get("#navbar-location").should(
-      "contain",
-      "Kiruna 67°51'20.59 N 20°13'30.47 E"
-    );
+    cy.get("#location").should("contain", "Paris");
   });
 
   it("Visitor is located in Los Angeles,", () => {
@@ -38,9 +29,9 @@ describe("Visitors Location are showing in Navbar", () => {
       "http://localhost:3001",
       stubLocation({ latitude: 34.052235, longitude: -118.243683 })
     );
-    cy.get("#navbar-location").should(
+    cy.get("#location").should(
       "contain",
-      "Los Angeles 67°51'20.59 N 20°13'30.47 E"
+      "Los Angeles"
     );
   });
 });

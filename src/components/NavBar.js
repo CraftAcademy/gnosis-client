@@ -104,12 +104,7 @@ class NavBar extends Component {
             </div>
             {this.state.position.coords ? (
               <Menu.Item id="location">
-                {this.state.city +
-                  " " +
-                  convertToDMS(
-                    this.state.position.coords.latitude,
-                    this.state.position.coords.longitude
-                  )}
+                {this.state.city}
               </Menu.Item>
             ) : (
               ""

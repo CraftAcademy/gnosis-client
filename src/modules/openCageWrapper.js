@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getAddress = async (lat, long) => {
-  var apiKey = process.env.REACT_APP_OPEN_CAGE_API_KEY;
+  var apiKey = "1341bede29d941c0a18f2b232d3d5206";
   var latitude = lat;
   var longitude = long;
 

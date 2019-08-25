@@ -1,6 +1,5 @@
 import stubLocation from "../support/stubLocation";
 
-
 describe("Visitor can see articles when visiting the App", () => {
   beforeEach(() => {
     cy.server();
@@ -9,7 +8,10 @@ describe("Visitor can see articles when visiting the App", () => {
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:articles.json"
     });
-    cy.visit("http://localhost:3001", stubLocation({ latitude: 40.73061, longitude: 73.935242 }));
+    cy.visit(
+      "http://localhost:3001",
+      stubLocation({ latitude: 40.73061, longitude: 73.935242 })
+    );
   });
 
   it("Two articles are displayed", async () => {
@@ -28,5 +30,3 @@ describe("Visitor can see articles when visiting the App", () => {
     });
   });
 });
-
-
