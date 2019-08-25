@@ -17,6 +17,12 @@ class NavBar extends Component {
     });
   }
 
+  async fetchAddress() {
+    let address = await getAddress(this.position.coords.latitude, this.position.coords.longitude)
+    this.setState({city: address.component.city})
+  }
+
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
