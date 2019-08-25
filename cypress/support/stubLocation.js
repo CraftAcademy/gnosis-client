@@ -1,7 +1,7 @@
 const stubLocation = options => ({
   onBeforeLoad(win) {
     const stubLocation = {
-      coordinates: {
+      coords: {
         latitude: options.latitude || null,
         longitude: options.longitude || null
       }
@@ -13,3 +13,6 @@ const stubLocation = options => ({
     );
   }
 });
+
+
+export default stubLocation;
