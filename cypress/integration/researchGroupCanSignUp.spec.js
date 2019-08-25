@@ -28,7 +28,7 @@ describe("Research Group Sign-Up", () => {
       "Your research_group account successfully created!"
     );
   });
-  it("User can't sign up without valid Subscription Key", () => {
+  it("User can't sign up without valid Registration Key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",

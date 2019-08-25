@@ -142,7 +142,7 @@ class SignupForm extends Component {
               <Form.Field>
                 <label>Registration Key</label>
                 <input
-                  id="subscription-key"
+                  id="registration-key"
                   value={this.state.registration_key}
                   onChange={e =>
                     this.setState({ registration_key: e.target.value })
