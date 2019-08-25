@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input } from 'semantic-ui-react';
+import { Container, Menu} from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
@@ -8,15 +8,27 @@ import convertToDMS from '../modules/convertDMS';
 import getAddress from '../modules/openCageWrapper'
 
 class NavBar extends Component {
-  state = { activeItem: 'latest news', city: ''}
+  state = { activeItem: 'latest news', city: '', position: {}}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({ position: position }, () => {this.fetchAdress()})  
+    });
+  }
+
+  async fetchAdress() {
+    let address = await getAddress(this.state.position.coords.latitude, this.state.position.coords.longitude)
+    this.setState({city: address.components.city})
+  }
+  
   render() {
     let createArticleButton;
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let positionDisplay;
 
     const { activeItem } = this.state
 
@@ -50,7 +62,13 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
         </>
       )
-
+    }
+    if (this.state.position.coords) {
+      positionDisplay = (
+        <Menu.Item id="location">
+          {this.state.city + " " + convertToDMS(this.state.position.coords.latitude, this.state.position.coords.longitude)}
+        </Menu.Item>
+      )     
     }
     return (
       <>
@@ -82,13 +100,9 @@ class NavBar extends Component {
                 />
               </Menu>
             </div>
-            <Menu.Item id="navbar-location">
-            {this.state.city + " " + convertToDMS(this.state.position.coords.latitude, this.state.position.coords.longitude)}
-              </Menu.Item>
+            {positionDisplay}
             <Menu.Menu position="right">
-              <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
-              </Menu.Item>
+             
               {createArticleButton}
               {subscribeButton}
               {loginActions}
