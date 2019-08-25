@@ -72,9 +72,3 @@ Cypress.Commands.add(
     });
   }
 );
-
-Cypress.Commands.add("mockGeolocation", (windowObject, latitude, longitude) => {
-  cy.stub(windowObject.navigator.geolocation, "getCurrentPosition", cb => {
-    return cb({ coordinates: { latitude: latitude, longitude: longitude } });
-  });
-});
