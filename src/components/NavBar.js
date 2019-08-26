@@ -4,7 +4,6 @@ import { Container, Menu } from "semantic-ui-react";
 import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
-import convertToDMS from "../modules/convertDMS";
 import getAddress from "../modules/openCageWrapper";
 
 class NavBar extends Component {

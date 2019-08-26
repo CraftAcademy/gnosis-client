@@ -8,6 +8,7 @@ class CreateArticleForm extends Component {
     author: "",
     title: "",
     body: "",
+    country: "",
     articleSaved: false
   };
 
@@ -40,6 +41,14 @@ class CreateArticleForm extends Component {
                 id="create-article-form"
                 onSubmit={e => this.saveArticleHandler(e)}
               >
+                   <Form.Field>
+                  <label>Country</label>
+                  <input
+                    id="country"
+                    value={this.state.country}
+                    onChange={e => this.setState({ country: e.target.value })}
+                  />
+                </Form.Field>
                 <Form.Field>
                   <label>Author</label>
                   <input
