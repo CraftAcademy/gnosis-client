@@ -54,6 +54,7 @@ class SignupForm extends Component {
     let saveUserStatus;
     let paymentForm;
     let universityWelcome;
+    let userType;
 
     if (
       this.state.userSaved === true &&
