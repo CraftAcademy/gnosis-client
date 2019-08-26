@@ -21,5 +21,6 @@ describe("Visitor can change language from", () => {
     cy.get('#Swedish').click({ force: true });
     cy.get('#homebutton').should('contain', 'Hem');
     cy.get('#Language').should('contain', 'Engelska');
+    cy.get('#homebutton').should('contain', 'Home');
   });
 });
