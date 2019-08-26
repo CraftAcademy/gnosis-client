@@ -106,7 +106,7 @@ class SignupForm extends Component {
             </Form.Field>
 
             <Form.Field>
-              <label>{userType}</label>
+              <label id="userType">{userType}</label>
               <input
                 id="name"
                 value={this.state.name}
