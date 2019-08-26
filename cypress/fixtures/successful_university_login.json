@@ -1,6 +1,7 @@
 {
   "data": {
-    "id": 2,
+    "id": 1,
+    "name": "Harvard",
     "email": "harvard@mail.com",
     "uid": "harvard@mail.com",
     "role": "university",

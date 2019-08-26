@@ -4,9 +4,10 @@ const initialState = {
       isLoading: false,
       isSignedIn: false,
       attributes: {
-        uid: '',
-        role: '',
-        subscriber: false
+        uid: "",
+        role: "",
+        subscriber: false,
+        registration_key: ""
       }
     }
   }
