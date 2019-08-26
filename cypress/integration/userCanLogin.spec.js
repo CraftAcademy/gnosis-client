@@ -1,4 +1,4 @@
-describe('User can log in', () => {
+describe('User Log-In', () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -7,11 +7,11 @@ describe('User can log in', () => {
       response: "fixture:articles.json"
     });
   });
-  it('Successfully', () => {
+  it('Can successfully log in', () => {
     cy.research_group_login("climate_harvard@mail.com", "password");
     cy.get('#flash').should('contain', 'Hello climate_harvard@mail.com!')
   })
-  it('With invalid credentials', () => {
+  it('Attempts to log in with invalid credentials', () => {
     cy.research_group_wrong_login("climate_harvard@mail.com", "wrong_password");
     cy.get('#flash').should('contain', 'Invalid login credentials. Please try again.')
   })

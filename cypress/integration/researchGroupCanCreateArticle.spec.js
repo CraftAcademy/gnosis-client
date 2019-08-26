@@ -9,7 +9,7 @@ describe("Research Group can post article", () => {
     })
   });
 
-  it("Article posts successfully", () => {
+  it("Article is posted successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
@@ -34,7 +34,7 @@ describe("Research Group can post article", () => {
     cy.get("#create-article-form").should("not.exist");
   });
 
-  it("Article posts unsuccessfully", () => {
+  it("Article is not posted successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",

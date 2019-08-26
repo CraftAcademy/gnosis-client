@@ -8,7 +8,7 @@ describe("University Sign-Up", () => {
       status: 200
     })
   });
-  it("User can successfully sign-up as a University", () => {
+  it("Can successfully sign up", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
@@ -28,7 +28,7 @@ describe("University Sign-Up", () => {
 
 
 
-  it("User can't sign up with invalid credentials", () => {
+  it("Attempts to sign up with invalid credentials", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
