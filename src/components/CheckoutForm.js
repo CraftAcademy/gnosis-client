@@ -21,7 +21,7 @@ class CheckoutForm extends Component {
     ev.preventDefault();
     await this.props.stripe.createToken().then(({ token }) => {
       token ? this.stripePayment(token.id) : this.props.dispatchFlash("Something went wrong, please try again.", "error");
-      });
+    });
   };
 
   stripePayment = async stripeToken => {
