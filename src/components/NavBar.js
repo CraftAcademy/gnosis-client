@@ -104,7 +104,7 @@ class NavBar extends Component {
             </div>
             {this.state.position.coords ? (
               <Menu.Item id="location">
-                {this.state.city}
+                Location: {this.state.city}
               </Menu.Item>
             ) : (
               ""
