@@ -8,12 +8,11 @@ import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from './components/PaymentForm';
 
+const App = () => {
 
-
-function App() {
   return (
     <div>
-      <NavBar />
+      <NavBar/>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/login-form" component={LoginForm} />

@@ -29,11 +29,6 @@ describe("Visitor can see articles when visiting the App", () => {
 describe("Visitor does not see articles when visiting the site", () => {
   beforeEach(() => {
     cy.server();
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v0/articles",
-      response: { "data": [] }
-    });
     cy.visit("http://localhost:3001");
   });
 

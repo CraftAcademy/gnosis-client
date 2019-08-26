@@ -18,3 +18,20 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+
+beforeEach(() => {
+  cy.server()
+  cy.route({
+    method: 'GET',
+    url: '**/geocode/v1/json**',
+    response:  {results: [{components: {city: 'Stubbed'}}]},
+    status: 200
+  })
+  cy.route({
+    method: "GET",
+    url: "http://localhost:3000/api/v0/articles",
+    response: { "data": [] }
+  });
+
+});

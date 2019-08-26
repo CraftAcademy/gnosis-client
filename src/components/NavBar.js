@@ -4,9 +4,24 @@ import { Container, Menu, Input } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
+import convertToDMS from '../modules/convertDMS';
+import getAddress from '../modules/openCageWrapper'
+
+
 
 class NavBar extends Component {
-  state = { activeItem: 'latest news' }
+  state = { activeItem: 'latest news', position: {}, city: '' }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({ position: position }, () => {this.fetchAdress()})  
+    });
+  }
+
+  async fetchAdress() {
+    let address = await getAddress(this.state.position.coords.latitude, this.state.position.coords.longitude)
+    this.setState({city: address.components.city})
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -15,6 +30,7 @@ class NavBar extends Component {
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let positionDisplay;
 
     const { activeItem } = this.state
 
@@ -48,8 +64,17 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
         </>
       )
-
     }
+
+    if (this.state.position.coords) {
+      positionDisplay = (
+        <Menu.Item id="location">
+          {this.state.city + " " + convertToDMS(this.state.position.coords.latitude, this.state.position.coords.longitude)}
+        </Menu.Item>
+      )     
+    }
+
+
     return (
       <>
         <div className="ui stackable menu">
@@ -80,6 +105,8 @@ class NavBar extends Component {
                 />
               </Menu>
             </div>
+            {positionDisplay}
+
             <Menu.Menu position="right">
               <Menu.Item>
                 <Input icon="search" placeholder="Search..." />
@@ -102,4 +129,5 @@ const mapStateToProps = state => {
     showFlash: state.flashes.showFlash
   };
 };
-export default connect(mapStateToProps)(NavBar);
+export default
+  connect(mapStateToProps)(NavBar)

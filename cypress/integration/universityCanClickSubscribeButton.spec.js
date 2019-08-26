@@ -2,12 +2,6 @@ describe('University can see payment form after signup', () => {
 
   beforeEach(() => {
     cy.server();
-    cy.route({
-      method: 'GET',
-      url: "http://localhost:3000/api/v0/articles",
-      response: "fixture:articles.json",
-      status: 200
-    })
   });
   
   it('Can click subscribe button and see payment form', () => {
