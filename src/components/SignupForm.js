@@ -12,7 +12,8 @@ class SignupForm extends Component {
     email: "",
     password: "",
     password_confirmation: "",
-    userSaved: false
+    userSaved: false,
+    registration_key: ""
   };
 
   async saveNewUserHandler(e) {
@@ -23,14 +24,16 @@ class SignupForm extends Component {
       email,
       password,
       password_confirmation,
-      role
+      role,
+      registration_key
     } = this.state;
     registerUser({
       name,
       email,
       password,
       password_confirmation,
-      role
+      role,
+      registration_key
     })
       .then(() => {
         this.setState({
@@ -50,7 +53,7 @@ class SignupForm extends Component {
   render() {
     let saveUserStatus;
     let paymentForm;
-    let universityWelcome
+    let universityWelcome;
 
     if (
       this.state.userSaved === true &&
@@ -64,14 +67,11 @@ class SignupForm extends Component {
       saveUserStatus = this.state.errorMessage;
     }
     if (this.state.renderPaymentForm === true) {
-      paymentForm = ( <PaymentForm /> )
-    } else {
-      paymentForm = ""
-    }
+      paymentForm = <PaymentForm />;
+    } 
 
     return (
       <Container>
-
         {this.state.renderSignupForm ? (
           <Form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
             <Form.Field>
@@ -135,13 +135,29 @@ class SignupForm extends Component {
                 }
               />
             </Form.Field>
-            <Button id="submit-account-button" type="submit" >
+
+            {this.state.role === "research_group" ? (
+              <Form.Field>
+                <label>Registration Key</label>
+                <input
+                  id="registration-key"
+                  value={this.state.registration_key}
+                  onChange={e =>
+                    this.setState({ registration_key: e.target.value })
+                  }
+                />
+              </Form.Field>
+            ) : (
+              ""
+            )}
+
+            <Button id="submit-account-button" type="submit">
               Sign Me Up!
-            </Button> 
+            </Button>
           </Form>
         ) : (
-            ""
-          )}
+          ""
+        )}
         {saveUserStatus}
         {paymentForm}
         {universityWelcome}
