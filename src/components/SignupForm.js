@@ -57,11 +57,11 @@ class SignupForm extends Component {
     let userType;
 
     this.state.role === "university"
-      ? (userType = "university")
+      ? (userType = "University Name")
       : this.state.role === "research_group"
-      ? (userType = "research_group")
+      ? (userType = "Research Group Name")
       : this.state.role === "reader"
-      ? (userType = "reader")
+      ? (userType = "Name")
       : (userType = null);
 
     if (
@@ -106,7 +106,7 @@ class SignupForm extends Component {
             </Form.Field>
 
             <Form.Field>
-              <label>University Name</label>
+              <label>{userType}</label>
               <input
                 id="name"
                 value={this.state.name}
