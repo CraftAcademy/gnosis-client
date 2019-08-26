@@ -111,6 +111,6 @@ describe("University pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
-    cy.contains("Payment failed!");
+    cy.contains("Something went wrong, please try again.");
   });
 });

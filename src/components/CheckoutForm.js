@@ -18,11 +18,38 @@ class CheckoutForm extends Component {
     };
   }
 
-  submitPayment = async () => {
+  // submitPayment = async () => {
+  //   try {
+  //     let token = await this.props.stripe.createToken();
+  //     let response = await axios.post("/subscriptions", {
+  //       body: token.id
+  //     });
+  //     if (response.status === 200) {
+  //       this.setState({
+  //         success: response.data.message,
+  //         renderStripeForm: false
+  //       });
+  //     }
+  //   } catch (error) {
+  //     this.setState({ error: error.response.data.error });
+  //   }
+  // };
+
+  submitPayment = async ev => {
+    ev.preventDefault();
+    await this.props.stripe.createToken().then(({ token }) => {
+      if (token) {
+        this.stripePayment(token.id);
+      } else {
+        this.setState({ error: "Something went wrong, please try again." });
+      }
+    });
+  };
+
+  stripePayment = async stripeToken => {
     try {
-      let token = await this.props.stripe.createToken();
       let response = await axios.post("/subscriptions", {
-        body: token.id
+        body: stripeToken.id
       });
       if (response.status === 200) {
         this.setState({
