@@ -19,15 +19,16 @@ class CheckoutForm extends Component {
 
   submitPayment = async ev => {
     ev.preventDefault();
-    await this.props.stripe.createToken().then(({ token }) => {
+    await this.props.stripe.createToken().then(({ token }) => { console.log(token)
       token ? this.stripePayment(token.id) : this.props.dispatchFlash("Something went wrong, please try again.", "error");
     });
   };
+  
 
   stripePayment = async stripeToken => {
-    try {
-      let response = await axios.post("/subscriptions", {
-        body: stripeToken.id
+    try { 
+      let response = await axios.post("/subscriptions", { 
+        email: this.props.currentUser.attributes.uid, stripeToken
       });
       if (response.status === 200) {
         this.props.dispatchFlash(response.data.message, "success");
@@ -36,7 +37,7 @@ class CheckoutForm extends Component {
         });
       }
     } catch (error) {
-      this.props.dispatchFlash(error.response.data.error, "error");
+      this.props.dispatchFlash(error.response.data.errors, "error");
     }
   };
 
@@ -96,9 +97,15 @@ const mapDispatchToProps = {
   })
 };
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  };
+};
+
 export default injectStripe(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(CheckoutForm)
 );
