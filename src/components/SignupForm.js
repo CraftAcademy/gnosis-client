@@ -54,7 +54,7 @@ class SignupForm extends Component {
 
     if (
       this.state.userSaved === true &&
-      this.props.currentUser.attributes.role === "University"
+      this.props.currentUser.attributes.role === "university"
     ) {
       universityWelcome = `Welcome to Gnosis! To obtain your Research Group account keys, please subscribe!`;
     } else if (

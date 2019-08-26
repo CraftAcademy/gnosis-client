@@ -39,7 +39,7 @@ class NavBar extends Component {
     }
 
     if (
-      this.props.currentUser.attributes.role === "University" &&
+      this.props.currentUser.attributes.role === "university" &&
       this.props.currentUser.attributes.subscriber === false
     ) {
       subscribeButton = (
