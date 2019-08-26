@@ -3,7 +3,7 @@
   "data": {
     "allow_password_change": false,
     "name": "Harvard",
-    "role": "University",
+    "role": "university",
     "email": "harvard@mail.com",
     "subscriber": false
   }
