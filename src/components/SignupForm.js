@@ -56,6 +56,14 @@ class SignupForm extends Component {
     let universityWelcome;
     let userType;
 
+    this.state.role === "university"
+      ? (userType = "university")
+      : this.state.role === "research_group"
+      ? (userType = "research_group")
+      : this.state.role === "reader"
+      ? (userType = "reader")
+      : (userType = null);
+
     if (
       this.state.userSaved === true &&
       this.props.currentUser.attributes.role === "University"
@@ -69,7 +77,7 @@ class SignupForm extends Component {
     }
     if (this.state.renderPaymentForm === true) {
       paymentForm = <PaymentForm />;
-    } 
+    }
 
     return (
       <Container>
