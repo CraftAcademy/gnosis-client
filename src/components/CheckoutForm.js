@@ -16,26 +16,24 @@ class CheckoutForm extends Component {
       error: "",
       renderStripeForm: true
     };
-    this.submitPayment = this.submitPayment.bind(this);
   }
 
-  async submitPayment() {
-    let token = await this.props.stripe.createToken();
-    let response = await axios.post("/subscriptions", {
-      body: token.id
-    });
-    
-    if (response.data.message) {
-      this.setState({
-        success: `${response.data.message}`,
-        renderStripeForm: false
+  submitPayment = async () => {
+    try {
+      let token = await this.props.stripe.createToken();
+      let response = await axios.post("/subscriptions", {
+        body: token.id
       });
+      if (response.status === 200) {
+        this.setState({
+          success: response.data.message,
+          renderStripeForm: false
+        });
+      }
+    } catch (error) {
+      this.setState({ error: error.response.data.error });
     }
-
-    if (response.data.error) {
-      this.setState({ error: `${response.data.error}` });
-    }
-  }
+  };
 
   render() {
     let stripeForm;
