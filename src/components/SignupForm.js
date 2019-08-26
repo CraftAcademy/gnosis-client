@@ -68,9 +68,7 @@ class SignupForm extends Component {
     }
     if (this.state.renderPaymentForm === true) {
       paymentForm = <PaymentForm />;
-    } else {
-      paymentForm = "";
-    }
+    } 
 
     return (
       <Container>
