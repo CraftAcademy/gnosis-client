@@ -28,4 +28,10 @@ beforeEach(() => {
     response:  {results: [{components: {city: 'Stubbed'}}]},
     status: 200
   })
+  cy.route({
+    method: "GET",
+    url: "http://localhost:3000/api/v0/articles",
+    response: { "data": [] }
+  });
+
 });
