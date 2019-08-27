@@ -7,19 +7,19 @@ describe("Visitor can change language from", () => {
       response: "fixture:articles.json"
     });
     cy.visit("http://localhost:3001");
-    cy.get('#English').click({ force: true });
+    cy.get('#english').click({ force: true });
   });
 
   it("English to Swedish", () => {
       cy.get('#homebutton').should('contain', 'Home');
-      cy.get('#Language').should('contain', 'Swedish');
-      cy.get('#Swedish').click({ force: true });
+      cy.get('#language').should('contain', 'Swedish');
+      cy.get('#swedish').click({ force: true });
       cy.get('#homebutton').should('contain', 'Hem');
   });
 
   it("Swedish to English", () => {
-    cy.get('#Swedish').click({ force: true });
+    cy.get('#swedish').click({ force: true });
     cy.get('#homebutton').should('contain', 'Hem');
-    cy.get('#Language').should('contain', 'Engelska');
+    cy.get('#language').should('contain', 'Engelska');
   });
 });
