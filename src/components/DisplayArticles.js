@@ -27,11 +27,12 @@ class DisplayArticles extends Component {
       this.state.articles.map(article => {
         return <ArticleTemplate key={article.id} article={article} />;
       });
-    
-    // TODO - Add function to map articles by city
-    // const articlesDisplayCity =
-    //   this.state.articles.length > 0 && this.state.articles.city === 
-    //   this.state.articles.map(article => {
+
+      // Something like this
+      
+    // const articleCityDisplay =
+    //   this.state.articles.city.length > 0 &&
+    //   this.state.articles.city.map(article => {
     //     return <ArticleTemplate key={article.id} article={article} />;
     //   });
 
@@ -39,8 +40,7 @@ class DisplayArticles extends Component {
       <>
         <Container>
           <p>
-            <h3 id="local-research">Local Research in your Area</h3>
-            {/* {articlesDisplayCity} */}
+            {/* {articleCityDisplay} */}
           </p>
           {articlesDisplay ? (
             articlesDisplay

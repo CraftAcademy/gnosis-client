@@ -8,6 +8,9 @@ const ArticleTemplate = props => {
     <>
       <Container>
         <div id={`article_${article.id}`}>
+        <Header size="medium" textAlign="left" id="title">
+            {article.city}
+          </Header>
           <Header size="medium" textAlign="left" id="title">
             {article.title}
           </Header>
