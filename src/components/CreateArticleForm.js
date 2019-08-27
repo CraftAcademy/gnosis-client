@@ -25,6 +25,7 @@ class CreateArticleForm extends Component {
       this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
 
     } else {
+      // Begin bug hunt here
       this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
 
     }
