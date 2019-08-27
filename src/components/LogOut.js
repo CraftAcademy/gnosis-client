@@ -8,17 +8,17 @@ class LogOut extends Component {
 
   signOut = (e) => {
   e.preventDefault();
-  const { history, signOutUser } = this.props;
+  const { signOutUser } = this.props;
   signOutUser()
     .then(response => {
-      history.push("/")
-    //   this.props.dispatchFlash(
-    //     `Welcome back!`,
-    //       "success"
-    //   );
-    // })
-    // .catch(error => {
-    //   this.props.dispatchFlash(error.respose.data.error[0], "error")
+      ("/")
+      this.props.dispatchFlash(
+        `Successful logout. Welcome back soon!`,
+          "success"
+      );
+    })
+    .catch(error => {
+      this.props.dispatchFlash(error.respose.data.error[0], "error")
     })
   };
  

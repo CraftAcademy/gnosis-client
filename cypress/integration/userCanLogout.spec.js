@@ -18,7 +18,7 @@ describe('User Log-Out', () => {
     cy.university_login("harvard@mail.com", "password");
     cy.get("#logout-button").should("exist");
     cy.get("#logout-button").click();
-    // cy.get("#flash").should("contain", "Welcome back!")
+    cy.get("#flash").should("contain", "Successful logout. Welcome back soon!")
     cy.get("#login-button").should("exist");
   });
 });
