@@ -8,10 +8,12 @@ import UpdateLanguage from './UpdateLanguage';
 import i18n from "../i18n";
 
 class NavBar extends Component {
+  state = { activeItem: 'latest news' }
   constructor(props) {
     super(props)
     this.ReRender = this.ReRender.bind(this);
   };
+
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   ReRender() {
@@ -24,7 +26,7 @@ class NavBar extends Component {
     let flashMessage;
     let loginActions;
 
-    const { t } = this.props;
+    const { activeItem } = this.state
 
     if (this.props.showFlash === true) {
       flashMessage = <AlertMessage />;
