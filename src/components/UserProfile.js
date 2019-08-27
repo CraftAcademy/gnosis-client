@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Container } from "semantic-ui-react";
 
 class UserProfile extends Component {
   state = {
@@ -10,8 +11,10 @@ class UserProfile extends Component {
 
   render () {
     return (
-      <h1>Your Profile</h1>
-    )
+      <Container>
+        <h1>Your Profile</h1>
+      </Container>
+    );
   }
 }
 
