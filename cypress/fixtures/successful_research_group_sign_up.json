@@ -4,7 +4,7 @@
     "allow_password_change": false,
     "name": "Climate Research Group",
     "role": "research_group",
-    "email": "climate_research@mail.com",
+    "email": "climate_research@harvard.edu",
     "subscriber": false,
     "university_id": 1
   }
