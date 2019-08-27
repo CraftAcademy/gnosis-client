@@ -30,7 +30,9 @@ class NavBar extends Component {
   async postAdress(){
     let response = await saveLocation(
       this.state.city
+    
     );
+    debugger;
     if (response.status === 200) {
       this.setState({
         locationSaved: true

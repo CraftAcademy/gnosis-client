@@ -13,4 +13,4 @@ const saveLocation = async (location) => {
   }
 };
 
-export default { saveLocation };
+export default saveLocation;
