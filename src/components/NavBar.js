@@ -12,12 +12,12 @@ class NavBar extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({ position: position }, () => {
-        this.fetchAddress();
+        this.getAddress();
       });
     });
   }
 
-  async fetchAddress() {
+  async getAddress() {
     let address = await getAddress(
       this.state.position.coords.latitude,
       this.state.position.coords.longitude
