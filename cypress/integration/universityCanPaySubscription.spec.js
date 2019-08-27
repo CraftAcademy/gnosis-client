@@ -8,7 +8,7 @@ describe("University can pay for subscription", () => {
       response: "fixture:articles.json",
       status: 200
     });
-    cy.university_login("harvard@mail.com", "password");
+    cy.university_login("harvard@harvard.edu", "password");
     cy.get("#subscribe-button").click();
   });
 

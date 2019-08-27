@@ -20,7 +20,7 @@ describe('University gets payment form after signup', () => {
     cy.university_successful_signup(
       "university",
       "harvard",
-      "harvard@mail.com",
+      "harvard@harvard.edu",
       "password",
       "password"
     );

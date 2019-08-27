@@ -18,8 +18,8 @@ describe("Create article restrictions", () => {
   });
 
   it("University can not see Create Article button", () => {
-    cy.university_login("harvard@mail.com", "password");
-    cy.contains("Hello harvard@mail.com!");
+    cy.university_login("harvard@harvard.edu", "password");
+    cy.contains("Hello harvard@harvard.edu!");
     cy.get("#login-button").should("not.exist");
     cy.get("#login-form").should("not.exist");
     cy.get("#create-article-button").should("not.exist");
