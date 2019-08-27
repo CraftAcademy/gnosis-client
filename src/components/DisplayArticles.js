@@ -3,30 +3,16 @@ import axios from "axios";
 import ArticleTemplate from "./ArticleTemplate";
 import { Container } from "semantic-ui-react";
 import { connect } from 'react-redux'
-import getAddress from "../modules/openCageWrapper";
+
 
 class DisplayArticles extends Component {
   state = {
-    articles: [], city: "", position: {} 
+    articles: [],
   };
 
   componentDidMount() {
     this.getArticles();
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({ position: position }, () => {
-        this.getAddress();
-      });
-    });
   }
-
-  async getAddress() {
-    let address = await getAddress(
-      this.state.position.coords.latitude,
-      this.state.position.coords.longitude
-    );
-    this.setState({ city: address.components.city });
-  }
-
 
   async getArticles() {
     const response = await axios.get("/articles");

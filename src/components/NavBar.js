@@ -5,14 +5,16 @@ import "../styling/Navbar.css";
 import AlertMessage from "./AlertMessage";
 import { connect } from "react-redux";
 import getAddress from "../modules/openCageWrapper";
+import saveLocation from "../modules/saveLocation"
 
 class NavBar extends Component {
-  state = { activeItem: "latest news", city: "", position: {} };
+  state = { activeItem: "latest news", city: "", position: {}, locationSaved: false };
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({ position: position }, () => {
         this.getAddress();
+        this.postAdress();
       });
     });
   }
@@ -23,6 +25,17 @@ class NavBar extends Component {
       this.state.position.coords.longitude
     );
     this.setState({ city: address.components.city });
+  }
+
+  async postAdress(){
+    let response = await saveLocation(
+      this.state.city
+    );
+    if (response.status === 200) {
+      this.setState({
+        locationSaved: true
+      });
+    }
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
