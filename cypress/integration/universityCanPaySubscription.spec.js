@@ -42,6 +42,7 @@ describe("University can pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
+    cy.wait(200);
     cy.contains("Payment successful");
   });
 
