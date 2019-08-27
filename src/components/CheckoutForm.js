@@ -6,38 +6,47 @@ import {
   injectStripe
 } from "react-stripe-elements";
 import axios from "axios";
+import { connect } from "react-redux";
 import { Form, Button, Card, Container } from "semantic-ui-react";
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      success: "",
-      error: "",
       renderStripeForm: true
     };
   }
 
-  submitPayment = async () => {
+  submitPayment = async ev => {
+    ev.preventDefault();
+    await this.props.stripe.createToken().then(({ token }) => {
+      token
+        ? this.stripePayment(token.id)
+        : this.props.dispatchFlash(
+            "Something went wrong, please try again.",
+            "error"
+          );
+    });
+  };
+
+  stripePayment = async stripeToken => {
     try {
-      let token = await this.props.stripe.createToken();
       let response = await axios.post("/subscriptions", {
-        body: token.id
+        stripeToken
       });
       if (response.status === 200) {
+        this.props.dispatchFlash(response.data.message, "success");
         this.setState({
-          success: response.data.message,
           renderStripeForm: false
         });
       }
     } catch (error) {
-      this.setState({ error: error.response.data.error });
+      this.props.dispatchFlash(error.response.data.errors, "error");
     }
   };
 
   render() {
     let stripeForm;
-    let paymentStatus;
 
     if (this.state.renderStripeForm) {
       stripeForm = (
@@ -77,29 +86,20 @@ class CheckoutForm extends Component {
         </Form>
       );
     }
-
-    if (this.state.success !== "") {
-      paymentStatus = (
-        <Card>
-          <Card.Content header={this.state.success} />
-        </Card>
-      );
-    }
-
-    if (this.state.error !== "") {
-      paymentStatus = (
-        <Card>
-          <Card.Content header={this.state.error} />
-        </Card>
-      );
-    }
-    return (
-      <Container>
-        {paymentStatus}
-        {stripeForm}
-      </Container>
-    );
+    return <Container>{stripeForm}</Container>;
   }
 }
 
-export default injectStripe(CheckoutForm);
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  })
+};
+
+export default injectStripe(
+  connect(
+    null,
+    mapDispatchToProps
+  )(CheckoutForm)
+);

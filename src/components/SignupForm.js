@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
-import { Container, Form, Button } from "semantic-ui-react";
+import { Container, Form, Button, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
 
@@ -54,6 +54,15 @@ class SignupForm extends Component {
     let saveUserStatus;
     let paymentForm;
     let universityWelcome;
+    let userType;
+
+    this.state.role === "university"
+      ? (userType = "University Name")
+      : this.state.role === "research_group"
+      ? (userType = "Research Group Name")
+      : this.state.role === "reader"
+      ? (userType = "Name")
+      : (userType = null);
 
     if (
       this.state.userSaved === true &&
@@ -68,7 +77,7 @@ class SignupForm extends Component {
     }
     if (this.state.renderPaymentForm === true) {
       paymentForm = <PaymentForm />;
-    } 
+    }
 
     return (
       <Container>
@@ -97,7 +106,7 @@ class SignupForm extends Component {
             </Form.Field>
 
             <Form.Field>
-              <label>University Name</label>
+              <label id="userType">{userType}</label>
               <input
                 id="name"
                 value={this.state.name}
@@ -135,7 +144,6 @@ class SignupForm extends Component {
                 }
               />
             </Form.Field>
-
             {this.state.role === "research_group" ? (
               <Form.Field>
                 <label>Registration Key</label>
