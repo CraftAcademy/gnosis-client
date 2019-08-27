@@ -15,6 +15,7 @@ class CreateArticleForm extends Component {
   async saveArticleHandler(e) {
     e.preventDefault();
     let response = await saveArticle(
+      this.state.city,
       this.state.author,
       this.state.title,
       this.state.body
