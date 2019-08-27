@@ -72,7 +72,7 @@ class NavBar extends Component {
             <Menu.Item className="header logo" to="/">
               GNOSIS
             </Menu.Item>
-            <Menu.Item id="homebutton" as={NavLink} to="/">
+            <Menu.Item id="home-button" as={NavLink} to="/">
             {i18n.t('navbar:home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
