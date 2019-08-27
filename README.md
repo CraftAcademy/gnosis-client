@@ -93,7 +93,14 @@ CVC Number: 111
 ### As a Research Group
 Research Groups that sign up with a University registration key are able to publish content on the site.
 
-Like Readers and Universities, sign up is initiated by clicking on the Sign Up button on the right side of the navigation bar.  A successful form submission in this case requires the selection of the Research Group option, the account information, and a valid registration key.  
+Like Readers and Universities, sign up is initiated by clicking on the Sign Up button on the right side of the navigation bar.  A successful form submission in this case requires the selection of the Research Group option, the account information, and a valid registration key.
+
+Any of the following registration keys may be used for Research Group sign up.
+```
+Gk1d6TPHSgCQcEzWAA1Yo5DD
+MojWeMyGeTsQptAdsWuLxTg4
+UpvLccdUtKY5RfZcqeisCiR6
+```
 
 *When sign up is accomplished, the Research Group is automatically logged in and can begin to generate content by clicking on the Create Article button located in the navigation bar.  An article can be submitted if it contains a location tag, a summary, and an attached research document in PDF format.*
 
