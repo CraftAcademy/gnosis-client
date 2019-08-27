@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import ArticleTemplate from "./ArticleTemplate";
 import { Container } from "semantic-ui-react";
+import { connect } from 'react-redux'
 
 class DisplayArticles extends Component {
   state = {
-    articles: []
+    articles: [],
+    city: ""
   };
 
   componentDidMount() {
@@ -55,4 +57,11 @@ class DisplayArticles extends Component {
   }
 }
 
-export default DisplayArticles;
+const mapStateToProps = (state) => {
+  return {
+    state: state
+  }
+}
+
+export default (connect(
+  mapStateToProps)(DisplayArticles))
