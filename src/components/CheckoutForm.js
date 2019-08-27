@@ -97,15 +97,9 @@ const mapDispatchToProps = {
   })
 };
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.reduxTokenAuth.currentUser
-  };
-};
-
 export default injectStripe(
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(CheckoutForm)
 );
