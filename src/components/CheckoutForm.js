@@ -37,8 +37,9 @@ class CheckoutForm extends Component {
       if (response.status === 200) {
         this.props.dispatchFlash(response.data.message, "success");
         this.setState({
-          renderStripeForm: false
+          renderStripeForm: false,
         });
+        window.location.href = "/profile";
       }
     } catch (error) {
       this.props.dispatchFlash(error.response.data.errors, "error");
