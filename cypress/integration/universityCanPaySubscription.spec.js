@@ -1,4 +1,4 @@
-describe("University pay for subscription", () => {
+describe("University can pay for subscription", () => {
 
   beforeEach(() => {
     cy.server();
@@ -8,7 +8,7 @@ describe("University pay for subscription", () => {
       response: "fixture:articles.json",
       status: 200
     });
-    cy.university_login("harvard@mail.com", "password");
+    cy.university_login("harvard@harvard.edu", "password");
     cy.get("#subscribe-button").click();
   });
 
@@ -42,7 +42,7 @@ describe("University pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
-    cy.contains("Payment successful!");
+    cy.contains("Payment successful");
   });
 
 
@@ -77,7 +77,7 @@ describe("University pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
-    cy.contains("Payment failed!");
+    cy.contains("Payment failed");
   });
 
   it("Payment fails due to invalid inputs", () => {

@@ -1,4 +1,4 @@
-describe("Universities can't create articles", () => {
+describe("Create article restrictions", () => {
 
   beforeEach(() => {
     cy.server();
@@ -11,15 +11,15 @@ describe("Universities can't create articles", () => {
   })
 
 
-  it("Visitors can't create articles", () => {
+  it("Visitor can not see Create Article button", () => {
     cy.visit("http://localhost:3001");
     cy.get("#login-button").should("exist");
     cy.get("#create-article-button").should("not.exist");
   });
 
-  it("Create Article button not shown for University", () => {
-    cy.university_login("harvard@mail.com", "password");
-    cy.contains("Hello harvard@mail.com!");
+  it("University can not see Create Article button", () => {
+    cy.university_login("harvard@harvard.edu", "password");
+    cy.contains("Hello harvard@harvard.edu!");
     cy.get("#login-button").should("not.exist");
     cy.get("#login-form").should("not.exist");
     cy.get("#create-article-button").should("not.exist");
