@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createSecureContext } from 'tls';
+import { connect } from "react-redux";
 
 class UserProfile extends Component {
   state = {
@@ -10,7 +10,7 @@ class UserProfile extends Component {
 
   render () {
     return (
-      <h1>User Profile Page</h1>
+      <h1>Your Profile</h1>
     )
   }
 }
@@ -23,6 +23,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  mapStateToProps,
-  { currentUser }
+  mapStateToProps
 )(UserProfile);

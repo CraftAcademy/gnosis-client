@@ -15,6 +15,7 @@ class NavBar extends Component {
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let userProfileButton;
 
     const { activeItem } = this.state
 
@@ -48,8 +49,16 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
         </>
       )
-
     }
+
+    if (this.props.currentUser.isSignedIn === true) {
+      userProfileButton = (
+        <>
+          <Menu.Item as={NavLink} to="/profile" id="profile-button">Profile</Menu.Item>
+        </>
+      )
+    }
+
     return (
       <>
         <div className="ui stackable menu">
@@ -87,6 +96,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              {userProfileButton}
             </Menu.Menu>
           </Container>
         </div>
