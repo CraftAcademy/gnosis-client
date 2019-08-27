@@ -23,6 +23,7 @@ class NavBar extends Component {
       this.state.position.coords.latitude,
       this.state.position.coords.longitude
     );
+    console.log(getAddress)
     this.setState({ city: address.components.city });
     this.postAdress();
   }
