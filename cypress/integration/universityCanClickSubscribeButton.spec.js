@@ -1,4 +1,4 @@
-describe('University can see payment form after signup', () => {
+describe('University gets payment form after signup', () => {
 
   beforeEach(() => {
     cy.server();
@@ -10,7 +10,7 @@ describe('University can see payment form after signup', () => {
     })
   });
   
-  it('Can click subscribe button and see payment form', () => {
+  it('Can click subscribe button and get payment form', () => {
     
     cy.route({
       method: "POST",
@@ -20,7 +20,7 @@ describe('University can see payment form after signup', () => {
     cy.university_successful_signup(
       "university",
       "harvard",
-      "harvard@mail.com",
+      "harvard@harvard.edu",
       "password",
       "password"
     );
@@ -29,9 +29,9 @@ describe('University can see payment form after signup', () => {
     cy.get("#payment-form").should("exist");
   });
 
-  it("Subscribe button does not show to users with different roles", () => {
+  it("Subscribe button is not visible to user with different role", () => {
     cy.server();
-    cy.research_group_login("climate_harvard@mail.com", "password");
+    cy.research_group_login("climate_research@harvard.edu", "password");
     cy.get("#subscribe-button").should("not.exist");
   });
 });
