@@ -79,39 +79,31 @@ class SignupForm extends Component {
       paymentForm = <PaymentForm />;
     }
 
-    const accountType = [
-      {
-        key: "university",
-        text: "University",
-        value: "university"
-      },
-      {
-        key: "research_group",
-        text: "Research Group",
-        value: "research_group"
-      },
-      {
-        key: "reader",
-        text: "Reader",
-        value: "reader"
-      }
-    ];
-
     return (
       <Container>
         {this.state.renderSignupForm ? (
           <Form id="signup-form" onSubmit={e => this.saveNewUserHandler(e)}>
             <Form.Field>
               <label>Account Type</label>
+              <select
+                id="role"
+                value={this.state.role}
+                onChange={e => this.setState({ role: e.target.value })}
+              >
+                <option className="options" value="" disabled>
+                  Choose Account. . .
+                </option>
+                <option className="options" value="university">
+                  University
+                </option>
+                <option className="options" value="research_group">
+                  Research Group
+                </option>
+                <option className="options" value="reader">
+                  Reader
+                </option>
+              </select>
             </Form.Field>
-            <Dropdown
-              placeholder="Select Account Type"
-              id="role"
-              value={this.state.role}
-              onChange={e => this.setState({ role: e.target.value })}
-              selection
-              options={accountType}
-            />
 
             <Form.Field>
               <label id="userType">{userType}</label>
@@ -152,7 +144,6 @@ class SignupForm extends Component {
                 }
               />
             </Form.Field>
-
             {this.state.role === "research_group" ? (
               <Form.Field>
                 <label>Registration Key</label>
