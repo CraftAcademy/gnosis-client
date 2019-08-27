@@ -20,15 +20,19 @@ class CheckoutForm extends Component {
   submitPayment = async ev => {
     ev.preventDefault();
     await this.props.stripe.createToken().then(({ token }) => {
-      token ? this.stripePayment(token.id) : this.props.dispatchFlash("Something went wrong, please try again.", "error");
+      token
+        ? this.stripePayment(token.id)
+        : this.props.dispatchFlash(
+            "Something went wrong, please try again.",
+            "error"
+          );
     });
   };
-  
 
   stripePayment = async stripeToken => {
-    try { 
-      let response = await axios.post("/subscriptions", { 
-        email: this.props.currentUser.attributes.uid, stripeToken
+    try {
+      let response = await axios.post("/subscriptions", {
+        stripeToken
       });
       if (response.status === 200) {
         this.props.dispatchFlash(response.data.message, "success");
@@ -82,11 +86,7 @@ class CheckoutForm extends Component {
         </Form>
       );
     }
-    return (
-      <Container>
-        {stripeForm}
-      </Container>
-    );
+    return <Container>{stripeForm}</Container>;
   }
 }
 

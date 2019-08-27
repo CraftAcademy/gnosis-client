@@ -5,9 +5,10 @@ import { Container } from "semantic-ui-react";
 
 class PaymentForm extends Component {
   render() {
+    let stripeApiKey = process.env.REACT_APP_API_STRIPE_KEY
     return (
       <Container>
-        <StripeProvider apiKey="pk_test_zxc8b5IX4U2OFSnqMAY2XN4i00tZz2JAqX">
+        <StripeProvider apiKey={stripeApiKey}>
           <div>
             <Elements>
               <CheckoutForm />
