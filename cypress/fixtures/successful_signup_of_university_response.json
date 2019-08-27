@@ -2,7 +2,7 @@
   "status": "success",
   "data": {
     "allow_password_change": false,
-    "name": "harvard",
+    "name": "Harvard",
     "role": "university",
     "email": "harvard@mail.com",
     "subscriber": false

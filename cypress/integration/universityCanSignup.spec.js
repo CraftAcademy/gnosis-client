@@ -16,7 +16,7 @@ describe("University Sign-Up", () => {
     });
     cy.university_successful_signup(
       "university",
-      "harvard",
+      "Harvard",
       "harvard@mail.com",
       "password",
       "password"
