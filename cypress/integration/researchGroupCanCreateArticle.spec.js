@@ -16,8 +16,8 @@ describe("Research Group can post article", () => {
       response: "fixture:successful_saving_article_response.json",
       status: 200
     });
-    cy.research_group_login("climate_harvard@harvard.edu", "password");
-    cy.contains("Hello climate_harvard@harvard.edu!");
+    cy.research_group_login("climate_reseach@harvard.edu", "password");
+    cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -41,8 +41,8 @@ describe("Research Group can post article", () => {
       response: "fixture:unsuccessful_saving_article_response.json",
       status: 200
     });
-    cy.research_group_login("climate_harvard@harvard.edu", "password");
-    cy.contains("Hello climate_harvard@harvard.edu!");
+    cy.research_group_login("climate_research@harvard.edu", "password");
+    cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");

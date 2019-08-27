@@ -8,11 +8,11 @@ describe('User Log-In', () => {
     });
   });
   it('Can successfully log in', () => {
-    cy.research_group_login("climate_harvard@harvard.edu", "password");
-    cy.get('#flash').should('contain', 'Hello climate_harvard@harvard.edu!')
+    cy.research_group_login("climate_research@harvard.edu", "password");
+    cy.get('#flash').should('contain', 'Hello climate_research@harvard.edu!')
   })
   it('Attempts to log in with invalid credentials', () => {
-    cy.research_group_wrong_login("climate_harvard@harvard.edu", "wrong_password");
+    cy.research_group_wrong_login("climate_research@harvard.edu", "wrong_password");
     cy.get('#flash').should('contain', 'Invalid login credentials. Please try again.')
   })
 })

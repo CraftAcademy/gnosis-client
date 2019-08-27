@@ -31,7 +31,7 @@ describe('University gets payment form after signup', () => {
 
   it("Subscribe button is not visible to user with different role", () => {
     cy.server();
-    cy.research_group_login("climate_harvard@harvard.edu", "password");
+    cy.research_group_login("climate_research@harvard.edu", "password");
     cy.get("#subscribe-button").should("not.exist");
   });
 });
