@@ -18,7 +18,9 @@ class DisplayArticles extends Component {
     const response = await axios.get("/articles");
     if (response.data.length > 0) {
       this.setState({
-        articles: response.data
+        articles: response.data,
+        city: response.data
+
       });
     }
   }
