@@ -9,15 +9,15 @@ describe("Research Group can post article", () => {
     })
   });
 
-  it("Article posts successfully", () => {
+  it("Article is posted successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:successful_saving_article_response.json",
       status: 200
     });
-    cy.research_group_login("climate_harvard@mail.com", "password");
-    cy.contains("Hello climate_harvard@mail.com!");
+    cy.research_group_login("climate_reseach@harvard.edu", "password");
+    cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
@@ -29,20 +29,20 @@ describe("Research Group can post article", () => {
     });
 
     cy.get('#flash').should('contain', "Article successfully created")
-    cy.wait(7000)
+    cy.wait(2000)
     cy.get('#flash').should('not.contain', "Article successfully created")
     cy.get("#create-article-form").should("not.exist");
   });
 
-  it("Article posts unsuccessfully", () => {
+  it("Article is not posted successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:unsuccessful_saving_article_response.json",
       status: 200
     });
-    cy.research_group_login("climate_harvard@mail.com", "password");
-    cy.contains("Hello climate_harvard@mail.com!");
+    cy.research_group_login("climate_research@harvard.edu", "password");
+    cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
       cy.get("#author").type("John Doe");
