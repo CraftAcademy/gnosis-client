@@ -1,4 +1,4 @@
-describe("University pay for subscription", () => {
+describe("University can see Registration Keys after subscribing", () => {
 
   beforeEach(() => {
     cy.server();
