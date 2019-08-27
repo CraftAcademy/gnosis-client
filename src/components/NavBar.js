@@ -14,7 +14,6 @@ class NavBar extends Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({ position: position }, () => {
         this.getAddress();
-        this.postAdress();
       });
     });
   }
@@ -25,6 +24,7 @@ class NavBar extends Component {
       this.state.position.coords.longitude
     );
     this.setState({ city: address.components.city });
+    this.postAdress();
   }
 
   async postAdress(){

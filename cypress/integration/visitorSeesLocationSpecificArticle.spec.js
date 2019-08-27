@@ -1,5 +1,6 @@
 import stubLocation from "../support/stubLocation";
 describe("If visitor visit site and click yes on lacation share, location saved", () => {
+  beforeEach(() => {
   cy.route({
     method: "POST",
     url: "http://localhost:3000/api/v0/articles",
@@ -7,7 +8,7 @@ describe("If visitor visit site and click yes on lacation share, location saved"
     status: 200
   });
 })
-
+})
 
 describe("Visitor can see articles when visiting the App", () => {
   beforeEach(() => {
