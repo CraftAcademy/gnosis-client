@@ -42,7 +42,7 @@ describe("University can pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
-    cy.contains("Payment successful!");
+    cy.contains("Payment successful");
   });
 
 
@@ -77,7 +77,7 @@ describe("University can pay for subscription", () => {
     });
 
     cy.get("#submit-payment-button").click();
-    cy.contains("Payment failed!");
+    cy.contains("Payment failed");
   });
 
   it("Payment fails due to invalid inputs", () => {
@@ -85,7 +85,7 @@ describe("University can pay for subscription", () => {
       method: "POST",
       url: "http://localhost:3000/api/v0/subscriptions",
       response: "fixture:unsuccessful_subscription_payment_request.json",
-      status: 402
+      status: 200
     });
     cy.wait(2000);
     cy.get(".__PrivateStripeElement > iframe").then($elements => {
