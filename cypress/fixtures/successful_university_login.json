@@ -2,8 +2,8 @@
   "data": {
     "id": 1,
     "name": "Harvard",
-    "email": "harvard@mail.com",
-    "uid": "harvard@mail.com",
+    "email": "harvard@harvard.edu",
+    "uid": "harvard@harvard.edu",
     "role": "university",
     "subscriber": false
   }
