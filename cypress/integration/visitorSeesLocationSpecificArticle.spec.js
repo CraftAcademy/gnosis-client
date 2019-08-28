@@ -1,18 +1,5 @@
 import stubLocation from "../support/stubLocation";
 
-// describe("If visitor visit site and click yes on lacation share, location should be posted to backend", () => {
-//   beforeEach(() => {
-//     cy.visit("http://localhost:3001");
-//     cy.route({
-//     method: "POST",
-//     url: "http://localhost:3000/api/v0/articles",
-//     response: "fixture:visitor_location_saved_if_click_yes_sharing_loacation.json",
-//     status: 200
-//   });
-//  })
-// })
-
-
 describe("Visitor can see articles when visiting the App", () => {
   beforeEach(() => {
     cy.route({
@@ -31,7 +18,7 @@ describe("Visitor can see articles when visiting the App", () => {
     );
   });
 
-  xit("Two articles are displayed", async () => {
+  it("Two articles are displayed", async () => {
     cy.get("#article_1");
     cy.get("#article_2");
   });
