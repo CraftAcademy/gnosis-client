@@ -17,15 +17,9 @@ class CreateArticleForm extends Component {
       this.setState({
         articleSaved: true
       });
-      this.props.dispatch({
-        type: "SHOW_FLASH_MESSAGE",
-        payload: { flashMessage: response.data.body.message, status: "success" }
-      });
+      this.props.dispatchFlash(response.data.body.message, "success");
     } else {
-      this.props.dispatch({
-        type: "SHOW_FLASH_MESSAGE",
-        payload: { flashMessage: response.data.body.message, status: "error" }
-      });
+      this.props.dispatchFlash(response.data.body.message, "error")
     }
   }
 
@@ -67,18 +61,19 @@ class CreateArticleForm extends Component {
   }
 }
 
-const mapDispatchToProps = {
-  dispatchFlash: (message, status) => ({
-    type: "SHOW_FLASH_MESSAGE",
-    payload: { flashMessage: message, status: status }
-  })
-};
-
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
   };
 };
+
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  }),
+};
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
