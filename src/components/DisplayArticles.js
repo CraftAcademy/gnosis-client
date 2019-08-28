@@ -30,7 +30,6 @@ class DisplayArticles extends Component {
       this.state.position.coords.latitude,
       this.state.position.coords.longitude
     );
-    console.log(city)
     this.setState({ city: city }, () => {
       if (this.state.city) {
         this.getLocalArticles();
@@ -68,7 +67,6 @@ class DisplayArticles extends Component {
       });
 
     if (this.state.articles.length > 0) {
-      debugger;
       articleCityDisplay = (
         <div id="local-research">
           <h1>Local Research</h1>
