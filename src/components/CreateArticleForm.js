@@ -20,11 +20,10 @@ class CreateArticleForm extends Component {
       this.setState({
         articleSaved: true
       });
-      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
+      //this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
 
     } else {
-      // Begin bug hunt here
-      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
+      //this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
 
     }
   }
@@ -67,6 +66,13 @@ class CreateArticleForm extends Component {
     )
   }
 }
+
+/* const mapStateToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  })
+} */
 
 const mapStateToProps = state => {
   return {
