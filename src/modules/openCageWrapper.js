@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getAddress = async (lat, long) => {
+const getCity = async (lat, long) => {
   var apiKey = "09a3f3539e5949878aeb212e4bcce44a";
   var latitude = lat;
   var longitude = long;
@@ -18,7 +18,7 @@ const getAddress = async (lat, long) => {
     "&no_annotations=1";
 
   let results = await axios.get(requestUrl);
-  return results.data.results[0];
+  return results.data.results[0].components.city;
 };
 
-export default getAddress;
+export default getCity;
