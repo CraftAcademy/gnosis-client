@@ -1,13 +1,13 @@
-describe('User Log-Out', () => {
+describe("User Log-Out", () => {
    beforeEach(() => {
     cy.server();
   });
 
-  it("University can log out successfully", () => {
+  it("University can successfully log out", () => {
     cy.route({
-      method: 'DELETE',
-      url: 'http://localhost:3000/api/v0/auth/sign_out',
-      response: 'fixture:successful_user_logout.json',
+      method: "DELETE",
+      url: "http://localhost:3000/api/v0/auth/sign_out",
+      response: "fixture:successful_user_logout.json",
     })
     cy.visit("http://localhost:3001")
     cy.university_login("harvard@harvard.edu", "password");
@@ -17,11 +17,11 @@ describe('User Log-Out', () => {
     cy.get("#login-button").should("exist");
   });
 
-  it("Reseach Group can log out successfully", () => {
+  it("Reseach Group can successfully log out", () => {
     cy.route({
-      method: 'DELETE',
-      url: 'http://localhost:3000/api/v0/auth/sign_out',
-      response: 'fixture:successful_user_logout.json',
+      method: "DELETE",
+      url: "http://localhost:3000/api/v0/auth/sign_out",
+      response: "fixture:successful_user_logout.json",
     })
     cy.visit("http://localhost:3001")
     cy.research_group_login("climate_research@harvard.edu", "password");
