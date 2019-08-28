@@ -4,6 +4,7 @@ import { Container, Menu, Input } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
+import LogOut from './LogOut';
 
 class NavBar extends Component {
   state = { activeItem: 'latest news' }
@@ -16,6 +17,7 @@ class NavBar extends Component {
     let flashMessage;
     let loginActions;
     let userProfileButton;
+    let logoutActions;
 
     const { activeItem } = this.state
 
@@ -57,6 +59,9 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to="/profile" id="profile-button">Profile</Menu.Item>
         </>
       )
+      logoutActions = (
+        <LogOut />
+      )
     }
 
     return (
@@ -97,6 +102,7 @@ class NavBar extends Component {
               {subscribeButton}
               {loginActions}
               {userProfileButton}
+              {logoutActions}
             </Menu.Menu>
           </Container>
         </div>

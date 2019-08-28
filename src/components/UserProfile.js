@@ -5,7 +5,7 @@ import axios from "axios";
 
 class UserProfile extends Component {
   state = {
-    registrationKeys: [],
+    registrationKeys: []
   };
 
   componentDidMount() {
@@ -13,20 +13,23 @@ class UserProfile extends Component {
   }
 
   async getUniKeys() {
-    const response = await axios.get(
-      `/users/${this.props.currentUser.attributes.id}`
-    );
-    if (response) {
-      this.setState({ registrationKeys: response.data })
+    try {
+      const response = await axios.get(
+        `/users/${this.props.currentUser.attributes.id}`
+      );
+      this.setState({ registrationKeys: response.data });
+    } catch (error) {
+      debugger;
+      this.props.dispatchFlash(error.response.data.errors, "error");
     }
   }
   render() {
     let profileContent;
-    let registrationKeysDisplay = this.state.registrationKeys.map(registrationKey => {
-      return (
-        <div key={registrationKey}>{registrationKey}</div>
-      )
-    })
+    let registrationKeysDisplay = this.state.registrationKeys.map(
+      registrationKey => {
+        return <div key={registrationKey}>{registrationKey}</div>;
+      }
+    );
 
     if (
       this.props.currentUser.attributes.role === "university" &&
@@ -49,10 +52,20 @@ class UserProfile extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  })
+};
+
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
   };
 };
 
-export default connect(mapStateToProps)(UserProfile);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserProfile);
