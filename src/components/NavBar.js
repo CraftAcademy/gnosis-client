@@ -29,7 +29,7 @@ class NavBar extends Component {
     const { activeItem } = this.state
 
     if (this.props.showFlash === true) {
-      flashMessage = <AlertMessage />;
+      flashMessage = <AlertMessage />
     }
 
     if (this.props.currentUser.attributes.role === "research_group") {
