@@ -17,9 +17,9 @@ class CreateArticleForm extends Component {
       this.setState({
         articleSaved: true
       });
-      this.props.dispatchFlash(response.data.body.message, "success");
+      this.props.dispatchFlash(response.data.message, "success");
     } else {
-      this.props.dispatchFlash(response.data.body.message, "error")
+      this.props.dispatchFlash(response.data.error, "error")
     }
   }
 
