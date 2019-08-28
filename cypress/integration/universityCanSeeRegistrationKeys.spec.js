@@ -21,7 +21,7 @@ describe("University can see Registration Keys after subscribing", () => {
     cy.get("#subscribe-button").should("not.exist");
     cy.get("#profile-button").click();
     cy.contains("Your Profile");
-    cy.contains("Registration Keys:");
+    cy.get("#registration-keys-title").should("exist");
     cy.contains("b3tDSWucTHtzWLNNGFdgagip");
     cy.contains("U9YT35JejpfKDy1vfuWTVLyb");
     cy.contains("dWCWyfnNn4DVFEHzAAz7b6pw");
