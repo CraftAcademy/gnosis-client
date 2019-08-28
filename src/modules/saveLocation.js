@@ -9,10 +9,7 @@ const saveLocation = async (location) => {
           location: location
       }
     });
-
-  
     return response;
-    
   } catch (error) {
     return error.response;
   }
