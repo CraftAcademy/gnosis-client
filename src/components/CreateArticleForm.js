@@ -5,7 +5,6 @@ import { Container, Form, Button } from "semantic-ui-react";
 
 class CreateArticleForm extends Component {
   state = {
-    author: "",
     title: "",
     body: "",
     articleSaved: false
@@ -13,20 +12,20 @@ class CreateArticleForm extends Component {
 
   async saveArticleHandler(e) {
     e.preventDefault();
-    let response = await saveArticle(
-      this.state.author,
-      this.state.title,
-      this.state.body
-    );
+    let response = await saveArticle(this.state.title, this.state.body);
     if (response.status === 200) {
       this.setState({
         articleSaved: true
       });
-      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'success' } })
-
+      this.props.dispatch({
+        type: "SHOW_FLASH_MESSAGE",
+        payload: { flashMessage: response.data.body.message, status: "success" }
+      });
     } else {
-      this.props.dispatch({ type: 'SHOW_FLASH_MESSAGE', payload: { flashMessage: response.data.body.message, status: 'error' } })
-
+      this.props.dispatch({
+        type: "SHOW_FLASH_MESSAGE",
+        payload: { flashMessage: response.data.body.message, status: "error" }
+      });
     }
   }
 
@@ -35,19 +34,11 @@ class CreateArticleForm extends Component {
       <>
         <Container>
           <div id="create-article-component">
-            {!this.state.articleSaved &&
+            {!this.state.articleSaved && (
               <Form
                 id="create-article-form"
                 onSubmit={e => this.saveArticleHandler(e)}
               >
-                <Form.Field>
-                  <label>Author</label>
-                  <input
-                    id="author"
-                    value={this.state.author}
-                    onChange={e => this.setState({ author: e.target.value })}
-                  />
-                </Form.Field>
                 <Form.Field>
                   <label>Title</label>
                   <input
@@ -64,22 +55,31 @@ class CreateArticleForm extends Component {
                     onChange={e => this.setState({ body: e.target.value })}
                   />
                 </Form.Field>
-                <Button
-                  id="submit-article-button"
-                  type="submit"
-                >Create</Button>
+                <Button id="submit-article-button" type="submit">
+                  Create
+                </Button>
               </Form>
-            }
+            )}
           </div>
         </Container>
       </>
-    )
+    );
   }
 }
+
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  })
+};
 
 const mapStateToProps = state => {
   return {
     currentUser: state.reduxTokenAuth.currentUser
   };
 };
-export default connect(mapStateToProps)(CreateArticleForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateArticleForm);
