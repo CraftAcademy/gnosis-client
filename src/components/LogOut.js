@@ -13,7 +13,7 @@ class LogOut extends Component {
     .then(response => {
       ("/")
       this.props.dispatchFlash(
-        `Successful logout. Welcome back soon!`,
+        `You have successfully logged out.`,
           "success"
       );
     })
