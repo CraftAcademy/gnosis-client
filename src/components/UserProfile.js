@@ -5,11 +5,7 @@ import axios from "axios";
 
 class UserProfile extends Component {
   state = {
-    regKey1: "",
-    regKey2: "",
-    regKey3: "",
-    regKey4: "",
-    regKey5: ""
+    registrationKeys: [],
   };
 
   componentDidMount() {
@@ -18,36 +14,19 @@ class UserProfile extends Component {
 
   async getUniKeys() {
     const response = await axios.get(
-      "/subscriptions",
-      this.props.currentUser.attributes.uid
+      `/users/${this.props.currentUser.attributes.id}`
     );
     if (response) {
-      let ourArray = response.data;
-      function toArray(ourArray) {
-        const result = [];
-        for (const prop in ourArray) {
-          const value = ourArray[prop];
-          if (typeof value === "object") {
-            result.push(toArray(value));
-          } else {
-            result.push(value);
-          }
-        }
-        return result;
-      }
-      let allKeys = toArray(ourArray);
-
-      this.setState({
-        regKey1: allKeys[0],
-        regKey2: allKeys[1],
-        regKey3: allKeys[2],
-        regKey4: allKeys[3],
-        regKey5: allKeys[4]
-      });
+      this.setState({ registrationKeys: response.data })
     }
   }
   render() {
     let profileContent;
+    let registrationKeysDisplay = this.state.registrationKeys.map(registrationKey => {
+      return (
+        <div key={registrationKey}>{registrationKey}</div>
+      )
+    })
 
     if (
       this.props.currentUser.attributes.role === "university" &&
@@ -55,12 +34,8 @@ class UserProfile extends Component {
     ) {
       profileContent = (
         <div>
-          <h1>Registration Keys:</h1>
-          <div>{this.state.regKey1}</div>
-          <div>{this.state.regKey2}</div>
-          <div>{this.state.regKey3}</div>
-          <div>{this.state.regKey4}</div>
-          <div>{this.state.regKey5}</div>
+          <h1 id="registration-keys-title">Registration Keys:</h1>
+          {registrationKeysDisplay}
         </div>
       );
     }
