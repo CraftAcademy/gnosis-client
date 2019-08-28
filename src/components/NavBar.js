@@ -16,6 +16,7 @@ class NavBar extends Component {
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let userProfileButton;
     let logoutActions;
 
     const { activeItem } = this.state
@@ -52,7 +53,12 @@ class NavBar extends Component {
       )
     }
 
-    if(this.props.currentUser.isSignedIn === true) {
+    if (this.props.currentUser.isSignedIn === true) {
+      userProfileButton = (
+        <>
+          <Menu.Item as={NavLink} to="/profile" id="profile-button">Profile</Menu.Item>
+        </>
+      )
       logoutActions = (
         <LogOut />
       )
@@ -95,6 +101,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              {userProfileButton}
               {logoutActions}
             </Menu.Menu>
           </Container>
