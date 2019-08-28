@@ -3,7 +3,7 @@ import axios from "axios";
 const saveArticle = async (title, body) => {
   try {
     let response = await axios.post("/articles", {
-      data: {
+      article: {
         title: title,
         body: body
       }
