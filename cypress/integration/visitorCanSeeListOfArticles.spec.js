@@ -9,11 +9,6 @@ describe("Visitor can see articles on the homepage", () => {
     cy.visit("http://localhost:3001");
   });
 
-  it("Two articles are displayed", async () => {
-    cy.get("#article_1");
-    cy.get("#article_2");
-  });
-
   it("Article content is visible", async () => {
     cy.get("#article_1").within(() => {
       cy.get("#title").contains("A study on behaviours of pidgeons");
