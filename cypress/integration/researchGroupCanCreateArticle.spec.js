@@ -38,7 +38,7 @@ describe("Research Group can post article", () => {
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:unsuccessful_saving_article_response.json",
-      status: 200
+      status: 422
     });
     cy.research_group_login("climate_research@harvard.edu", "password");
     cy.contains("Hello climate_research@harvard.edu!");
