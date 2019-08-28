@@ -4,6 +4,7 @@ import { Container, Menu, Input } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
+import LogOut from './LogOut';
 
 class NavBar extends Component {
   state = { activeItem: 'latest news' }
@@ -15,6 +16,8 @@ class NavBar extends Component {
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let userProfileButton;
+    let logoutActions;
 
     const { activeItem } = this.state
 
@@ -48,8 +51,19 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
         </>
       )
-
     }
+
+    if (this.props.currentUser.isSignedIn === true) {
+      userProfileButton = (
+        <>
+          <Menu.Item as={NavLink} to="/profile" id="profile-button">Profile</Menu.Item>
+        </>
+      )
+      logoutActions = (
+        <LogOut />
+      )
+    }
+
     return (
       <>
         <div className="ui stackable menu">
@@ -87,6 +101,8 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              {userProfileButton}
+              {logoutActions}
             </Menu.Menu>
           </Container>
         </div>
