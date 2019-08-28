@@ -1,13 +1,11 @@
 import axios from "axios";
 
-const saveArticle = async (author, title, body) => {
+const saveArticle = async (title, body, pdf) => {
   try {
     let response = await axios.post("/articles", {
-      data: {
-        author: author,
-        title: title,
-        body: body
-      }
+      title: title,
+      body: body,
+      pdf: pdf
     });
     return response;
   } catch (error) {
