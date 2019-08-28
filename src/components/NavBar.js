@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input } from 'semantic-ui-react';
-import '../styling/Navbar.css';
-import AlertMessage from './AlertMessage';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { Container, Menu, Input } from "semantic-ui-react";
+import "../styling/Navbar.css";
+import AlertMessage from "./AlertMessage";
+import { connect } from "react-redux";
+import UpdateLanguage from './UpdateLanguage';
+import i18n from "../i18n";
 
 class NavBar extends Component {
   state = { activeItem: 'latest news' }
+  constructor(props) {
+    super(props)
+    this.ReRender = this.ReRender.bind(this);
+  };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  ReRender() {
+    this.forceUpdate();
+  }
 
   render() {
     let createArticleButton;
@@ -23,7 +33,11 @@ class NavBar extends Component {
     }
 
     if (this.props.currentUser.attributes.role === "research_group") {
-      createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
+      createArticleButton = (
+        <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">
+          {i18n.t('navbar:create_article')}
+        </Menu.Item>
+      );
     }
 
     if (
@@ -36,7 +50,7 @@ class NavBar extends Component {
           as={NavLink}
           to="/payment"
         >
-          Subscribe
+          {i18n.t('navbar:subscribe')}
         </Menu.Item>
       );
     }
@@ -44,11 +58,14 @@ class NavBar extends Component {
     if (this.props.currentUser.isSignedIn === false) {
       loginActions = (
         <>
-          <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
-          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
+          <Menu.Item as={NavLink} to="/login-form" id="login-button">
+            {i18n.t('navbar:login')}
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">
+            {i18n.t('navbar:signup')}
+          </Menu.Item>
         </>
-      )
-
+      );
     }
     return (
       <>
@@ -57,36 +74,34 @@ class NavBar extends Component {
             <Menu.Item className="header logo" to="/">
               GNOSIS
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/">
-              Home
+            <Menu.Item id="home-button" as={NavLink} to="/">
+            {i18n.t('navbar:home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
-              Categories <i className="dropdown icon" />
+              {i18n.t('navbar:categories')} <i className="dropdown icon" />
               <Menu secondary id="navbar">
                 <Menu.Item
-                  name="environment"
-                  active={activeItem === "home"}
+                  name={i18n.t('navbar:environment')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name="medicine"
-                  active={activeItem === "home"}
+                  name={i18n.t('navbar:medicine')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name="outreach"
-                  active={activeItem === "home"}
+                  name={i18n.t('navbar:outreach')}
                   onClick={this.handleItemClick}
                 />
               </Menu>
             </div>
             <Menu.Menu position="right">
               <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
+                <Input icon="search" placeholder={i18n.t('navbar:search')} />
               </Menu.Item>
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              <UpdateLanguage UpdateLanguage={this.ReRender}/>
             </Menu.Menu>
           </Container>
         </div>
