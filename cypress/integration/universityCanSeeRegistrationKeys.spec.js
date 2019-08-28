@@ -8,16 +8,16 @@ describe("University can see Registration Keys after subscribing", () => {
       response: "fixture:articles.json",
       status: 200
     });
-    cy.subscribed_university_login("harvard@mail.com", "password");
   });
 
-  it("University can access profile page and see registration keys", () => {
+  it("Subscribed University can access profile page and see registration keys", () => {
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v0/subscriptions",
+      url: "http://localhost:3000/api/v0/users",
       response: "fixture:university_registration_keys.json",
       status: 200
     });
+    cy.subscribed_university_login("harvard@mail.com", "password");
     cy.get("#subscribe-button").should("not.exist");
     cy.get("#profile-button").click();
     cy.contains("Your Profile");
@@ -28,5 +28,19 @@ describe("University can see Registration Keys after subscribing", () => {
     cy.contains("6evmpvxxJmHxvWdNZzZYKa4i");
     cy.contains("fGygSg6Fxjav78tKEbLzS3TB");
   })
+
+  it("Unsubscribed University cannot see registration keys on profile", () => {
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v0/users",
+      response: "fixture:university_registration_keys.json",
+      status: 200
+    });
+    cy.university_login("harvard@mail.com", "password");
+    cy.get("#subscribe-button").should("exist");
+    cy.get("#profile-button").click();
+    cy.contains("Your Profile");
+    cy.get("#registration-keys-title").should("not.exist");
+  });
 
 })
