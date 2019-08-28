@@ -17,7 +17,7 @@ describe("University can see Registration Keys after subscribing", () => {
       response: "fixture:university_registration_keys.json",
       status: 200
     });
-    cy.subscribed_university_login("harvard@mail.com", "password");
+    cy.subscribed_university_login("harvard@harvard.com", "password");
     cy.get("#subscribe-button").should("not.exist");
     cy.get("#profile-button").click();
     cy.contains("Your Profile");
@@ -30,7 +30,7 @@ describe("University can see Registration Keys after subscribing", () => {
   })
 
   it("Unsubscribed University cannot see registration keys on profile", () => {
-    cy.university_login("harvard@mail.com", "password");
+    cy.university_login("harvard@harvard.com", "password");
     cy.get("#subscribe-button").should("exist");
     cy.get("#profile-button").click();
     cy.contains("Your Profile");
