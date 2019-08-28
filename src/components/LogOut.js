@@ -1,24 +1,21 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Menu } from "semantic-ui-react";
-import { NavLink } from 'react-router-dom';
 import { signOutUser } from "../redux/actions/reduxTokenAuthConfig";
 
 class LogOut extends Component {
 
   signOut = (e) => {
   e.preventDefault();
-  const { signOutUser } = this.props;
+  const { history, signOutUser } = this.props;
   signOutUser()
     .then(response => {
-      ("/")
+      history.push("/");
       this.props.dispatchFlash(
         `You have successfully logged out.`,
-          "success"
       );
-    })
-    .catch(error => {
-      this.props.dispatchFlash(error.respose.data.error[0], "error")
     })
   };
  
@@ -28,6 +25,8 @@ class LogOut extends Component {
       <>
         <Menu.Item
           id="logout-button"
+          as={Link}
+          to="/"
           onClick={signOut}
         >
           Log Out
@@ -45,14 +44,14 @@ class LogOut extends Component {
   }
 
   const mapDispatchToProps = {
-    dispatchFlash: (message, status) => ({
+    dispatchFlash: (message) => ({
       type: "SHOW_FLASH_MESSAGE",
-      payload: { flashMessage: message, status: status }
+      payload: { flashMessage: message }
     }),
     signOutUser
   };
 
-  export default connect(
+  export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(LogOut);
+  )(LogOut));

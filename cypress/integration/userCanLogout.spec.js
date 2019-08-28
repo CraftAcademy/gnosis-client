@@ -13,6 +13,7 @@ describe("User Log-Out", () => {
     cy.university_login("harvard@harvard.edu", "password");
     cy.get("#logout-button").should("exist");
     cy.get("#logout-button").click();
+    cy.clearLocalStorage();
     cy.get("#flash").should("contain",  "You have successfully logged out.")
     cy.get("#login-button").should("exist");
   });
@@ -27,6 +28,7 @@ describe("User Log-Out", () => {
     cy.research_group_login("climate_research@harvard.edu", "password");
     cy.get("#logout-button").should("exist");
     cy.get("#logout-button").click();
+    cy.clearLocalStorage();
     cy.get("#flash").should("contain",  "You have successfully logged out.")
     cy.get("#login-button").should("exist");
   });
