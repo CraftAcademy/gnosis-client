@@ -8,7 +8,7 @@ describe("Research Group Sign-Up", () => {
       status: 200
     });
   });
-  it("User can successfully sign-up as a Research Group w/ Keys", () => {
+  it("Can successfully sign up with valid registration key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
@@ -28,7 +28,7 @@ describe("Research Group Sign-Up", () => {
       "Your research_group account successfully created!"
     );
   });
-  it("User can't sign up with invalid Registration Key", () => {
+  it("Attempts to sign up with invalid registration key", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/auth",
