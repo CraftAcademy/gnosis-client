@@ -20,7 +20,6 @@ describe("Research Group can post article", () => {
     cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
-      cy.get("#author").type("John Doe");
       cy.get("#title").type("To be or not to be");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -45,7 +44,6 @@ describe("Research Group can post article", () => {
     cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
-      cy.get("#author").type("John Doe");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );
