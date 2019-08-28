@@ -97,11 +97,6 @@ class DisplayArticles extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    state: state
-  }
-}
 
-export default (connect(
-  mapStateToProps)(DisplayArticles))
+
+export default DisplayArticles;
