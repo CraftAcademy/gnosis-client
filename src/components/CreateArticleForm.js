@@ -5,20 +5,33 @@ import { Container, Form, Button } from "semantic-ui-react";
 
 class CreateArticleForm extends Component {
   state = {
-    author: "",
     title: "",
     body: "",
     articleSaved: false
   };
 
+  toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+
+  pdfHandler = async event => {
+    const file = event.target.files[0]
+    let convertedFile = await this.toBase64(file)
+    this.setState({pdf: convertedFile})
+  }
+
   async saveArticleHandler(e) {
     e.preventDefault();
     let response = await saveArticle(
-      this.state.author,
       this.state.title,
-      this.state.body
+      this.state.body,
+      this.state.pdf
     );
     if (response.status === 200) {
+      debugger;
       this.setState({
         articleSaved: true
       });
@@ -41,14 +54,6 @@ class CreateArticleForm extends Component {
                 onSubmit={e => this.saveArticleHandler(e)}
               >
                 <Form.Field>
-                  <label>Author</label>
-                  <input
-                    id="author"
-                    value={this.state.author}
-                    onChange={e => this.setState({ author: e.target.value })}
-                  />
-                </Form.Field>
-                <Form.Field>
                   <label>Title</label>
                   <input
                     id="title"
@@ -64,6 +69,15 @@ class CreateArticleForm extends Component {
                     onChange={e => this.setState({ body: e.target.value })}
                   />
                 </Form.Field>
+
+                <Form.Field>
+                  <label>PDF</label>
+                  <input type="file"
+                  onChange={e => this.pdfHandler(e)}
+                  />
+                </Form.Field>
+
+
                 <Button
                   id="submit-article-button"
                   type="submit"
