@@ -1,5 +1,5 @@
 {
-  "appId": "co.craftacademy.gnosis",
+  "appId": "com.netlify.gnosis-app",
   "appName": "Gnosis Mobile",
   "bundledWebRuntime": false,
   "npmClient": "npm",
