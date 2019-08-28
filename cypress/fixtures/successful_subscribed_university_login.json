@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": 1,
+    "name": "Harvard",
+    "email": "harvard@harvard.com",
+    "uid": "harvard@harvard.com",
+    "role": "university",
+    "subscriber": true
+  }
+}

@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { Container, Menu } from "semantic-ui-react";
-import "../styling/Navbar.css";
-import AlertMessage from "./AlertMessage";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Container, Menu, Input } from 'semantic-ui-react';
+import '../styling/Navbar.css';
+import AlertMessage from './AlertMessage';
+import { connect } from 'react-redux';
+import LogOut from './LogOut';
 
 class NavBar extends Component {
   state = { 
@@ -18,6 +19,8 @@ class NavBar extends Component {
     let subscribeButton;
     let flashMessage;
     let loginActions;
+    let userProfileButton;
+    let logoutActions;
 
     const { activeItem } = this.state;
 
@@ -56,6 +59,18 @@ class NavBar extends Component {
           </Menu.Item>
         </>
       );
+      
+    }
+
+    if (this.props.currentUser.isSignedIn === true) {
+      userProfileButton = (
+        <>
+          <Menu.Item as={NavLink} to="/profile" id="profile-button">Profile</Menu.Item>
+        </>
+      )
+      logoutActions = (
+        <LogOut />
+      )
     }
 
     return (
@@ -92,6 +107,8 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
+              {userProfileButton}
+              {logoutActions}
             </Menu.Menu>
           </Container>
         </div>

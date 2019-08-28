@@ -16,11 +16,10 @@ describe("Research Group can post article", () => {
       response: "fixture:successful_saving_article_response.json",
       status: 200
     });
-    cy.research_group_login("climate_reseach@harvard.edu", "password");
+    cy.research_group_login("climate_research@harvard.edu", "password");
     cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
-      cy.get("#author").type("John Doe");
       cy.get("#title").type("To be or not to be");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -39,13 +38,12 @@ describe("Research Group can post article", () => {
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
       response: "fixture:unsuccessful_saving_article_response.json",
-      status: 200
+      status: 422
     });
     cy.research_group_login("climate_research@harvard.edu", "password");
     cy.contains("Hello climate_research@harvard.edu!");
     cy.get("#create-article-button").click();
     cy.get("#create-article-form").within(() => {
-      cy.get("#author").type("John Doe");
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );

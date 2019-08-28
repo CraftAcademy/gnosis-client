@@ -8,6 +8,7 @@ import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
 import { geolocated } from "react-geolocated";
+import UserProfile from "./components/UserProfile";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path="/signup" component={SignupForm} />
         <Route exact path="/createarticle" component={CreateArticleForm} />
         <Route exact path="/payment" component={PaymentForm} />
+        <Route exact path="/profile" component={UserProfile} />
       </Switch>
     </div>
   );

@@ -1,5 +1,4 @@
 {
   "status": 200,
-  "headers": {},
-  "body": {"message": "Article successfully created"}
+  "message": "Article successfully created"
 }

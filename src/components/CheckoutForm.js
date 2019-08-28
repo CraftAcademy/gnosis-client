@@ -36,9 +36,7 @@ class CheckoutForm extends Component {
       });
       if (response.status === 200) {
         this.props.dispatchFlash(response.data.message, "success");
-        this.setState({
-          renderStripeForm: false
-        });
+        this.setState({ renderStripeForm: false });
       }
     } catch (error) {
       this.props.dispatchFlash(error.response.data.errors, "error");

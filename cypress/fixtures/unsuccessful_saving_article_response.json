@@ -1,7 +1,4 @@
 {
   "status": 422,
-  "headers": {},
-  "body": {
-    "message": "Title can't be blank."
-  }
+  "error": "Title can't be blank."
 }
