@@ -5,7 +5,6 @@ import { Container, Form, Button } from "semantic-ui-react";
 
 class CreateArticleForm extends Component {
   state = {
-    author: "",
     title: "",
     body: "",
     articleSaved: false
@@ -14,7 +13,6 @@ class CreateArticleForm extends Component {
   async saveArticleHandler(e) {
     e.preventDefault();
     let response = await saveArticle(
-      this.state.author,
       this.state.title,
       this.state.body
     );
@@ -41,14 +39,6 @@ class CreateArticleForm extends Component {
                 id="create-article-form"
                 onSubmit={e => this.saveArticleHandler(e)}
               >
-                <Form.Field>
-                  <label>Author</label>
-                  <input
-                    id="author"
-                    value={this.state.author}
-                    onChange={e => this.setState({ author: e.target.value })}
-                  />
-                </Form.Field>
                 <Form.Field>
                   <label>Title</label>
                   <input
