@@ -8,48 +8,16 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',    
+    fallbackLng: 'en',
     languages: ['sv', 'en'],
-    resources: {
-      en: {
-        navbar: {
-          home: 'Home',
-          language: 'Languages',
-          swedish: 'Swedish',
-          english: 'English',
-          categories: 'Categories',
-          environment: 'Environment',
-          medicine: 'Medicine',
-          outreach: 'Outreach',
-          search: 'Search...',
-          login: 'Log in',
-          signup: 'Sign up',
-          create_article: 'Create Article',
-          subscribe: 'Subscribe'
-        }
-      },
-      sv: {
-        navbar: {
-          home: 'Hem',
-          language: 'Språk',
-          swedish: 'Svenska',
-          english: 'Engelska',
-          categories: 'Kategorier',
-          environment: 'Klimat',
-          medicine: 'Medicin',
-          outreach: 'Insatsarbete',
-          search: 'Sök...',
-          login: 'Logga in',
-          signup: 'Bli medlem',
-          create_article: 'Skriv artikel',
-          subscribe: 'Prenumerera'
-        }
-      }
-    },
     debug: true,
     interpolation: {
       escapeValue: false
     }
+  }, (e, t) => {
+    console.log("What TF am I doing?????")
+    console.log(e)
+    console.log(t('navbar.medicine'))
   });
 
 export default i18n;

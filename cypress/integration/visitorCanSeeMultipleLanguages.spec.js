@@ -5,10 +5,10 @@ describe("Visitor can change language from", () => {
   });
 
   it("English to Swedish", () => {
-      cy.get('#home-button').should('contain', 'Home');
-      cy.get('#language').should('contain', 'Swedish');
-      cy.get('#swedish').click({ force: true });
-      cy.get('#home-button').should('contain', 'Hem');
+    cy.get('#home-button').should('contain', 'Home');
+    cy.get('#language').should('contain', 'Swedish');
+    cy.get('#swedish').click({ force: true });
+    cy.get('#home-button').should('contain', 'Hem');
   });
 
   it("Swedish to English", () => {

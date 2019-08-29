@@ -8,11 +8,14 @@ import configureStore from "./redux/store/configureStore";
 import axios from "axios";
 import { verifyCredentials } from "./redux/actions/reduxTokenAuthConfig";
 import { setupInterceptors } from "./modules/axiosInterceptor";
+import "./i18n";
+
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "production"
     ? process.env.REACT_APP_PROD_API_URL
     : process.env.REACT_APP_DEV_API_URL;
+
 
 const store = configureStore();
 verifyCredentials(store);
