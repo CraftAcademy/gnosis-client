@@ -1,0 +1,7 @@
+{
+  "appId": "co.craftacademy.gnosis",
+  "appName": "\"Gnosis Mobile\"",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

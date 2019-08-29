@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">"Gnosis Mobile"</string>
+    <string name="title_activity_main">"Gnosis Mobile"</string>
+    <string name="package_name">co.craftacademy.gnosis</string>
+    <string name="fileprovider_authority">co.craftacademy.gnosis.fileprovider</string>
+    <string name="custom_url_scheme">co.craftacademy.gnosis</string>
+</resources>
