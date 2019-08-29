@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
