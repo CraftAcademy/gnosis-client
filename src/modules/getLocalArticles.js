@@ -2,12 +2,13 @@ import axios from "axios";
 
 const getLocalArticles = async (city) => {
   try {
-    let response = await axios.get("/articles" +  {
-      data: {
-        city: city
+    let response = await axios.get("/articles",
+      {
+        city
       }
-    });
-    return response;
+    );
+    console.log(response);
+    debugger;
   } catch (error) {
     return error.response;
   }

@@ -4,8 +4,6 @@ import ArticleTemplate from "./ArticleTemplate";
 import { Container } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import getCity from "../modules/openCageWrapper";
-import getLocalArticles from "../modules/getLocalArticles"
-
 
 class DisplayArticles extends Component {
   state = {
@@ -17,7 +15,6 @@ class DisplayArticles extends Component {
 
   componentDidMount() {
     this.getArticles();
-
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({ position: position }, () => {
         this.getUserCity();
@@ -32,20 +29,20 @@ class DisplayArticles extends Component {
     );
     this.setState({ city: city }, () => {
       if (this.state.city) {
-        this.getLocalArticles();
+        this.getCityArticles();
       }
     }); 
   }
 
-  async getLocalArticles(){
-    let response = await getLocalArticles(this.state.city);
-
-    if (response.status === 200) {
-      this.setState({
-        localArticles: response.data
-      });
-    } else {
-      return response.error
+  async getCityArticles() {
+    try {
+      const response = await axios.get(
+        `/articles/${this.state.city}`
+      );
+      this.setState({ localArticles: response.data });
+    } catch (error) {
+      this.props.dispatchFlash(
+        "If you want to enable local Research section, please share your location","error")
     }
   }
 
@@ -66,7 +63,7 @@ class DisplayArticles extends Component {
         return <ArticleTemplate key={article.id} article={article} />;
       });
 
-    if (this.state.articles.length > 0) {
+    if (this.state.localArticles.length > 0) {
       articleCityDisplay = (
         <div id="local-research">
           <h1>Local Research</h1>
@@ -97,6 +94,11 @@ class DisplayArticles extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  dispatchFlash: (message, status) => ({
+    type: "SHOW_FLASH_MESSAGE",
+    payload: { flashMessage: message, status: status }
+  }),
+};
 
-
-export default DisplayArticles;
+export default connect(null, mapDispatchToProps)(DisplayArticles);
