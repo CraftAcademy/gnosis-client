@@ -6,7 +6,6 @@ import i18n from "../i18n";
 class UpdateLanguage extends Component {
   render() {
     return (
-      <>
       <div id="language" className="ui simple dropdown item">
         {i18n.t('navbar:language')} <i className="dropdown icon" />
           <Menu secondary>
@@ -22,7 +21,6 @@ class UpdateLanguage extends Component {
             />
           </Menu>
       </div>
-      </>
     )
   }
 }
