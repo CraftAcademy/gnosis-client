@@ -8,18 +8,21 @@ import UpdateLanguage from './UpdateLanguage';
 import i18n from "../i18n";
 
 class NavBar extends Component {
-  state = { activeItem: 'latest news' }
-  constructor(props) {
-    super(props)
-    this.ReRender = this.ReRender.bind(this);
-  };
+  state = { activeItem: 'latest news', language: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
-  ReRender() {
-    this.forceUpdate();
+  updateLanguageHandler(language) {
+    this.setState({language: language})
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.language !== this.state.language) {
+      i18n.changeLanguage(nextState.language);
+      return true
+    }
+  }
+  
   render() {
     let createArticleButton;
     let subscribeButton;
@@ -101,7 +104,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
-              <UpdateLanguage UpdateLanguage={this.ReRender}/>
+              <UpdateLanguage updateLanguage={this.updateLanguageHandler.bind(this)}/>
             </Menu.Menu>
           </Container>
         </div>
