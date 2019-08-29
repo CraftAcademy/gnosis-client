@@ -49,6 +49,12 @@ class CreateArticleForm extends Component {
                     onChange={e => this.setState({ body: e.target.value })}
                   />
                 </Form.Field>
+                 <Form.Field>
+                  <label>PDF</label>
+                  <input type="file"
+                  onChange={e => this.pdfHandler(e)}
+                  />
+                </Form.Field>
                 <Button id="submit-article-button" type="submit">
                   Create
                 </Button>
