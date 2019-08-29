@@ -10,9 +10,26 @@ class CreateArticleForm extends Component {
     articleSaved: false
   };
 
+  toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+
+  pdfHandler = async event => {
+    const file = event.target.file[0]
+    let convertedFile = await this.toBase64(file)
+    this.setState({pdf: convertedFile})
+  }
+
   async saveArticleHandler(e) {
     e.preventDefault();
-    let response = await saveArticle(this.state.title, this.state.body);
+    let response = await saveArticle(
+      this.state.title, 
+      this.state.body,
+      this.state.pdf
+      );
     if (response.status === 200) {
       this.setState({
         articleSaved: true
@@ -51,7 +68,7 @@ class CreateArticleForm extends Component {
                 </Form.Field>
                  <Form.Field>
                   <label>PDF</label>
-                  <input type="file"
+                  <input type="file" id="pdf-upload"
                   onChange={e => this.pdfHandler(e)}
                   />
                 </Form.Field>
