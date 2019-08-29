@@ -34,21 +34,3 @@ describe("Visitor can see articles when visiting the App", () => {
     });
   });
 });
-
-describe("If Visitors not sending his location, he should get a flash error message", () => {
-  beforeEach(() => {
-    cy.server()
-    cy.route({
-      method: "GET",
-      url: "http://localhost:3000/api/v0/articles",
-      response: "fixture:visitor_not_sharing_location_when_visit_site.json",
-      status: 402
-    });
-  });
-  it("Should see an error flash", async () => {
-    cy.get("#flash").should(
-      "contain",
-      "Please turn on location sharing to enable local articles near you!"
-    );
-  });
-});
