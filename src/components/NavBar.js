@@ -8,12 +8,17 @@ import UpdateLanguage from './UpdateLanguage';
 import i18n from "../i18n";
 
 class NavBar extends Component {
+
+  // constructor(props) {
+  //   super(props)
+    
+  // }
   state = { activeItem: 'latest news', language: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   updateLanguageHandler(language) {
-    this.setState({language: language})
+    this.setState({ language: language })
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -21,8 +26,9 @@ class NavBar extends Component {
       i18n.changeLanguage(nextState.language);
       return true
     }
+    return false
   }
-  
+
   render() {
     let createArticleButton;
     let subscribeButton;
@@ -78,7 +84,7 @@ class NavBar extends Component {
               GNOSIS
             </Menu.Item>
             <Menu.Item id="home-button" as={NavLink} to="/">
-            {i18n.t('navbar.home')}
+              {i18n.t('navbar.home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
               {i18n.t('navbar.categories')} <i className="dropdown icon" />
@@ -104,7 +110,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
-              <UpdateLanguage updateLanguage={this.updateLanguageHandler.bind(this)}/>
+              <UpdateLanguage updateLanguage={this.updateLanguageHandler.bind(this)} />
             </Menu.Menu>
           </Container>
         </div>
