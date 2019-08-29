@@ -8,9 +8,10 @@ import NavBar from "./components/NavBar.js";
 import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
-import '@ionic/core/css/core.css';
-import '@ionic/core/css/ionic.bundle.css';
 
+// These css file references may be necessary for further feature development
+// import '@ionic/core/css/core.css';
+// import '@ionic/core/css/ionic.bundle.css';
 import "./styling/Navbar.css";
 
 function App() {
