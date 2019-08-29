@@ -8,10 +8,8 @@ import NavBar from "./components/NavBar.js";
 import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
-import "@ionic/core/css/core.css";
-import "@ionic/core/css/ionic.bundle.css";
-import UserProfile from "./components/UserProfile";
-
+import '@ionic/core/css/core.css';
+import '@ionic/core/css/ionic.bundle.css';
 import "./styling/Navbar.css";
 
 const App = () => {
