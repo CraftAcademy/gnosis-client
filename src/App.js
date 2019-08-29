@@ -7,7 +7,6 @@ import { Switch, Route } from "react-router-dom";
 import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
-import { geolocated } from "react-geolocated";
 import UserProfile from "./components/UserProfile";
 
 
@@ -27,9 +26,4 @@ const App = () => {
   );
 };
 
-export default geolocated({
-  positionOptions: {
-    enableHighAccuracy: false
-  },
-  userDecisionTimeout: 5000
-})(App);
+export default App;
