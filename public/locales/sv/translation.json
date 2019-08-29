@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Hem",
+    "language": "Språk",
+    "swedish": "Svenska",
+    "english": "Engelska",
+    "categories": "Kategorier",
+    "environment": "Klimat",
+    "medicine": "Medicin",
+    "outreach": "Insatsarbete",
+    "search": "Sök...",
+    "login": "Logga in",
+    "signup": "Bli medlem",
+    "create_article": "Skriv artikel",
+    "subscribe": "Prenumerera"
+  }
+}

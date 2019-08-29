@@ -62,10 +62,10 @@ class NavBar extends Component {
       loginActions = (
         <>
           <Menu.Item as={NavLink} to="/login-form" id="login-button">
-            {i18n.t('navbar:login')}
+            {i18n.t('navbar.login')}
           </Menu.Item>
           <Menu.Item as={NavLink} to="/signup" id="sign-up-button">
-            {i18n.t('navbar:signup')}
+            {i18n.t('navbar.signup')}
           </Menu.Item>
         </>
       );
@@ -78,21 +78,21 @@ class NavBar extends Component {
               GNOSIS
             </Menu.Item>
             <Menu.Item id="home-button" as={NavLink} to="/">
-            {i18n.t('navbar:home')}
+            {i18n.t('navbar.home')}
             </Menu.Item>
             <div className="ui simple dropdown item">
-              {i18n.t('navbar:categories')} <i className="dropdown icon" />
+              {i18n.t('navbar.categories')} <i className="dropdown icon" />
               <Menu secondary id="navbar">
                 <Menu.Item
-                  name={i18n.t('navbar:environment')}
+                  name={i18n.t('navbar.environment')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name={i18n.t('navbar:medicine')}
+                  name={i18n.t('navbar.medicine')}
                   onClick={this.handleItemClick}
                 />
                 <Menu.Item
-                  name={i18n.t('navbar:outreach')}
+                  name={i18n.t('navbar.outreach')}
                   onClick={this.handleItemClick}
                 />
               </Menu>
