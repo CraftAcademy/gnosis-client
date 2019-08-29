@@ -101,7 +101,7 @@ class NavBar extends Component {
               {createArticleButton}
               {subscribeButton}
               {loginActions}
-              <UpdateLanguage UpdateLanguage={this.ReRender}/>
+              <UpdateLanguage updateLanguage={this.ReRender}/>
             </Menu.Menu>
           </Container>
         </div>
