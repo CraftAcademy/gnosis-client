@@ -22,7 +22,6 @@ describe("Visitor can see articles when visiting the App", () => {
     cy.get("#local-research").within(() => {
       cy.get("#article_1").within(() => {
         cy.get("#city").contains("Stockholm");
-       ;
       });
     });
   });
