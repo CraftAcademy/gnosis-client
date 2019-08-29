@@ -7,6 +7,7 @@ let authUrl = baseUrl + "/auth";
 const config = {
   authUrl: authUrl,
   userAttributes: {
+    id: "id",
     uid: "uid",
     role: "role",
     subscriber: "subscriber"

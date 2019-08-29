@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { IonApp, IonContent } from '@ionic/react'
+import { IonApp, IonContent } from "@ionic/react";
 
 import CreateArticleForm from "./components/CreateArticleForm";
 import LoginForm from "./components/LoginForm";
@@ -8,12 +8,13 @@ import NavBar from "./components/NavBar.js";
 import SignupForm from "./components/SignupForm";
 import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
-import '@ionic/core/css/core.css';
-import '@ionic/core/css/ionic.bundle.css';
+import "@ionic/core/css/core.css";
+import "@ionic/core/css/ionic.bundle.css";
+import UserProfile from "./components/UserProfile";
 
 import "./styling/Navbar.css";
 
-function App() {
+const App = () => {
   return (
     <>
       <IonApp>
@@ -30,6 +31,6 @@ function App() {
       </IonApp>
     </>
   );
-}
+};
 
 export default App;
