@@ -1,3 +1,25 @@
+Cypress.Commands.add("file_upload", (file) => {
+  const selector = "#file-upload";
+  const fixturePath = file;
+  const type = "application/pdf";
+
+  cy.get(selector).then(subject =>
+    cy.window().then(win =>
+      cy
+        .fixture(fixturePath, "base64")
+        .then(Cypress.Blob.base64StringToBlob)
+        .then(blob => {
+          const el = subject[0];
+          const testFile = new win.File([blob], name, { type });
+          const dataTransfer = new win.DataTransfer();
+          dataTransfer.items.add(testFile);
+          el.files = dataTransfer.files;
+          cy.wrap(subject).trigger("change", { force: true });
+        })
+    )
+  )
+})
+
 Cypress.Commands.add("research_group_login", (email, password) => {
   cy.route({
     method: "POST",

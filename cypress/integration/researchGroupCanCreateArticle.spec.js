@@ -24,6 +24,7 @@ describe("Research Group can post article", () => {
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );
+      cy.file_upload("research.pdf");
       cy.get("#submit-article-button").click();
     });
 
@@ -47,6 +48,7 @@ describe("Research Group can post article", () => {
       cy.get("#body").type(
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       );
+      cy.file_upload("research.pdf");
       cy.get("#submit-article-button").click();
     });
     cy.get('#flash').should('contain', "Title can't be blank")
