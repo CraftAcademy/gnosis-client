@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const getCity = async (lat, long) => {
-  var apiKey = "09a3f3539e5949878aeb212e4bcce44a";
+  var apiKey = process.env.REACT_APP_OPEN_CAGE_API;
+  console.log(apiKey)
   var latitude = lat;
   var longitude = long;
 
