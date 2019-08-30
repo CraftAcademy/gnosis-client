@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PaymentForm from "./PaymentForm";
-import { Container, Form, Button, Dropdown } from "semantic-ui-react";
+import { Container, Form, Button } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { registerUser } from "../redux/actions/reduxTokenAuthConfig";
 
