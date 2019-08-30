@@ -58,8 +58,7 @@ describe("Research Group can post article", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v0/articles",
-      response:
-        "fixture:unsuccessful_saving_article_wrong_format_response.json",
+      response: "fixture:unsuccessful_saving_article_no_file.json",
       status: 422
     });
     cy.research_group_login("climate_research@harvard.edu", "password");
@@ -72,7 +71,10 @@ describe("Research Group can post article", () => {
       );
       cy.get("#submit-article-button").click();
     });
-    cy.get('#flash').should('contain', "File format not supported. Please upload pdf.")
+    cy.get("#flash").should(
+      "contain",
+      "No file attached. Please upload a PDF file with your research"
+    );
   });
 
   it("Wrong file format is chosen", () => {
