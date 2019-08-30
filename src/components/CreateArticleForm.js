@@ -68,7 +68,10 @@ class CreateArticleForm extends Component {
                 </Form.Field>
                  <Form.Field>
                   <label>PDF</label>
-                  <input type="file" id="pdf-upload"
+                  <input 
+                    type="file"  
+                    id="file-upload"
+                    accept="application/pdf"
                   onChange={e => this.pdfHandler(e)}
                   />
                 </Form.Field>
