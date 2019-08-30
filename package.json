@@ -10,6 +10,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-stripe-elements": "^4.0.1",
+    "react-file-reader": "^1.1.4",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "cypress": "^3.4.1",
+    "cypress-file-upload": "^3.3.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "react-scripts": "^3.1.0",
