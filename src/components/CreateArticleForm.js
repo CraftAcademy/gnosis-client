@@ -67,7 +67,7 @@ class CreateArticleForm extends Component {
                   />
                 </Form.Field>
                  <Form.Field>
-                  <label>PDF</label>
+                  <label>PDF (optional)</label>
                   <input 
                     type="file"  
                     id="file-upload"
