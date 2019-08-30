@@ -9,7 +9,8 @@ import Homepage from "./components/Homepage";
 import PaymentForm from "./components/PaymentForm";
 import UserProfile from "./components/UserProfile";
 
-function App() {
+
+const App = () => {
   return (
     <div>
       <NavBar />
@@ -23,6 +24,6 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
 export default App;

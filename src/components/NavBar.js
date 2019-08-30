@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Container, Menu, Input } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import '../styling/Navbar.css';
 import AlertMessage from './AlertMessage';
 import { connect } from 'react-redux';
 import LogOut from './LogOut';
 
 class NavBar extends Component {
-  state = { activeItem: 'latest news' }
+  state = { 
+    activeItem: "latest news", 
+    localArticles: []
+  };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     let createArticleButton;
@@ -19,14 +22,19 @@ class NavBar extends Component {
     let userProfileButton;
     let logoutActions;
 
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
+
 
     if (this.props.showFlash === true) {
-      flashMessage = <AlertMessage />
+      flashMessage = <AlertMessage />;
     }
 
     if (this.props.currentUser.attributes.role === "research_group") {
-      createArticleButton = <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">Create Article</Menu.Item>
+      createArticleButton = (
+        <Menu.Item id="create-article-button" as={NavLink} to="/createarticle">
+          Create Article
+        </Menu.Item>
+      );
     }
 
     if (
@@ -34,11 +42,7 @@ class NavBar extends Component {
       this.props.currentUser.attributes.subscriber === false
     ) {
       subscribeButton = (
-        <Menu.Item
-          id="subscribe-button"
-          as={NavLink}
-          to="/payment"
-        >
+        <Menu.Item id="subscribe-button" as={NavLink} to="/payment">
           Subscribe
         </Menu.Item>
       );
@@ -47,10 +51,15 @@ class NavBar extends Component {
     if (this.props.currentUser.isSignedIn === false) {
       loginActions = (
         <>
-          <Menu.Item as={NavLink} to="/login-form" id="login-button">Log In</Menu.Item>
-          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">Sign Up</Menu.Item>
+          <Menu.Item as={NavLink} to="/login-form" id="login-button">
+            Log In
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/signup" id="sign-up-button">
+            Sign Up
+          </Menu.Item>
         </>
-      )
+      );
+      
     }
 
     if (this.props.currentUser.isSignedIn === true) {
@@ -95,9 +104,6 @@ class NavBar extends Component {
               </Menu>
             </div>
             <Menu.Menu position="right">
-              <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
-              </Menu.Item>
               {createArticleButton}
               {subscribeButton}
               {loginActions}

@@ -19,7 +19,6 @@ class UserProfile extends Component {
       );
       this.setState({ registrationKeys: response.data });
     } catch (error) {
-      debugger;
       this.props.dispatchFlash(error.response.data.errors, "error");
     }
   }

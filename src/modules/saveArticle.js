@@ -14,4 +14,3 @@ const saveArticle = async (title, body) => {
 };
 
 export { saveArticle };
-  

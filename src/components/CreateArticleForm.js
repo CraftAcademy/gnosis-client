@@ -14,6 +14,7 @@ class CreateArticleForm extends Component {
     e.preventDefault();
     let response = await saveArticle(this.state.title, this.state.body);
     if (response.status === 200) {
+
       this.setState({
         articleSaved: true
       });
