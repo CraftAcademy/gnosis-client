@@ -3312,6 +3312,11 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
+cypress-file-upload@^3.3.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-3.5.3.tgz#cd706485de3fb2cbd4a8c2dd90fe96d537bb4311"
+  integrity sha512-S/czzqAj1BYz6Xxnfpx2aSc6hXsj76fd8/iuycJ2RxoxCcQMliw8eQV0ugzVlkzr1GD5dKGviNFGYqv3nRJ+Tg==
+
 cypress@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.4.1.tgz#ca2e4e9864679da686c6a6189603efd409664c30"
@@ -6785,9 +6790,9 @@ memory-fs@^0.4.0, memory-fs@^0.4.1:
     readable-stream "^2.0.1"
 
 merge-deep@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.2.tgz#f39fa100a4f1bd34ff29f7d2bf4508fbb8d83ad2"
-  integrity sha512-T7qC8kg4Zoti1cFd8Cr0M+qaZfOwjlPDEdZIIPPB2JZctjaPM4fX+i7HOId69tAti2fvO6X5ldfYUONDODsrkA==
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/merge-deep/-/merge-deep-3.0.3.tgz#1a2b2ae926da8b2ae93a0ac15d90cd1922766003"
+  integrity sha512-qtmzAS6t6grwEkNrunqTBdn0qKwFgNWvlxUbAV8es9M7Ot1EbyApytCnvE0jALPa46ZpKDUo527kKiaWplmlFA==
   dependencies:
     arr-union "^3.1.0"
     clone-deep "^0.2.4"
@@ -8645,7 +8650,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8871,6 +8876,14 @@ react-error-overlay@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.1.tgz#b8d3cf9bb991c02883225c48044cb3ee20413e0f"
   integrity sha512-V9yoTr6MeZXPPd4nV/05eCBvGH9cGzc52FN8fs0O0TVQ3HYYf1n7EgZVtHbldRq5xU9zEzoXIITjYNIfxDDdUw==
+
+react-file-reader@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-file-reader/-/react-file-reader-1.1.4.tgz#1838f1f3fa70dcfdef4ef525d74dda3c6312089a"
+  integrity sha512-xTeHFrDIopZpzk4aMZyILzIQbytQ6GCKR32/7kBDzO5lrAr1idbK5PkmpjP4wnT9s5F+TALviuhnWk8UeksddA==
+  dependencies:
+    prop-types "^15.5.0"
+    uuid4 "^1.0.0"
 
 react-flash-message@^1.0.2:
   version "1.0.2"
@@ -10808,6 +10821,11 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+
+uuid4@^1.0.0:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/uuid4/-/uuid4-1.1.4.tgz#80fa0618749110bdb8aa47cc2cc2167c6331f4eb"
+  integrity sha512-Gr1q2k40LpF8CokcnQFjPDsdslzJbTCTBG5xQIEflUov431gFkY5KduiGIeKYAamkQnNn4IfdHJbLnl9Bib8TQ==
 
 uuid@^3.0.1, uuid@^3.3.2:
   version "3.3.2"
